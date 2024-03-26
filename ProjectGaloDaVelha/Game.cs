@@ -6,6 +6,9 @@ namespace ProjectGaloDaVelha
 
     public class Game
     {
+        // Board mapping
+        private static Pieces[,] gameBoard = new Pieces[3, 3];
+
         public void Start()
         {
 
@@ -103,11 +106,16 @@ namespace ProjectGaloDaVelha
         }
         
             
-
-        
-
         private void BuildBoard()
         {
+            //
+            for (int row = 0; row < 3; row++)
+            {
+                for (int col = 0; col < 3; col++)
+                {
+                    //gameBoard[row, col] ;
+                }
+            }
 
         }
 
