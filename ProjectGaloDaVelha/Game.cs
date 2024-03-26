@@ -4,7 +4,6 @@ using System;
 namespace ProjectGaloDaVelha
 {
     
-
     public class Game
     {
         // Board mapping // consider static variables
@@ -62,8 +61,9 @@ namespace ProjectGaloDaVelha
         {
 
             // Get player input
+            Console.ReadLine();
 
-            // check for valid input & move
+            // check for valid input, move & piece type(size, color,shape,hole)
 
             // update game board
 
@@ -89,6 +89,7 @@ namespace ProjectGaloDaVelha
                 case GameStatus.player2Win:
                 {
                     EndGame("Player 2 wins!"); 
+
                     break;
                 }
                    
@@ -96,6 +97,7 @@ namespace ProjectGaloDaVelha
                 case GameStatus.draw:
                 {
                     EndGame("It's a draw!"); 
+                    
                     break;
                 }
                 
@@ -192,6 +194,7 @@ namespace ProjectGaloDaVelha
             Console.WriteLine(status);
 
             // reset board
+
 
             // reset game status
         }

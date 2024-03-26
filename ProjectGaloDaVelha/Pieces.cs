@@ -5,19 +5,22 @@ namespace ProjectGaloDaVelha
     public class Pieces
     {
 
-        private string name;
+        //private string name;
 
-        private Color color;
+        //private Color color;
+
+
+        
         
 
        // public string Piece { get; set; }
 
-        public Pieces(string piece, Color color)
+        public Pieces
+        (PieceSize size,PieceColor color, PieceType type, PiecePuncture puncture)
         {
-            // set piece name
-            this.name = piece;
-            // set color
-            this.color = color;
+
+
+
         }
     }
 
