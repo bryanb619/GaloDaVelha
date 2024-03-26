@@ -1,4 +1,3 @@
-
 namespace ProjectGaloDaVelha
 {
     public enum PieceColor

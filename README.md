@@ -3,7 +3,7 @@
 ## Autoria
 
 ### Elementos do grupo:
-- Hugo Figueira Silva NºA
+- Hugo Figueira Silva 22001815
 - Steven Hall 2200173
   
 ### Report:
@@ -81,26 +81,4 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 #
 
 ### Links de pesquisa utilizados para realização do projeto
-* [Criação de ficheiro](https://learn.microsoft.com/en-us/dotnet/api/system.io.file.create?view=netstandard-2.1#system-io-file-create(system-string))
-  
-* [Ler linhas do ficheiro](https://learn.microsoft.com/en-us/dotnet/api/system.io.file.readlines?view=netstandard-2.1#system-io-file-readlines(system-string))
-  
-* [Ler texto do ficheiro](https://learn.microsoft.com/en-us/dotnet/api/system.io.file.readalltext?view=netstandard-2.1#system-io-file-readalltext(system-string))
-
-* [Remover linhas do ficheiro](https://stacktuts.com/how-to-delete-a-line-from-a-text-file-in-c)
-  
-* [Acessibilidade de ambiente de trabalho](https://learn.microsoft.com/en-us/dotnet/api/system.environment.specialfolder?view=netstandard-2.1#system-environment-specialfolder-desktopdirectory)
-
-* [Ficheiro de texto em _Unity UI_](https://forum.unity.com/threads/how-to-display-text-from-txt-file-in-ui.1068131/)
-
-* [Texto _Scrollable  Unity UI_](https://www.youtube.com/watch?v=Sw_tYG8CP-A&t=1s&ab_channel=ChristinaCreatesGames)
-  
-* [Mover ficheiro](https://learn.microsoft.com/en-us/dotnet/api/system.io.file.move?view=netstandard-2.1#system-io-file-move(system-string-system-string))
-  
-* [Ler ficheiros de diretório](https://learn.microsoft.com/en-us/dotnet/api/system.io.directory.getfiles?view=netstandard-2.1#system-io-directory-getfiles(system-string))
-  
-* [_Try get Value_](https://stackoverflow.com/questions/59890374/dictionary-trygetvalue-out-parameter)
-
-* [Funções de botões](https://docs.unity3d.com/2018.2/Documentation/ScriptReference/UI.Button.html)
-
-* [Rato sobre um button](https://discussions.unity.com/t/onmouseover-ui-button-c/166886)
+* [Getters & Setters](https://www.w3schools.com/cs/cs_properties.php))

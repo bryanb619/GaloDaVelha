@@ -12,13 +12,41 @@ namespace ProjectGaloDaVelha
         private int turn = 0;
 
 
-       private GameStatus gameStatus;
+        private GameStatus gameStatus;
+
+        // ref to PieceSize enum
+        private PieceSize size;
+
+        // ref to PieceColor enum
+        private PieceColor color;
+
+        // ref to PieceShape enum
+        private PieceShape shape;
+
+        // ref to PiecePuncture enum
+        private PiecePuncture puncture;
 
         public void Start()
         {
 
             Console.WriteLine("Welcome to Galo da Velha!");
+
+            // TEST CODE
+            size = PieceSize.small;
+            color = PieceColor.color1;
+            shape = PieceShape.square;
+            puncture = PiecePuncture.punctured;
+
+            Pieces piece1 = new Pieces(size, color, shape, puncture);
+
+            Console.WriteLine
+            ($"Piece size:{piece1.GetPieceSize()} " 
+            + $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
+            + $"Puncture: {piece1.GetPiecePuncture()}");
+            // -----------------------------------------------------------------
+
             //Console.ReadLine();
+
 
             //BuildBoard();
             DisplayBoardUI();
@@ -31,7 +59,7 @@ namespace ProjectGaloDaVelha
         private void ManageTurns()
         {
             
-            while(true)
+            while(gameStatus == GameStatus.playing)
             {
                 // increment turn
                 turn++;
