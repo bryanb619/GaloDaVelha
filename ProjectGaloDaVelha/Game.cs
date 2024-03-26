@@ -3,11 +3,17 @@ using System;
 
 namespace ProjectGaloDaVelha
 {
+    
 
     public class Game
     {
         // Board mapping
         private static Pieces[,] gameBoard = new Pieces[3, 3];
+
+
+        private GameStatus gameStatus;
+
+         
 
         public void Start()
         {
@@ -20,19 +26,52 @@ namespace ProjectGaloDaVelha
             DisplayBoardUI();
             //ManageTurns();
             //MovePiece();
-            //CheckForWinner();
+            //CheckGameStatus();
             //EndGame();
         }
         //----------------------------------------------------------------------
 
         private void ManageTurns()
         {
+            int turn = 0;
 
 
         }
 
         private void MovePiece()
         {
+
+        }
+
+
+        private void CheckGameStatus()
+        {
+            switch (gameStatus)
+            {
+                // Player 1 wins
+                case GameStatus.player1Win:
+                {
+                    Console.WriteLine("Player 1 wins!");
+                    break;
+                }
+                    
+
+                // Player 2 wins
+                case GameStatus.player2Win:
+                {
+                    Console.WriteLine("Player 2 wins!");
+                    break;
+                }
+                   
+                // Draw
+                case GameStatus.draw:
+                {
+                    Console.WriteLine("It's a draw!");
+                    break;
+                }
+                
+                default: {Console.WriteLine("Unkown State"); break;} 
+            }
 
         }
 
