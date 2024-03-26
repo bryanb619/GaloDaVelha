@@ -32,13 +32,12 @@ namespace ProjectGaloDaVelha
             Console.WriteLine("Welcome to Galo da Velha!");
 
             // TEST CODE
-            size = PieceSize.small;
-            color = PieceColor.color1;
-            shape = PieceShape.square;
-            puncture = PiecePuncture.punctured;
 
-            Pieces piece1 = new Pieces(size, color, shape, puncture);
+            // EXAMPLE OF PIECE CREATION => INSTACIATING
+            Pieces piece1 = new Pieces
+            (PieceSize.small, PieceColor.color1, PieceShape.circle, PiecePuncture.none);
 
+            // EXAMPLE OF GETTING INFO FROM PIECE
             Console.WriteLine
             ($"Piece size:{piece1.GetPieceSize()} " 
             + $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
@@ -64,17 +63,16 @@ namespace ProjectGaloDaVelha
                 // increment turn
                 turn++;
 
-                // Player 1 turn
+                // determine player turn
                 if(turn % 2 != 0)
                 {
-
-                    
-                    //MovePiece();
+                    // Player 1 turn
+                    MovePiece(Player.player1);
                 }
                 else
                 {
                     // Player 2 turn
-                    //MovePiece();
+                    MovePiece(Player.player2);
                 }
 
             }
