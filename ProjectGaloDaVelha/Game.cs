@@ -1,3 +1,5 @@
+using System;
+
 namespace ProjectGaloDaVelha
 {
 
@@ -5,6 +7,9 @@ namespace ProjectGaloDaVelha
     {
         public void Start()
         {
+
+            Console.WriteLine("Welcome to Galo da Velha!");
+
             //BuildBoard();
             //DisplayBoardUI();
             //ManageTurns();
