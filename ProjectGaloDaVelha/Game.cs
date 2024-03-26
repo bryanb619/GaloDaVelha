@@ -7,25 +7,23 @@ namespace ProjectGaloDaVelha
 
     public class Game
     {
-        // Board mapping
-        private static Pieces[,] gameBoard = new Pieces[3, 3];
+        // Board mapping // consider static variables
+        private Pieces[,] gameBoard = new Pieces[3, 3];
+
+        private int turn = 0;
 
 
-       // private GameStatus gameStatus;
-
-         
+       private GameStatus gameStatus;
 
         public void Start()
         {
 
             Console.WriteLine("Welcome to Galo da Velha!");
-
             //Console.ReadLine();
 
             //BuildBoard();
             DisplayBoardUI();
             //ManageTurns();
-            //MovePiece();
             //CheckGameStatus();
             //EndGame();
         }
@@ -33,8 +31,7 @@ namespace ProjectGaloDaVelha
 
         private void ManageTurns()
         {
-            int turn = 0;
-
+            
             while(true)
             {
                 // increment turn
@@ -43,6 +40,7 @@ namespace ProjectGaloDaVelha
                 // Player 1 turn
                 if(turn % 2 != 0)
                 {
+
                     
                     //MovePiece();
                 }
@@ -54,9 +52,6 @@ namespace ProjectGaloDaVelha
 
             }
 
-
-
-
         }
 
         /// <summary>
@@ -65,43 +60,42 @@ namespace ProjectGaloDaVelha
         /// <param name="player">Enum received to set player move piece</param>
         private void MovePiece(Player player)
         {
+
             // Get player input
 
             // check for valid input & move
 
             // update game board
+
         }
 
 
         /// <summary>
         ///  TODO: Must clear board and reset game status
         /// </summary>
-        private void EndGame(GameStatus gameStatus)
+        private void Condition(GameStatus gameStatus)
         {
             switch (gameStatus)
             {
                 // Player 1 wins
                 case GameStatus.player1Win:
                 {
-                    Console.WriteLine("Player 1 wins!");
+                    EndGame("Player 1 wins!"); 
 
                     break;
                 }
-                    
-
+                
                 // Player 2 wins
                 case GameStatus.player2Win:
                 {
-                    Console.WriteLine("Player 2 wins!");
-
+                    EndGame("Player 2 wins!"); 
                     break;
                 }
                    
                 // Draw
                 case GameStatus.draw:
                 {
-                    Console.WriteLine("It's a draw!");
-
+                    EndGame("It's a draw!"); 
                     break;
                 }
                 
@@ -190,6 +184,16 @@ namespace ProjectGaloDaVelha
                 }
             }
 
+        }
+
+
+        private void EndGame(string status)
+        {
+            Console.WriteLine(status);
+
+            // reset board
+
+            // reset game status
         }
 
         //private void 

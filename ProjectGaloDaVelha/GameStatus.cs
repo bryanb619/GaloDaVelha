@@ -5,5 +5,6 @@ namespace ProjectGaloDaVelha
         player1Win,
         player2Win,
         draw,
+        playing
     }
 }
