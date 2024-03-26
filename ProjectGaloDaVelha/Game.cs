@@ -171,7 +171,8 @@ namespace ProjectGaloDaVelha
             Console.WriteLine
             ($"{Y_circ_S_furo_small}, {Y_circ_C_furo_small},{Y_quad_C_furo_small}, {Y_quad_S_furo_small}");
 
-            
+            // ---------  WAITING HERE FOR NOW ---------
+            Console.ReadLine();
         }
         
             
