@@ -11,12 +11,7 @@ namespace ProjectGaloDaVelha
 
             Console.WriteLine("Welcome to Galo da Velha!");
 
-<<<<<<< HEAD
-            //
-            Console.ReadLine();
-=======
             //Console.ReadLine();
->>>>>>> 289b76990febdadf369c39973e14cc5326e9f15b
 
             //BuildBoard();
             DisplayBoardUI();
