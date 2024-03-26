@@ -1,7 +1,4 @@
-﻿using System;
-
-
-namespace ProjectGaloDaVelha
+﻿namespace ProjectGaloDaVelha
 {
     /// <summary>
     /// 
@@ -15,8 +12,10 @@ namespace ProjectGaloDaVelha
         private static void Main(string[] args)
         {
 
+            // create game instance
             Game game = new Game();
-
+            
+            // start game instance
             game.Start();
         }
     }

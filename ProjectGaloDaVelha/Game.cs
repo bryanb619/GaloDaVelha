@@ -11,7 +11,7 @@ namespace ProjectGaloDaVelha
         private static Pieces[,] gameBoard = new Pieces[3, 3];
 
 
-        private GameStatus gameStatus;
+       // private GameStatus gameStatus;
 
          
 
@@ -35,16 +35,48 @@ namespace ProjectGaloDaVelha
         {
             int turn = 0;
 
+            while(true)
+            {
+                // increment turn
+                turn++;
+
+                // Player 1 turn
+                if(turn % 2 != 0)
+                {
+                    
+                    //MovePiece();
+                }
+                else
+                {
+                    // Player 2 turn
+                    //MovePiece();
+                }
+
+            }
+
+
+
 
         }
 
-        private void MovePiece()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="player">Enum received to set player move piece</param>
+        private void MovePiece(Player player)
         {
+            // Get player input
 
+            // check for valid input & move
+
+            // update game board
         }
 
 
-        private void CheckGameStatus()
+        /// <summary>
+        ///  TODO: Must clear board and reset game status
+        /// </summary>
+        private void EndGame(GameStatus gameStatus)
         {
             switch (gameStatus)
             {
@@ -52,6 +84,7 @@ namespace ProjectGaloDaVelha
                 case GameStatus.player1Win:
                 {
                     Console.WriteLine("Player 1 wins!");
+
                     break;
                 }
                     
@@ -60,6 +93,7 @@ namespace ProjectGaloDaVelha
                 case GameStatus.player2Win:
                 {
                     Console.WriteLine("Player 2 wins!");
+
                     break;
                 }
                    
@@ -67,12 +101,12 @@ namespace ProjectGaloDaVelha
                 case GameStatus.draw:
                 {
                     Console.WriteLine("It's a draw!");
+
                     break;
                 }
                 
-                default: {Console.WriteLine("Unkown State"); break;} 
+               // default: {Console.WriteLine("Unkown State"); break;} 
             }
-
         }
 
         //----------------------------------------------------------------------
