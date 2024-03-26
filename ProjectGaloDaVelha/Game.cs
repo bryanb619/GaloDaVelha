@@ -10,6 +10,7 @@ namespace ProjectGaloDaVelha
 
             Console.WriteLine("Welcome to Galo da Velha!");
 
+            //
             Console.ReadLine();
 
             //BuildBoard();
