@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 
 
 namespace ProjectGaloDaVelha
@@ -7,24 +8,22 @@ namespace ProjectGaloDaVelha
     public class Game
     {
         // Board mapping // consider static variables
-        private Pieces[,] gameBoard = new Pieces[3, 3];
+        private Pieces[,] addedPiecesToBoard = new Pieces[3, 3];
+
+
+
+
+        // X       
+        // Y  |player1|
+
 
         private int turn = 0;
 
 
         private GameStatus gameStatus;
 
-        // ref to PieceSize enum
-        private PieceSize size;
 
-        // ref to PieceColor enum
-        private PieceColor color;
-
-        // ref to PieceShape enum
-        private PieceShape shape;
-
-        // ref to PiecePuncture enum
-        private PiecePuncture puncture;
+        
 
         public void Start()
         {
@@ -34,14 +33,21 @@ namespace ProjectGaloDaVelha
             // TEST CODE
 
             // EXAMPLE OF PIECE CREATION => INSTACIATING
-            Pieces piece1 = new Pieces
-            (PieceSize.small, PieceColor.color1, PieceShape.circle, PiecePuncture.none);
+            Pieces piece1 = new Pieces(PieceSize.small, PieceColor.color2, PieceShape.square, PiecePuncture.punctured);
+
+
+            Console.WriteLine(piece1.GetPieceType());
+
+            //Pieces piece2 = new Pieces(PieceSize.big, PieceColor.color2, PieceShape.square, PiecePuncture.hole);
+
+
+            //
 
             // EXAMPLE OF GETTING INFO FROM PIECE
-            Console.WriteLine
-            ($"Piece size:{piece1.GetPieceSize()} " 
-            + $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
-            + $"Puncture: {piece1.GetPiecePuncture()}");
+            //Console.WriteLine
+            //($"Piece size:{piece1.GetPieceSize()} " 
+            //+ $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
+            //+ $"Puncture: {piece1.GetPiecePuncture()}");
             // -----------------------------------------------------------------
 
             //Console.ReadLine();
@@ -55,6 +61,7 @@ namespace ProjectGaloDaVelha
         }
         //----------------------------------------------------------------------
 
+            
         private void ManageTurns()
         {
             
@@ -64,14 +71,14 @@ namespace ProjectGaloDaVelha
                 turn++;
 
                 // determine player turn
-                if(turn % 2 != 0)
+                if(turn % 2 != 0) //1, 3, 5
                 {
                     // Player 1 turn
                     MovePiece(Player.player1);
                 }
                 else
                 {
-                    // Player 2 turn
+                    // Player 2 turn // 2, 4, 6
                     MovePiece(Player.player2);
                 }
 
@@ -143,6 +150,7 @@ namespace ProjectGaloDaVelha
             string G_quad_C_furo_BIG = "\u001b[32m\u25a0B";
             string G_quad_S_furo_BIG = "\u001b[32m\u25a1B";
 
+                                    // cor[33] \unicode(dentro define se é furo ou nao) + tamanho 
             string Y_circ_S_furo_BIG = "\u001b[33m\u25cfB";
             string Y_circ_C_furo_BIG = "\u001b[33m\u25cbB";
             string Y_quad_C_furo_BIG = "\u001b[33m\u25a0B";
