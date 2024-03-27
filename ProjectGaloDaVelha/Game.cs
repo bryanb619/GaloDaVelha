@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-
+using ProjectGaloDaVelha.PiecesEnums;
 
 namespace ProjectGaloDaVelha
 {
-    
+    /// <summary>
+    /// 
+    /// </summary>
     public class Game
     {
         // Board mapping // consider static variables
@@ -17,20 +18,16 @@ namespace ProjectGaloDaVelha
 
         private int turn = 0;
 
-
         private GameStatus gameStatus;
 
-
-
-            // EXAMPLE OF PIECE CREATION => INSTACIATING
-            
-            // --- YELLOW PIECES ---
+        // EXAMPLE OF PIECE CREATION => INSTACIATING
+        
+        // --- YELLOW PIECES ---
 
         //1st ROW (Yellow with no holes)
         // Big Yellow Square with no hole
         private Piece piece1 = new Piece
         (PieceSize.big,PieceColor.yellow,PieceShape.square,PieceHole.none);
-
         //public Piece Piece1 => piece1;
 
         // Big Yellow Circle with no hole
@@ -63,7 +60,6 @@ namespace ProjectGaloDaVelha
         (PieceSize.small,PieceColor.yellow,PieceShape.circle,PieceHole.hole);
 
         // --- GREEN PIECES ---
-
         private Piece piece9 = new Piece
         (PieceSize.big,PieceColor.green,PieceShape.square,PieceHole.none);
 
@@ -101,6 +97,7 @@ namespace ProjectGaloDaVelha
         private int player_number = 1;
 
 
+        // Mapping of the board
         private string[,] pos = 
         {
             {"A","B","C","D"},
@@ -109,30 +106,21 @@ namespace ProjectGaloDaVelha
             {"M","N","O","P"}
         };
 
-        private string[] pecas_array; 
+        // Array of pieces
+        private string[] pecas_array = new string[15]; 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Start()
         {
             gameStatus = GameStatus.playing;
 
-            Console.WriteLine("Welcome to Galo da Velha! \n");
+            Assistant(); 
 
-            // TEST CODE
-            //Console.WriteLine(piece1.GetPieceType());
-
-            //
-
-            // EXAMPLE OF GETTING INFO FROM PIECE
-            //Console.WriteLine
-            //($"Piece size:{piece1.GetPieceSize()} " 
-            //+ $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
-            //+ $"Puncture: {piece1.GetPiecePuncture()}");
-
-            //Console.ReadLine();
+            ManageTurns();
 
             //DisplayBoardUI();
-            ManageTurns();
 
             // TODO : Adicionar metodo para construir o tabuleiro Visual
             // BuildUI(); chamar 1 vez => mostrar peças, texto, legendas, etc
@@ -142,14 +130,47 @@ namespace ProjectGaloDaVelha
             // Se não, empate encerrar jogo
             // check with while loop
         }
-        //----------------------------------------------------------------------
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        private void Assistant()
+        {
+            Console.WriteLine("Bem-vindo to Galo da Velha! \n");
+
+
+            Console.WriteLine("Jogo consiste em colocar as peças no " 
+            +"tabuleiro e fazer uma sequência de uma cor, forma...");
+
+            Console.WriteLine
+            ("O tabuleiro é composto por 4 linhas e 4 colunas "
+            +"Posições do tabuleiro são representadas por letras");
+
+            Console.WriteLine
+            ("As peças São representadas numericamente (input) "
+            +"e com cores e formas (visualmente)"
+            +"São de 4 tamanhos, 4 formatos e 4 "
+            +"cores totalizando 16 peças\n"
+            +"Boa sorte!\n"
+            +"Pressione qualquer tecla para continuar..."); 
+
+            Console.ReadLine();
+
+            Console.Clear();
+        }
             
+        /// <summary>
+        /// 
+        /// </summary>
         private void ManageTurns()
         {
             
             while(gameStatus == GameStatus.playing)
             {
-                // increment turn
+            
+                CheckGameStatus();
+
+                 // increment turn
                 turn++;
 
                 // determine player turn
@@ -163,6 +184,8 @@ namespace ProjectGaloDaVelha
                     // Player 2 turn // 2, 4, 6
                     MovePiece(Player.player2);
                 }
+
+                 
 
             }
 
@@ -259,33 +282,6 @@ namespace ProjectGaloDaVelha
                 string user_place = Console.ReadLine();
 
 
-                if (user_place == "ESC")
-                {
-                    //Environment.Exit(0);
-                    return;
-                }
-
-                else if(user_place == "H")
-                {
-                    Console.WriteLine("Jogo consiste em colocar as peças no " 
-                    +"tabuleiro e fazer uma sequência de uma cor, forma...");
-
-                    Console.WriteLine
-                    ("O tabuleiro é composto por 4 linhas e 4 colunas");
-
-                    Console.WriteLine
-                    ("As peças disponiveis são de 4 tamanhos, 4 formatos e 4 "
-                    +"cores totalizando 16 peças");
-
-                    Console.WriteLine
-                    ("As posições do tabuleiro são representadas por letras");
-
-                    Console.WriteLine
-                    ("As peças são representadas númericamente(input) "
-                    +  "e com cores e formas"); 
-                }
-
-                
                 Console.Write("Qual é o numero da peça que deseja: ");
                 int user_piece = int.Parse(Console.ReadLine());
 
@@ -314,8 +310,7 @@ namespace ProjectGaloDaVelha
                         }
                     }
                 }
-
-                //Console.WriteLine("///////////////////////////////////////////////\n");
+                // clear console
                 Console.Clear();
             }
 
@@ -325,6 +320,14 @@ namespace ProjectGaloDaVelha
         private void CheckGameStatus()
         {
 
+
+            if(pecas_array.Length == 0 )
+            {
+                gameStatus = GameStatus.draw;
+                //Condition(gameStatus);
+
+            }
+           
             // Check for player 1
 
             // Check for player 2
@@ -351,7 +354,7 @@ namespace ProjectGaloDaVelha
 
             */
 
-            Condition(gameStatus);
+            //Condition(gameStatus);
         }
 
         /// <summary>
@@ -419,7 +422,13 @@ namespace ProjectGaloDaVelha
 
         private void EndGame(string status)
         {
-            Console.WriteLine(status);
+            Console.WriteLine(status + "Pressione enter para sair\n");
+
+            // RESTART GAME
+            Console.ReadLine();
+
+            return;
+            // clear console
 
             // reset board
 
