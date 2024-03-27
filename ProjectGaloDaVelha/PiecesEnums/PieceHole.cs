@@ -1,9 +1,9 @@
 namespace ProjectGaloDaVelha
 {
-    public enum PiecePuncture
+    public enum PieceHole
     {
         none,
-        punctured
+        hole
 
     }
 

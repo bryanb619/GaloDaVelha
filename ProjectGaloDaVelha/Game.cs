@@ -9,10 +9,7 @@ namespace ProjectGaloDaVelha
     public class Game
     {
         // Board mapping // consider static variables
-        private Pieces[,] addedPiecesToBoard = new Pieces[3, 3];
-
-
-
+        private Piece[,] addedPiecesToBoard = new Piece[3, 3];
 
         // X       
         // Y  |player1|
@@ -34,10 +31,10 @@ namespace ProjectGaloDaVelha
             // TEST CODE
 
             // EXAMPLE OF PIECE CREATION => INSTACIATING
-            Pieces piece1 = new Pieces(PieceSize.small, PieceColor.color2, PieceShape.square, PiecePuncture.punctured);
+            Piece piece1 = new Piece(PieceSize.small, PieceColor.yellow, PieceShape.square, PieceHole.hole);
 
 
-            Console.WriteLine(piece1.GetPieceType());
+            //Console.WriteLine(piece1.GetPieceType());
 
             //Pieces piece2 = new Pieces(PieceSize.big, PieceColor.color2, PieceShape.square, PiecePuncture.hole);
 

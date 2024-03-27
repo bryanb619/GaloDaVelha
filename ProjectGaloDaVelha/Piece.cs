@@ -1,10 +1,12 @@
+//using System;
+
 
 namespace ProjectGaloDaVelha
 {
     /// <summary>
     /// 
     /// </summary>
-    public class Pieces
+    public class Piece
     {
         // Class attributes
 
@@ -17,77 +19,32 @@ namespace ProjectGaloDaVelha
         private string color;
 
         // ref to PieceShape enum
-        private string shape;
+        private PieceShape shape;
 
-        // ref to PiecePuncture enum
-        private bool puncture;
+        // ref to piece hole
+        private bool hasHole;
 
    
         // Class constructor
-        public Pieces(PieceSize newSize, PieceColor color, PieceShape newShape, PiecePuncture puncture)
+        public Piece(PieceSize newSize, PieceColor color, PieceShape newShape, PieceHole hole)
         {
+
             // Set Size
             SetPieceSize(newSize);
 
             // Set Color
             SetPieceColor(color);
 
-            // Set Shape
-            SetPieceShape(newShape);
-        
-            // Set Puncture
-            SetPiecePuncture(puncture);
+            // Set Hole
+            SetPiecePuncture(hole);
 
-
-            // IF shape is circle && has hole => cb
-            //h
-
-            // IF NOT => cf 
-            //h
-
-            // IF shape is square && has hole => a0
-            //h
-
-            // IF NOT => a1
-            //h
-
+            shape = newShape;
 
             // TODO: Implement pieceType
-            // pieceType = color + shape + hole + size;
+            SetPieceType();
 
-
-            // \u001b[32m + "\" + u25 + h + size
-
-
-            switch(newShape)
-            {
-                case PieceShape.circle:
-                {
-                    if(this.puncture)
-                    {
-                        pieceType = this.color + this.shape + "cf" + size;
-                    }
-                    else
-                    {
-                        pieceType = this.color + this.shape + "cb" + size;
-                    }
-                    break;
-                }
-
-                case PieceShape.square:
-                {
-                    if(this.puncture)
-                    {
-                        pieceType = this.color +  shape + "a0" + size;
-                    }
-                    else
-                    {
-                        pieceType = this.color + shape + "a1" + size;
-                    }
-                    break;
-                }
-            }     
-
+            
+   
         }
 
         // Setters
@@ -123,14 +80,14 @@ namespace ProjectGaloDaVelha
 
             switch (newColor)
             {
-                case PieceColor.color1:
+                case PieceColor.green:
                 {
                     // green
                     color = "\u001b[32m";
                     break;
                 }
                    
-                case PieceColor.color2:
+                case PieceColor.yellow:
                 {
                     // yellow
                     color = "\u001b[33m";
@@ -143,59 +100,84 @@ namespace ProjectGaloDaVelha
         
         }
 
-
-        private string SetPieceShape(PieceShape newShape)
+        /*
+        private  SetPieceShape(PieceShape newShape)
         {
-            switch (newShape)
-            {
-                case PieceShape.circle:
-                {
-                    // circle
-                    shape = "'\''u25";
+           switch(newShape)
+           {
+               case PieceShape.circle:
+               {
+                    shape = PieceShape.circle;
                     break;
-                }
-                case PieceShape.square:
-                {
-                    // square
-                    shape = "\''u25";
-                    break;
-                }
-               
-            }
+               }
+               case PieceShape.square:
+               {
+                   
+                   break;
+               }
+           }
 
-            return shape;
+           return shape;
+
         }
+        */
 
-        private bool SetPiecePuncture(PiecePuncture puncture)
+        private bool SetPiecePuncture(PieceHole puncture)
         {
             switch (puncture)
             {
-                case PiecePuncture.none:
+                case PieceHole.none:
                 {
-                    this.puncture = false;
+                    hasHole = false;
                     break;
                 }
                 
-                case PiecePuncture.punctured:
+                case PieceHole.hole:
                 {
-                    this.puncture = true;
+                    hasHole = true;
                     break;
                 }
                
             }
 
-            return this.puncture;
+            return hasHole;
+        }
+
+
+        private void SetPieceType()
+        {
+            char pieceConfig = '\0';
+
+            switch(shape)
+            {
+
+                case PieceShape.circle:
+                {
+                    if(hasHole) {pieceConfig = '\u25cf';}
+                    
+                    else{pieceConfig = '\u25cb';}
+
+                    break;
+                }
+
+                case PieceShape.square:
+                {
+                    if(hasHole) {pieceConfig = '\u25a0';}
+
+                    else{pieceConfig = '\u25a1';}
+
+                    break;
+                }
+            } 
+
+            pieceType = color + pieceConfig + size;    
         }
 
 
         // Getters
 
-        public string GetPieceType()
-        {
-            return pieceType;
-        }
-
         // Get Piece Size
+        /*
         public string GetPieceSize()
         {
             return size;
@@ -214,6 +196,12 @@ namespace ProjectGaloDaVelha
         public bool GetPiecePuncture()
         {
             return puncture;
+        }
+
+        */
+        public string GetPieceType()
+        {
+            return pieceType;
         }
 
         // Getters & Setters
