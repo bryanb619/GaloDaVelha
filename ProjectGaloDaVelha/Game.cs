@@ -31,6 +31,8 @@ namespace ProjectGaloDaVelha
         private Piece piece1 = new Piece
         (PieceSize.big,PieceColor.yellow,PieceShape.square,PieceHole.none);
 
+        //public Piece Piece1 => piece1;
+
         // Big Yellow Circle with no hole
         private Piece piece2 = new Piece
         (PieceSize.big,PieceColor.yellow,PieceShape.circle,PieceHole.none);
@@ -94,27 +96,28 @@ namespace ProjectGaloDaVelha
         private Piece piece16 = new Piece
         (PieceSize.small,PieceColor.green,PieceShape.circle,PieceHole.hole);
 
+
+        private int count_player = 0;
+        private int player_number = 1;
+
+
+        private string[,] letras = 
+        {
+            {"A","B","C","D"},
+            {"E","F","G","H"},
+            {"I","J","K","L"},
+            {"M","N","O","P"}
+        };
+
+        private string[] pecas_array; 
+    
+        
+
         public void Start()
         {
+            gameStatus = GameStatus.playing;
 
             Console.WriteLine("Welcome to Galo da Velha!");
-
-            Console.WriteLine(piece1.GetPieceType());
-            Console.WriteLine(piece2.GetPieceType());
-            Console.WriteLine(piece3.GetPieceType());
-            Console.WriteLine(piece4.GetPieceType());
-            Console.WriteLine(piece5.GetPieceType());
-            Console.WriteLine(piece6.GetPieceType());
-            Console.WriteLine(piece7.GetPieceType());
-            Console.WriteLine(piece8.GetPieceType());
-            Console.WriteLine(piece9.GetPieceType());
-            Console.WriteLine(piece10.GetPieceType());
-            Console.WriteLine(piece11.GetPieceType());
-            Console.WriteLine(piece12.GetPieceType());
-            Console.WriteLine(piece13.GetPieceType());
-            Console.WriteLine(piece14.GetPieceType());
-            Console.WriteLine(piece15.GetPieceType());
-            Console.WriteLine(piece16.GetPieceType());
 
             // TEST CODE
             //Console.WriteLine(piece1.GetPieceType());
@@ -129,12 +132,16 @@ namespace ProjectGaloDaVelha
 
             //Console.ReadLine();
 
+            //DisplayBoardUI();
+            ManageTurns();
 
-            //BuildBoard();
-            DisplayBoardUI();
-            //ManageTurns();
-            //CheckGameStatus();
-            //EndGame();
+            // TODO : Adicionar metodo para construir o tabuleiro Visual
+            // BuildUI(); chamar 1 vez => mostrar peças, texto, legendas, etc
+            
+            // !TODO!: Detetar vitória (de quem?), encerrar o jogo
+            // Caso contrario, há peças ainda disponiveis? Se sim, continuar
+            // Se não, empate encerrar jogo
+            // check with while loop
         }
         //----------------------------------------------------------------------
             
@@ -168,120 +175,30 @@ namespace ProjectGaloDaVelha
         /// <param name="player">Enum received to set player move piece</param>
         private void MovePiece(Player player)
         {
-
-            // Get player input
-            Console.ReadLine();
-
-            // check for valid input, move & piece type(size, color,shape,hole)
-
-            // update game board
-
-        }
-
-
-        /// <summary>
-        ///  TODO: Must clear board and reset game status
-        /// </summary>
-        private void Condition(GameStatus gameStatus)
-        {
-            switch (gameStatus)
+            pecas_array = new string[]
             {
-                // Player 1 wins
-                case GameStatus.player1Win:
-                {
-                    EndGame("Player 1 wins!"); 
-
-                    break;
-                }
-                
-                // Player 2 wins
-                case GameStatus.player2Win:
-                {
-                    EndGame("Player 2 wins!"); 
-
-                    break;
-                }
-                   
-                // Draw
-                case GameStatus.draw:
-                {
-                    EndGame("It's a draw!"); 
-                    
-                    break;
-                }
-                
-               // default: {Console.WriteLine("Unkown State"); break;} 
-            }
-        }
-
-        //----------------------------------------------------------------------
-
-
-        private void DisplayBoardUI()
-        { 
-            //"\u001b[32m  VERDE  ||| "\u001b[33m  AMARELO 
-
-            string G_circ_S_furo_BIG = "\u001b[32m\u25cfB";
-            string G_circ_C_furo_BIG = "\u001b[32m\u25cbB";
-            string G_quad_C_furo_BIG = "\u001b[32m\u25a0B";
-            string G_quad_S_furo_BIG = "\u001b[32m\u25a1B";
-
-                                    // cor[33] \unicode(dentro define se é furo ou nao) + tamanho 
-            string Y_circ_S_furo_BIG = "\u001b[33m\u25cfB";
-            string Y_circ_C_furo_BIG = "\u001b[33m\u25cbB";
-            string Y_quad_C_furo_BIG = "\u001b[33m\u25a0B";
-            string Y_quad_S_furo_BIG = "\u001b[33m\u25a1B";
-
-            string G_circ_S_furo_small = "\u001b[32m\u25cfs";
-            string G_circ_C_furo_small = "\u001b[32m\u25cbs";
-            string G_quad_C_furo_small = "\u001b[32m\u25a0s";
-            string G_quad_S_furo_small = "\u001b[32m\u25a1s";
-
-            string Y_circ_S_furo_small = "\u001b[33m\u25cfs";
-            string Y_circ_C_furo_small = "\u001b[33m\u25cbs";
-            string Y_quad_C_furo_small = "\u001b[33m\u25a0s";
-            string Y_quad_S_furo_small = "\u001b[33m\u25a1s";
-
-            Console.Write("\u001b[0m");
-            
-            // Limpa a tela antes de desenhar o tabuleiro
-
-            // Loop para desenhar as linhas e colunas do tabuleiro 
-            // [Layout da tabela usado pelo ChatGPT]
-
-            string[,] letras = 
-            {
-                {"A","B","C","D"},
-                {"E","F","G","H"},
-                {"I","J","K","L"},
-                {"M","N","O","P"}
+                piece1.GetPieceType(),piece2.GetPieceType(),
+                piece3.GetPieceType(),piece4.GetPieceType(),
+                piece5.GetPieceType(),piece6.GetPieceType(),
+                piece7.GetPieceType(),piece8.GetPieceType(),
+                piece9.GetPieceType(),piece10.GetPieceType(),
+                piece11.GetPieceType(),piece12.GetPieceType(),
+                piece13.GetPieceType(),piece14.GetPieceType(),
+                piece15.GetPieceType(),piece16.GetPieceType()
             };
-
-            string[] pecas_array =
-            {
-                G_circ_S_furo_BIG,G_circ_C_furo_BIG,G_quad_C_furo_BIG,G_quad_S_furo_BIG,
-                G_circ_S_furo_small,G_circ_C_furo_small,G_quad_C_furo_small,G_quad_S_furo_small,
-                Y_circ_S_furo_BIG,Y_circ_C_furo_BIG,Y_quad_C_furo_BIG,Y_quad_S_furo_BIG,
-                Y_circ_S_furo_small,Y_circ_C_furo_small,Y_quad_C_furo_small,Y_quad_S_furo_small
-
-
-            };
-
-            int count_player = 0;
-            int player_number = 1;
-            
-            
-
+                        
             while (true)
             {
                 if (count_player % 2 == 0)
                 {
                     player_number = 1;
+                    
                 }
                 else
                 {
                     player_number = 2;
                 }
+
 
                 for (int row = 0; row < 4; row++)
                 {
@@ -338,9 +255,6 @@ namespace ProjectGaloDaVelha
                 int user_piece = int.Parse(Console.ReadLine());
 
         
-
-                
-
                 for (int i = 0; i < 4; i++)
                 {
                     for (int j = 0; j < 4; j++)
@@ -350,7 +264,7 @@ namespace ProjectGaloDaVelha
                             if(user_piece < pecas_array.Length && user_piece >= 0)
                             {
                                 letras[i,j] = pecas_array[user_piece];
-     
+                                // TODO: Add link
                                 List<string> pecas_list = new List<string>(pecas_array);
                                 pecas_list.RemoveAt(user_piece);
                                 pecas_array = pecas_list.ToArray();
@@ -364,23 +278,68 @@ namespace ProjectGaloDaVelha
                 }
 
                 Console.WriteLine("///////////////////////////////////////////////\n");
-
-                
-
-                
-                
-
             }
-            
-            
-            
-                
-                
-                
 
-                
+        }
 
+
+        private void CheckGameStatus()
+        {
+            // check for win condition
+           // gameStatus = CheckWinCondition();
+            
+            // while playing
+            // check board status
+
+            // apply game status
+            Condition(gameStatus);
+
+        }
+
+        /// <summary>
+        ///  TODO: Must clear board and reset game status
+        /// </summary>
+        private void Condition(GameStatus gameStatus)
+        {
+            switch (gameStatus)
+            {
+                // Player 1 wins
+                case GameStatus.player1Win:
+                {
+                    EndGame("Player 1 wins!"); 
+                    break;
+                }
                 
+                // Player 2 wins
+                case GameStatus.player2Win:
+                {
+                    EndGame("Player 2 wins!"); 
+                    break;
+                }
+                   
+                // Draw
+                case GameStatus.draw:
+                {
+                    EndGame("It's a draw!"); 
+                    break;
+                }
+                
+               // default: {Console.WriteLine("Unkown State"); break;} 
+            }
+        }
+
+        //----------------------------------------------------------------------
+
+
+        private void DisplayBoardUI()
+        { 
+          
+            Console.Write("\u001b[0m");
+            
+            // Limpa a tela antes de desenhar o tabuleiro
+
+            // Loop para desenhar as linhas e colunas do tabuleiro 
+            // [Layout da tabela usado pelo ChatGPT]
 
                 
         }
