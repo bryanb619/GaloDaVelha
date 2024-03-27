@@ -6,7 +6,7 @@
     class Program
     {
         /// <summary>
-        /// 
+        ///  
         /// </summary>
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
