@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 
@@ -237,7 +238,7 @@ namespace ProjectGaloDaVelha
                 string user_place = Console.ReadLine();
 
                 Console.Write("Qual é o numero da peça que deseja:  ");
-                uint user_piece = uint.Parse(Console.ReadLine());
+                int user_piece = int.Parse(Console.ReadLine());
 
         
 
@@ -249,9 +250,14 @@ namespace ProjectGaloDaVelha
                     {
                         if (letras[i,j] == user_place)
                         {
-                            if(user_piece < pecas_array.Length)
+                            if(user_piece < pecas_array.Length && user_piece >= 0)
                             {
                                 letras[i,j] = pecas_array[user_piece];
+
+                                
+                                List<string> pecas_list = new List<string>(pecas_array);
+                                pecas_list.RemoveAt(user_piece);
+                                pecas_array = pecas_list.ToArray();
 
                                 //break;
                             }
