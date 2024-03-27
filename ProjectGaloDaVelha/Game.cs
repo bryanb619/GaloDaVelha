@@ -173,12 +173,12 @@ namespace ProjectGaloDaVelha
             // Loop para desenhar as linhas e colunas do tabuleiro 
             // [Layout da tabela usado pelo ChatGPT]
 
-            char[,] letras = 
+            string[,] letras = 
             {
-                {'A','B','C','D'},
-                {'E','F','G','H'},
-                {'I','J','K','L'},
-                {'M','N','O','P'}
+                {"A","B","C","D"},
+                {"E","F","G","H"},
+                {"I","J","K","L"},
+                {"M","N","O","P"}
             };
 
             string[] pecas_array =
@@ -190,6 +190,12 @@ namespace ProjectGaloDaVelha
 
 
             };
+
+            while (true)
+            {
+
+            }
+            
             
             
             for (int row = 0; row < 4; row++)
@@ -201,7 +207,7 @@ namespace ProjectGaloDaVelha
                 Console.WriteLine("+");
                 for (int col = 0; col < 4; col++)
                 {
-                    Console.Write($"| {letras[row,col]} ");
+                    Console.Write($"| {letras[row,col]} \u001b[0m" ");
                 }
                 Console.WriteLine("|");
             }
@@ -233,12 +239,12 @@ namespace ProjectGaloDaVelha
             Console.Write("\u001b[0m");
 
             Console.Write("Escreve a letra onde deseja colocar a peça:  ");
-            char user_place = char.Parse(Console.ReadLine());
+            string user_place = Console.ReadLine();
 
             Console.Write("Qual é o numero da peça que deseja:  ");
             uint user_piece = uint.Parse(Console.ReadLine());
+
             
-            int index_letter = -1;
 
             for (int i = 0; i < 4; i++)
             {
@@ -246,22 +252,17 @@ namespace ProjectGaloDaVelha
                 {
                     if (letras[i,j] == user_place)
                     {
-                        if(user_piece < letras.GetLength(1) * 4)
+                        if(user_piece < pecas_array.Length)
                         {
                             letras[i,j] = pecas_array[user_piece];
+                            break;
                         }
 
                     }
                 }
             }
 
-            if (index_letter != -1)
-            {
-                if (user_piece < pecas_array.Length)
-                {
-                    letras[index_letter] = pecas_array[user_piece];
-                }
-            }
+            
 
             
             Console.Clear();
