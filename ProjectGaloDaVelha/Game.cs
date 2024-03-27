@@ -170,6 +170,12 @@ namespace ProjectGaloDaVelha
                 {'I','J','K','L'},
                 {'M','N','O','P'}
             };
+
+            string[,] peças =
+            {
+
+            };
+            
             
             for (int row = 0; row < 4; row++)
             {
@@ -193,7 +199,11 @@ namespace ProjectGaloDaVelha
 
             Console.WriteLine("");
 
-            Console.WriteLine("---Peças disponiveis---");
+
+
+            
+
+            Console.WriteLine("[---Peças disponiveis---]");
 
             Console.WriteLine
             ($"{G_circ_S_furo_BIG}[0]  || {G_circ_C_furo_BIG}[1]  || {G_quad_C_furo_BIG}[2]  || {G_quad_S_furo_BIG}[3] ");
@@ -206,6 +216,8 @@ namespace ProjectGaloDaVelha
 
             Console.WriteLine
             ($"{Y_circ_S_furo_small}[12] || {Y_circ_C_furo_small}[13] || {Y_quad_C_furo_small}[14] || {Y_quad_S_furo_small}[15]");
+
+            Console.WriteLine("\u001b[31m[Legenda: B = Grande || s = Pequeno]");
 
             // ---------  WAITING HERE FOR NOW ---------
             Console.Write("\u001b[0m");
