@@ -189,8 +189,22 @@ namespace ProjectGaloDaVelha
 
             };
 
+            int count_player = 0;
+            int player_number = 1;
+            
+            
+
             while (true)
             {
+                if (count_player % 2 == 0)
+                {
+                    player_number = 1;
+                }
+                else
+                {
+                    player_number = 2;
+                }
+
                 for (int row = 0; row < 4; row++)
                 {
                     for (int col = 0; col < 4; col++)
@@ -200,7 +214,7 @@ namespace ProjectGaloDaVelha
                     Console.WriteLine("+");
                     for (int col = 0; col < 4; col++)
                     {
-                        Console.Write($"| {letras[row,col]} \u001b[0m ");
+                        Console.Write($"| {letras[row,col]}\u001b[0m ".PadRight(9));
                     }
                     
                     Console.WriteLine("|");
@@ -231,10 +245,13 @@ namespace ProjectGaloDaVelha
                 }
                 
 
-                Console.WriteLine("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair = EXIT");
+                Console.WriteLine("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair = EXIT\n");
 
                 // ---------  WAITING HERE FOR NOW ---------
                 Console.Write("\u001b[0m");
+
+                Console.WriteLine($"\u001b[36m==[Jogador {player_number}]==\u001b[0m");
+                
 
                 Console.Write("Escreve a letra onde deseja colocar a peça:  ");
                 string user_place = Console.ReadLine();
@@ -255,18 +272,20 @@ namespace ProjectGaloDaVelha
                             if(user_piece < pecas_array.Length && user_piece >= 0)
                             {
                                 letras[i,j] = pecas_array[user_piece];
-
-                                
+     
                                 List<string> pecas_list = new List<string>(pecas_array);
                                 pecas_list.RemoveAt(user_piece);
                                 pecas_array = pecas_list.ToArray();
+                                count_player++;
 
-                                //break;
+                                break;
                             }
 
                         }
                     }
                 }
+
+                Console.WriteLine("///////////////////////////////////////////////\n");
 
                 
 
