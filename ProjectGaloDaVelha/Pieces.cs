@@ -157,7 +157,7 @@ namespace ProjectGaloDaVelha
                 case PieceShape.square:
                 {
                     // square
-                    shape = "'\''u25";
+                    shape = "\''u25";
                     break;
                 }
                
