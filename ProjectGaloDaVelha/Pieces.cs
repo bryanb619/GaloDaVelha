@@ -9,6 +9,8 @@ namespace ProjectGaloDaVelha
     {
         // Class attributes
 
+        private string pieceType; 
+
         // ref to PieceSize enum
         private string size;
 
@@ -23,8 +25,7 @@ namespace ProjectGaloDaVelha
 
    
         // Class constructor
-        public Pieces
-        (PieceSize size, PieceColor color, PieceShape shape, PiecePuncture puncture)
+        public Pieces(PieceSize size, PieceColor color, PieceShape shape, PiecePuncture puncture)
         {
             // Set Size
             SetPieceSize(size);
@@ -33,11 +34,15 @@ namespace ProjectGaloDaVelha
             SetPieceColor(color);
 
             // Set Shape
-            //this.shape = shape;
             SetPieceShape(shape);
         
             // Set Puncture
             SetPiecePuncture(puncture);
+
+
+            // TODO: Implement pieceType
+            // pieceType = size + color + shape + puncture;
+
         }
 
         // Setters
@@ -50,12 +55,12 @@ namespace ProjectGaloDaVelha
             {
                 case PieceSize.small:
                 {
-                    size = "small";
+                    size = "s";
                     break;
                 }
                 case PieceSize.big:
                 {
-                    size = "big";
+                    size = "B";
                     break;
                 }
             }
@@ -135,6 +140,11 @@ namespace ProjectGaloDaVelha
 
 
         // Getters
+
+        public string GetPieceType()
+        {
+            return pieceType;
+        }
 
         // Get Piece Size
         public string GetPieceSize()
