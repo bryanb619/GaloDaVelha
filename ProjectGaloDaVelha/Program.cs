@@ -17,6 +17,8 @@
             
             // start game instance
             game.Start();
+
+            
         }
     }
 }

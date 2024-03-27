@@ -22,17 +22,7 @@ namespace ProjectGaloDaVelha
 
         private GameStatus gameStatus;
 
-        // ref to PieceSize enum
-        private PieceSize size;
 
-        // ref to PieceColor enum
-        private PieceColor color;
-
-        // ref to PieceShape enum
-        private PieceShape shape;
-
-        // ref to PiecePuncture enum
-        private PiecePuncture puncture;
         
 
         public void Start()
@@ -43,23 +33,21 @@ namespace ProjectGaloDaVelha
             // TEST CODE
 
             // EXAMPLE OF PIECE CREATION => INSTACIATING
-            Pieces piece1 = new Pieces(PieceSize.small, PieceColor.color1, PieceShape.circle, PiecePuncture.none);
+            Pieces piece1 = new Pieces(PieceSize.small, PieceColor.color2, PieceShape.square, PiecePuncture.punctured);
+
+
+            Console.WriteLine(piece1.GetPieceType());
 
             //Pieces piece2 = new Pieces(PieceSize.big, PieceColor.color2, PieceShape.square, PiecePuncture.hole);
 
 
-            for (int row = 0; row < 3; row++)
-            {
-               
-            }
-
             //
 
             // EXAMPLE OF GETTING INFO FROM PIECE
-            Console.WriteLine
-            ($"Piece size:{piece1.GetPieceSize()} " 
-            + $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
-            + $"Puncture: {piece1.GetPiecePuncture()}");
+            //Console.WriteLine
+            //($"Piece size:{piece1.GetPieceSize()} " 
+            //+ $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
+            //+ $"Puncture: {piece1.GetPiecePuncture()}");
             // -----------------------------------------------------------------
 
             //Console.ReadLine();
@@ -177,6 +165,7 @@ namespace ProjectGaloDaVelha
             string Y_circ_C_furo_small = "\u001b[33m\u25cbs";
             string Y_quad_C_furo_small = "\u001b[33m\u25a0s";
             string Y_quad_S_furo_small = "\u001b[33m\u25a1s";
+            
             
             //Console.Clear(); // Limpa a tela antes de desenhar o tabuleiro
 

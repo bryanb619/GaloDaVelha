@@ -1,4 +1,3 @@
-using System.Drawing;
 
 namespace ProjectGaloDaVelha
 {
@@ -15,33 +14,79 @@ namespace ProjectGaloDaVelha
         private string size;
 
         // ref to PieceColor enum
-        private Color color;
+        private string color;
 
         // ref to PieceShape enum
-        private PieceShape shape;
+        private string shape;
 
         // ref to PiecePuncture enum
         private bool puncture;
 
    
         // Class constructor
-        public Pieces(PieceSize size, PieceColor color, PieceShape shape, PiecePuncture puncture)
+        public Pieces(PieceSize newSize, PieceColor color, PieceShape newShape, PiecePuncture puncture)
         {
             // Set Size
-            SetPieceSize(size);
+            SetPieceSize(newSize);
 
             // Set Color
             SetPieceColor(color);
 
             // Set Shape
-            SetPieceShape(shape);
+            SetPieceShape(newShape);
         
             // Set Puncture
             SetPiecePuncture(puncture);
 
 
+            // IF shape is circle && has hole => cb
+            //h
+
+            // IF NOT => cf 
+            //h
+
+            // IF shape is square && has hole => a0
+            //h
+
+            // IF NOT => a1
+            //h
+
+
             // TODO: Implement pieceType
-            // pieceType = size + color + shape + puncture;
+            // pieceType = color + shape + hole + size;
+
+
+            // \u001b[32m + "\" + u25 + h + size
+
+
+            switch(newShape)
+            {
+                case PieceShape.circle:
+                {
+                    if(this.puncture)
+                    {
+                        pieceType = this.color + this.shape + "cf" + size;
+                    }
+                    else
+                    {
+                        pieceType = this.color + this.shape + "cb" + size;
+                    }
+                    break;
+                }
+
+                case PieceShape.square:
+                {
+                    if(this.puncture)
+                    {
+                        pieceType = this.color +  shape + "a0" + size;
+                    }
+                    else
+                    {
+                        pieceType = this.color + shape + "a1" + size;
+                    }
+                    break;
+                }
+            }     
 
         }
 
@@ -73,20 +118,22 @@ namespace ProjectGaloDaVelha
         /// </summary>
         /// <param name="newColor">Enum passing color type</param>
         /// <returns>Returns actual value of color</returns>
-        private Color SetPieceColor(PieceColor newColor)
+        private string SetPieceColor(PieceColor newColor)
         {
 
             switch (newColor)
             {
                 case PieceColor.color1:
                 {
-                    color = Color.Red;
+                    // green
+                    color = "\u001b[32m";
                     break;
                 }
                    
                 case PieceColor.color2:
                 {
-                    color = Color.Blue;
+                    // yellow
+                    color = "\u001b[33m";
                     break;
                 }
                     
@@ -97,24 +144,26 @@ namespace ProjectGaloDaVelha
         }
 
 
-        private string SetPieceShape(PieceShape shape)
+        private string SetPieceShape(PieceShape newShape)
         {
-            switch (shape)
+            switch (newShape)
             {
                 case PieceShape.circle:
                 {
-                    this.shape = PieceShape.circle;
+                    // circle
+                    shape = "'\''u25";
                     break;
                 }
                 case PieceShape.square:
                 {
-                    this.shape = PieceShape.square;
+                    // square
+                    shape = "'\''u25";
                     break;
                 }
                
             }
 
-            return this.shape.ToString();
+            return shape;
         }
 
         private bool SetPiecePuncture(PiecePuncture puncture)
@@ -164,7 +213,7 @@ namespace ProjectGaloDaVelha
 
         public bool GetPiecePuncture()
         {
-            return puncture.ToString() == "True" ? true : false;
+            return puncture;
         }
 
         // Getters & Setters
