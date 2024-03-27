@@ -158,11 +158,19 @@ namespace ProjectGaloDaVelha
             string Y_quad_C_furo_small = "\u001b[33m\u25a0s";
             string Y_quad_S_furo_small = "\u001b[33m\u25a1s";
             
-            //Console.Clear(); // Limpa a tela antes de desenhar o tabuleiro
+            // Limpa a tela antes de desenhar o tabuleiro
 
             // Loop para desenhar as linhas e colunas do tabuleiro 
-            // [Usado pelo ChatGPT]
-            Console.WriteLine("");
+            // [Layout da tabela usado pelo ChatGPT]
+
+            char[,] letras = 
+            {
+                {'A','B','C','D'},
+                {'E','F','G','H'},
+                {'I','J','K','L'},
+                {'M','N','O','P'}
+            };
+            
             for (int row = 0; row < 4; row++)
             {
                 for (int col = 0; col < 4; col++)
@@ -172,7 +180,7 @@ namespace ProjectGaloDaVelha
                 Console.WriteLine("+");
                 for (int col = 0; col < 4; col++)
                 {
-                    Console.Write("|   ");
+                    Console.Write($"| {letras[row,col]} ");
                 }
                 Console.WriteLine("|");
             }
@@ -183,22 +191,31 @@ namespace ProjectGaloDaVelha
             }
             Console.WriteLine("+");
 
+            Console.WriteLine("");
+
             Console.WriteLine("---Peças disponiveis---");
 
             Console.WriteLine
-            ($"{G_circ_S_furo_BIG}, {G_circ_C_furo_BIG},{G_quad_C_furo_BIG}, {G_quad_S_furo_BIG}");
+            ($"{G_circ_S_furo_BIG}[0]  || {G_circ_C_furo_BIG}[1]  || {G_quad_C_furo_BIG}[2]  || {G_quad_S_furo_BIG}[3] ");
 
             Console.WriteLine
-            ($"{G_circ_S_furo_small}, {G_circ_C_furo_small},{G_quad_C_furo_small}, {G_quad_S_furo_small}");
+            ($"{G_circ_S_furo_small}[4]  || {G_circ_C_furo_small}[5]  || {G_quad_C_furo_small}[6]  || {G_quad_S_furo_small}[7]");
 
             Console.WriteLine
-            ($"{Y_circ_S_furo_BIG}, {Y_circ_C_furo_BIG},{Y_quad_C_furo_BIG}, {Y_quad_S_furo_BIG}");
+            ($"{Y_circ_S_furo_BIG}[8]  || {Y_circ_C_furo_BIG}[9]  || {Y_quad_C_furo_BIG}[10] || {Y_quad_S_furo_BIG}[11]");
 
             Console.WriteLine
-            ($"{Y_circ_S_furo_small}, {Y_circ_C_furo_small},{Y_quad_C_furo_small}, {Y_quad_S_furo_small}");
+            ($"{Y_circ_S_furo_small}[12] || {Y_circ_C_furo_small}[13] || {Y_quad_C_furo_small}[14] || {Y_quad_S_furo_small}[15]");
 
             // ---------  WAITING HERE FOR NOW ---------
-            Console.ReadLine();
+            Console.Write("\u001b[0m");
+
+            Console.Write("Escreve a letra onde deseja colocar a peça:  ");
+            char user_place = char.Parse(Console.ReadLine());
+
+            Console.Write("Qual é o numero da peça que deseja:  ");
+            int user_piece = int.Parse(Console.ReadLine());
+            Console.Clear();
         }
         
             
