@@ -198,19 +198,24 @@ namespace ProjectGaloDaVelha
                 {
                     for (int col = 0; col < 4; col++)
                     {
-                        Console.Write("+---");
+                        Console.Write("+----");
                     }
                     Console.WriteLine("+");
                     for (int col = 0; col < 4; col++)
                     {
-                        Console.Write($"| {letras[row,col]} \u001b[0m");
+                        Console.Write($"| {letras[row,col]} \u001b[0m ".PadLeft(1));
+                    }
+                    Console.WriteLine("|");
+                    for (int col = 0; col < 4; col++)
+                    {
+                        Console.Write($"|    ".PadLeft(1));
                     }
                     Console.WriteLine("|");
                 }
                 // Desenha a última linha
                 for (int col = 0; col < 4; col++)
                 {
-                    Console.Write("+---");
+                    Console.Write("+----");
                 }
                 Console.WriteLine("+");
 
