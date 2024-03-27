@@ -21,23 +21,103 @@ namespace ProjectGaloDaVelha
         private GameStatus gameStatus;
 
 
+
+            // EXAMPLE OF PIECE CREATION => INSTACIATING
+            
+            // --- YELLOW PIECES ---
+
+        //1st ROW (Yellow with no holes)
+        // Big Yellow Square with no hole
+        private Piece piece1 = new Piece
+        (PieceSize.big,PieceColor.yellow,PieceShape.square,PieceHole.none);
+
+        // Big Yellow Circle with no hole
+        private Piece piece2 = new Piece
+        (PieceSize.big,PieceColor.yellow,PieceShape.circle,PieceHole.none);
+
+        // Small Yellow Square with no hole
+        private Piece piece3 = new Piece
+        (PieceSize.small,PieceColor.yellow,PieceShape.square,PieceHole.none);
         
+        // Small Yellow Circle with no hole
+        private Piece piece4 = new Piece
+        (PieceSize.small,PieceColor.yellow,PieceShape.circle,PieceHole.none);
+
+        // 2nd ROW (Yello with holes)
+        // Big Yellow Square with hole
+        private Piece piece5 = new Piece
+        (PieceSize.big,PieceColor.yellow,PieceShape.square,PieceHole.hole);
+
+        // Big Yellow Circle with hole
+        private Piece piece6 = new Piece(
+            PieceSize.big,PieceColor.yellow,PieceShape.circle,PieceHole.hole);
+
+        // Small Yellow Square with hole
+        private Piece piece7 = new Piece
+        (PieceSize.small,PieceColor.yellow,PieceShape.square,PieceHole.hole);
+
+        // Small Yellow Circle with hole    
+        private Piece piece8 = new Piece
+        (PieceSize.small,PieceColor.yellow,PieceShape.circle,PieceHole.hole);
+
+        // --- GREEN PIECES ---
+
+        private Piece piece9 = new Piece
+        (PieceSize.big,PieceColor.green,PieceShape.square,PieceHole.none);
+
+        // Big Yellow Circle with no hole
+        private Piece piece10 = new Piece
+        (PieceSize.big,PieceColor.green,PieceShape.circle,PieceHole.none);
+
+        // Small Yellow Square with no hole
+        private Piece piece11 = new Piece
+        (PieceSize.small,PieceColor.green,PieceShape.square,PieceHole.none);
+        
+        // Small Yellow Circle with no hole
+        private Piece piece12 = new Piece
+        (PieceSize.small,PieceColor.green,PieceShape.circle,PieceHole.none);
+
+        // 2nd ROW (Yello with holes)
+        // Big Yellow Square with hole
+        private Piece piece13 = new Piece
+        (PieceSize.big,PieceColor.green,PieceShape.square,PieceHole.hole);
+
+        // Big Yellow Circle with hole
+        private Piece piece14 = new Piece(
+            PieceSize.big,PieceColor.green,PieceShape.circle,PieceHole.hole);
+
+        // Small Yellow Square with hole
+        private Piece piece15 = new Piece
+        (PieceSize.small,PieceColor.green,PieceShape.square,PieceHole.hole);
+
+        // Small Yellow Circle with hole    
+        private Piece piece16 = new Piece
+        (PieceSize.small,PieceColor.green,PieceShape.circle,PieceHole.hole);
 
         public void Start()
         {
 
             Console.WriteLine("Welcome to Galo da Velha!");
 
+            Console.WriteLine(piece1.GetPieceType());
+            Console.WriteLine(piece2.GetPieceType());
+            Console.WriteLine(piece3.GetPieceType());
+            Console.WriteLine(piece4.GetPieceType());
+            Console.WriteLine(piece5.GetPieceType());
+            Console.WriteLine(piece6.GetPieceType());
+            Console.WriteLine(piece7.GetPieceType());
+            Console.WriteLine(piece8.GetPieceType());
+            Console.WriteLine(piece9.GetPieceType());
+            Console.WriteLine(piece10.GetPieceType());
+            Console.WriteLine(piece11.GetPieceType());
+            Console.WriteLine(piece12.GetPieceType());
+            Console.WriteLine(piece13.GetPieceType());
+            Console.WriteLine(piece14.GetPieceType());
+            Console.WriteLine(piece15.GetPieceType());
+            Console.WriteLine(piece16.GetPieceType());
+
             // TEST CODE
-
-            // EXAMPLE OF PIECE CREATION => INSTACIATING
-            Piece piece1 = new Piece(PieceSize.small, PieceColor.yellow, PieceShape.square, PieceHole.hole);
-
-
             //Console.WriteLine(piece1.GetPieceType());
-
-            //Pieces piece2 = new Pieces(PieceSize.big, PieceColor.color2, PieceShape.square, PiecePuncture.hole);
-
 
             //
 
@@ -46,7 +126,6 @@ namespace ProjectGaloDaVelha
             //($"Piece size:{piece1.GetPieceSize()} " 
             //+ $"{piece1.GetPieceColor()} Shape: {piece1.GetPieceShape()} "
             //+ $"Puncture: {piece1.GetPiecePuncture()}");
-            // -----------------------------------------------------------------
 
             //Console.ReadLine();
 
@@ -58,7 +137,6 @@ namespace ProjectGaloDaVelha
             //EndGame();
         }
         //----------------------------------------------------------------------
-
             
         private void ManageTurns()
         {

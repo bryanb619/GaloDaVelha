@@ -40,11 +40,9 @@ namespace ProjectGaloDaVelha
 
             shape = newShape;
 
-            // TODO: Implement pieceType
+            // DONE: Implement pieceType
             SetPieceType();
 
-            
-   
         }
 
         // Setters
