@@ -165,6 +165,8 @@ namespace ProjectGaloDaVelha
             string Y_circ_C_furo_small = "\u001b[33m\u25cbs";
             string Y_quad_C_furo_small = "\u001b[33m\u25a0s";
             string Y_quad_S_furo_small = "\u001b[33m\u25a1s";
+
+            Console.Write("\u001b[0m");
             
             // Limpa a tela antes de desenhar o tabuleiro
 
@@ -179,12 +181,12 @@ namespace ProjectGaloDaVelha
                 {'M','N','O','P'}
             };
 
-            string[,] pecas_array =
+            string[] pecas_array =
             {
-                {G_circ_S_furo_BIG,G_circ_C_furo_BIG,G_quad_C_furo_BIG,G_quad_S_furo_BIG},
-                {Y_circ_S_furo_BIG,Y_circ_C_furo_BIG,Y_quad_C_furo_BIG,Y_quad_S_furo_BIG},
-                {G_circ_S_furo_small,G_circ_C_furo_small,G_quad_C_furo_small,G_quad_S_furo_small},
-                {Y_circ_S_furo_small,Y_circ_C_furo_small,Y_quad_C_furo_small,Y_quad_S_furo_small}
+                G_circ_S_furo_BIG,G_circ_C_furo_BIG,G_quad_C_furo_BIG,G_quad_S_furo_BIG,
+                G_circ_S_furo_small,G_circ_C_furo_small,G_quad_C_furo_small,G_quad_S_furo_small,
+                Y_circ_S_furo_BIG,Y_circ_C_furo_BIG,Y_quad_C_furo_BIG,Y_quad_S_furo_BIG,
+                Y_circ_S_furo_small,Y_circ_C_furo_small,Y_quad_C_furo_small,Y_quad_S_furo_small
 
 
             };
@@ -214,9 +216,14 @@ namespace ProjectGaloDaVelha
 
             Console.WriteLine("[---Peças disponiveis---]");
 
-            for (int i = 0; i < 4; i++)
+            for (int row = 0; row < 4; row++)
             {
-                Console.WriteLine($"{pecas_array[0, i]}[{i}]  || {pecas_array[1, i]}[{i + 4}]  || {pecas_array[2, i]}[{i + 8}] || {pecas_array[3, i]}[{i + 12}] ");
+                for (int col = 0; col < 4; col++)
+                {
+                    int index = row * 4 + col; // Calcula o índice correto
+                    Console.Write($"{pecas_array[index]}[{index}]".PadRight(15)); // Ajusta a largura da coluna
+                }
+            Console.WriteLine(); // Nova linha após cada linha de elementos
             }
             
 
@@ -230,6 +237,8 @@ namespace ProjectGaloDaVelha
 
             Console.Write("Qual é o numero da peça que deseja:  ");
             int user_piece = int.Parse(Console.ReadLine());
+
+            //if ()
 
             
             Console.Clear();
