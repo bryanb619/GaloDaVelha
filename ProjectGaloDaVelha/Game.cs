@@ -193,79 +193,91 @@ namespace ProjectGaloDaVelha
 
             while (true)
             {
-
-            }
-            
-            
-            
-            for (int row = 0; row < 4; row++)
-            {
+                for (int row = 0; row < 4; row++)
+                {
+                    for (int col = 0; col < 4; col++)
+                    {
+                        Console.Write("+---");
+                    }
+                    Console.WriteLine("+");
+                    for (int col = 0; col < 4; col++)
+                    {
+                        Console.Write($"| {letras[row,col]} \u001b[0m ");
+                    }
+                    Console.WriteLine("|");
+                }
+                // Desenha a última linha
                 for (int col = 0; col < 4; col++)
                 {
                     Console.Write("+---");
                 }
                 Console.WriteLine("+");
-                for (int col = 0; col < 4; col++)
+
+                Console.WriteLine("");
+
+                Console.WriteLine("[---Peças disponiveis---]");
+
+                for (int row = 0; row < 4; row++)
                 {
-                    Console.Write($"| {letras[row,col]} \u001b[0m" ");
-                }
-                Console.WriteLine("|");
-            }
-            // Desenha a última linha
-            for (int col = 0; col < 4; col++)
-            {
-                Console.Write("+---");
-            }
-            Console.WriteLine("+");
-
-            Console.WriteLine("");
-
-            Console.WriteLine("[---Peças disponiveis---]");
-
-            for (int row = 0; row < 4; row++)
-            {
-                for (int col = 0; col < 4; col++)
-                {
-                    int index = row * 4 + col; // Calcula o índice correto
-                    Console.Write($"{pecas_array[index]}[{index}]".PadRight(15)); // Ajusta a largura da coluna
-                }
-            Console.WriteLine(); // Nova linha após cada linha de elementos
-            }
-            
-
-            Console.WriteLine("\u001b[31m[Legenda: B = Grande || s = Pequeno]");
-
-            // ---------  WAITING HERE FOR NOW ---------
-            Console.Write("\u001b[0m");
-
-            Console.Write("Escreve a letra onde deseja colocar a peça:  ");
-            string user_place = Console.ReadLine();
-
-            Console.Write("Qual é o numero da peça que deseja:  ");
-            uint user_piece = uint.Parse(Console.ReadLine());
-
-            
-
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    if (letras[i,j] == user_place)
+                    for (int col = 0; col < 4; col++)
                     {
-                        if(user_piece < pecas_array.Length)
-                        {
-                            letras[i,j] = pecas_array[user_piece];
-                            break;
-                        }
+                        int index = row * 4 + col; // Calcula o índice correto
+                        Console.Write($"{pecas_array[index]}[{index}]".PadRight(15)); // Ajusta a largura da coluna
+                    }
+                Console.WriteLine(); // Nova linha após cada linha de elementos
+                }
+                
 
+                Console.WriteLine("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair = EXIT");
+
+                // ---------  WAITING HERE FOR NOW ---------
+                Console.Write("\u001b[0m");
+
+                Console.Write("Escreve a letra onde deseja colocar a peça:  ");
+                string user_place = Console.ReadLine();
+
+                Console.Write("Qual é o numero da peça que deseja:  ");
+                uint user_piece = uint.Parse(Console.ReadLine());
+
+        
+
+                
+
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 4; j++)
+                    {
+                        if (letras[i,j] == user_place)
+                        {
+                            if(user_piece < pecas_array.Length)
+                            {
+                                letras[i,j] = pecas_array[user_piece];
+
+                                //break;
+                            }
+
+                        }
                     }
                 }
+
+                
+
+                
+                
+
             }
-
             
-
             
-            Console.Clear();
+            
+                
+                
+                
+
+                
+
+                
+
+                
         }
         
             
