@@ -1,5 +1,4 @@
-//using System;
-
+using ProjectGaloDaVelha.PiecesEnums;
 
 namespace ProjectGaloDaVelha
 {

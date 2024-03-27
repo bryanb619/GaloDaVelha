@@ -1,4 +1,5 @@
-namespace ProjectGaloDaVelha
+namespace ProjectGaloDaVelha.PiecesEnums
+{
 {
     public enum PieceSize
     {
