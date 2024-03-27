@@ -203,7 +203,7 @@ namespace ProjectGaloDaVelha
                     Console.WriteLine("+");
                     for (int col = 0; col < 4; col++)
                     {
-                        Console.Write($"| {letras[row,col]} \u001b[0m ");
+                        Console.Write($"| {letras[row,col]} \u001b[0m");
                     }
                     Console.WriteLine("|");
                 }
@@ -223,9 +223,13 @@ namespace ProjectGaloDaVelha
                     for (int col = 0; col < 4; col++)
                     {
                         int index = row * 4 + col; // Calcula o índice correto
-                        Console.Write($"{pecas_array[index]}[{index}]".PadRight(15)); // Ajusta a largura da coluna
+                        if (index < pecas_array.Length)
+                        {
+                            Console.Write($"{pecas_array[index]}[{index}]".PadRight(15)); // Ajusta a largura da coluna
+                        }
+                        
                     }
-                Console.WriteLine(); // Nova linha após cada linha de elementos
+                    Console.WriteLine(); // Nova linha após cada linha de elementos
                 }
                 
 
