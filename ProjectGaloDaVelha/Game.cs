@@ -236,9 +236,32 @@ namespace ProjectGaloDaVelha
             char user_place = char.Parse(Console.ReadLine());
 
             Console.Write("Qual é o numero da peça que deseja:  ");
-            int user_piece = int.Parse(Console.ReadLine());
+            uint user_piece = uint.Parse(Console.ReadLine());
+            
+            int index_letter = -1;
 
-            //if ()
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (letras[i,j] == user_place)
+                    {
+                        if(user_piece < letras.GetLength(1) * 4)
+                        {
+                            letras[i,j] = pecas_array[user_piece];
+                        }
+
+                    }
+                }
+            }
+
+            if (index_letter != -1)
+            {
+                if (user_piece < pecas_array.Length)
+                {
+                    letras[index_letter] = pecas_array[user_piece];
+                }
+            }
 
             
             Console.Clear();
