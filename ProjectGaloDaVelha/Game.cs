@@ -203,13 +203,9 @@ namespace ProjectGaloDaVelha
                     Console.WriteLine("+");
                     for (int col = 0; col < 4; col++)
                     {
-                        Console.Write($"| {letras[row,col]} \u001b[0m ".PadLeft(1));
+                        Console.Write($"| {letras[row,col]} \u001b[0m ");
                     }
-                    Console.WriteLine("|");
-                    for (int col = 0; col < 4; col++)
-                    {
-                        Console.Write($"|    ".PadLeft(1));
-                    }
+                    
                     Console.WriteLine("|");
                 }
                 // Desenha a última linha
