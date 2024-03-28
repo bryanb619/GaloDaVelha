@@ -1,4 +1,6 @@
-﻿namespace ProjectGaloDaVelha
+﻿using ProjectGaloDaVelha.Game;
+
+namespace ProjectGaloDaVelha
 {
     /// <summary>
     /// 
@@ -13,7 +15,7 @@
         {
 
             // create game instance
-            Game game = new Game();
+            Game.Game game = new Game.Game();
             
             // start game instance
             game.Start();

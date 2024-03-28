@@ -1,4 +1,4 @@
-namespace ProjectGaloDaVelha
+namespace ProjectGaloDaVelha.Game
 {
     public enum GameStatus
     {

@@ -1,4 +1,4 @@
-namespace ProjectGaloDaVelha.PiecesEnums
+namespace ProjectGaloDaVelha
 {
     public enum PieceColor
     {

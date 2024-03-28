@@ -1,6 +1,6 @@
-using ProjectGaloDaVelha.PiecesEnums;
+using ProjectGaloDaVelha;
 
-namespace ProjectGaloDaVelha
+namespace ProjectGaloDaVelha.Pieces
 {
     /// <summary>
     /// 

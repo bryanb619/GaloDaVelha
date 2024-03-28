@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using ProjectGaloDaVelha.PiecesEnums;
+using ProjectGaloDaVelha.Pieces;
 
-namespace ProjectGaloDaVelha
+namespace ProjectGaloDaVelha.Game
 {
     /// <summary>
     /// 

@@ -1,6 +1,5 @@
-namespace ProjectGaloDaVelha.PiecesEnums
+namespace ProjectGaloDaVelha.Pieces
 {
-
     public enum PieceHole
     {
         none,
