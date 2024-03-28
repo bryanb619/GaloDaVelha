@@ -372,6 +372,16 @@ namespace ProjectGaloDaVelha.GameData
                 int counter_HoleVertical = 1;
                 int counter_SizeVertical = 1;
 
+                int counter_ColorDiag_L = 1;
+                int counter_ShapeDiag_L = 1;
+                int counter_HoleDiag_L = 1;
+                int counter_SizeDiag_L = 1;
+
+                int counter_ColorDiag_R_ = 1;
+                int counter_ShapeDiag_R = 1;
+                int counter_HoleDiag_R = 1;
+                int counter_SizeDiag_R = 1;
+
                 for (int j = 1; j < piecesVerified.GetLength(1); j++) // Se a cor, forma, hole e tamanho for igual:
                 {
                     // Verificação horizontal
@@ -465,6 +475,109 @@ namespace ProjectGaloDaVelha.GameData
                         if (counter_ColorVertical == 4 || counter_ShapeVertical == 4 || counter_HoleVertical == 4 || counter_SizeVertical == 4)
                         {
                             Console.WriteLine("O jogador tal ganhou na vertical!"); // Um dos jogadores ganhou
+                            // JOGO FECHA
+                            break;
+                        }
+                    }
+                    
+                    
+                    // Verificação DIAGONAL_LEFT
+                    if (i > 0 && j > 0 && piecesVerified[i, j] != null && piecesVerified[i - 1, j - 1] != null)
+                    {
+                        
+                        
+                        if (piecesVerified[i, j].GetPieceColor() == piecesVerified[i - 1, j - 1].GetPieceColor())
+                        {
+                            counter_ColorDiag_L++;
+                            
+                        }
+                        else
+                        {
+                            counter_ColorDiag_L = 1;
+                        }
+
+                        if (piecesVerified[i, j].GetPieceShape() == piecesVerified[i - 1, j - 1].GetPieceShape())
+                        {
+                            counter_ShapeDiag_L++;
+                        }
+                        else
+                        {
+                            counter_ShapeDiag_L = 1;
+                        }
+
+                        if (piecesVerified[i, j].GetPieceHole() == piecesVerified[i - 1, j - 1].GetPieceHole())
+                        {
+                            counter_HoleDiag_L++;
+                        }
+                        else
+                        {
+                            counter_HoleDiag_L = 1;
+                        }
+
+                        if (piecesVerified[i, j].GetPieceSize() == piecesVerified[i - 1, j - 1].GetPieceSize())
+                        {
+                            counter_SizeDiag_L++;
+                        }
+                        else
+                        {
+                            counter_SizeDiag_L = 1;
+                        }
+
+                        if  (counter_ColorDiag_L == 4 || counter_ShapeDiag_L == 4 || counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4)
+                        {
+                            Console.WriteLine
+                            ("O jogador tal ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
+                            // JOGO FECHA
+                            break;
+                        }
+                    }
+
+                    // Verificação DIAGONAL_RIGHT
+                    if (i > 0 && j < piecesVerified.GetLength(1) - 1 && piecesVerified[i, j] != null && piecesVerified[i - 1, j + 1] != null) // Se não for vazio
+                    {
+                        
+                        
+                        if (piecesVerified[i, j].GetPieceColor() == piecesVerified[i - 1, j + 1].GetPieceColor())
+                        {
+                            counter_ColorDiag_R_++;
+                            
+                        }
+                        else
+                        {
+                            counter_ColorDiag_R_ = 1;
+                        }
+
+                        if (piecesVerified[i, j].GetPieceShape() == piecesVerified[i - 1, j + 1].GetPieceShape())
+                        {
+                            counter_ShapeDiag_R++;
+                        }
+                        else
+                        {
+                            counter_ShapeDiag_R = 1;
+                        }
+
+                        if (piecesVerified[i, j].GetPieceHole() == piecesVerified[i - 1, j + 1].GetPieceHole())
+                        {
+                            counter_HoleDiag_R++;
+                        }
+                        else
+                        {
+                            counter_HoleDiag_R = 1;
+                        }
+
+                        if (piecesVerified[i, j].GetPieceSize() == piecesVerified[i - 1, j + 1].GetPieceSize())
+                        {
+                            counter_SizeDiag_R++;
+                        }
+                        else
+                        {
+                            counter_SizeDiag_R = 1;
+                        }
+
+                        if  (counter_ColorDiag_R_ == 4 || counter_ShapeDiag_R == 4 || counter_HoleDiag_R == 4 || counter_SizeDiag_R == 4)
+                        {
+                            Console.WriteLine
+                            ("O jogador tal ganhou na diagonal da direita"); // Um dos jogadores ganhou
                             // JOGO FECHA
                             break;
                         }
