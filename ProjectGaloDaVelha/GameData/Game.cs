@@ -382,7 +382,9 @@ namespace ProjectGaloDaVelha.GameData
                 int counter_HoleDiag_R = 1;
                 int counter_SizeDiag_R = 1;
 
-                for (int j = 1; j < piecesVerified.GetLength(1); j++) // Se a cor, forma, hole e tamanho for igual:
+                int j,k;
+
+                for (j = 1, k = 1; j < piecesVerified.GetLength(1); j++, k++) // Se a cor, forma, hole e tamanho for igual:
                 {
                     // Verificação horizontal
                     if (piecesVerified[i, j] != null && piecesVerified[i, j - 1] != null) // Se não for vazio
@@ -482,11 +484,11 @@ namespace ProjectGaloDaVelha.GameData
                     
                     
                     // Verificação DIAGONAL_LEFT
-                    if (i > 0 && j > 0 && piecesVerified[i, j] != null && piecesVerified[i - 1, j - 1] != null)
+                    if (i > 0 && j > 0 && piecesVerified[k - 1, j - 1] != null && piecesVerified[j , k ] != null)
                     {
                         
                         
-                        if (piecesVerified[i, j].GetPieceColor() == piecesVerified[i - 1, j - 1].GetPieceColor())
+                        if (piecesVerified[k - 1, j - 1].GetPieceColor() == piecesVerified[k , j ].GetPieceColor())
                         {
                             counter_ColorDiag_L++;
                             
@@ -496,7 +498,7 @@ namespace ProjectGaloDaVelha.GameData
                             counter_ColorDiag_L = 1;
                         }
 
-                        if (piecesVerified[i, j].GetPieceShape() == piecesVerified[i - 1, j - 1].GetPieceShape())
+                        if (piecesVerified[k - 1, j - 1].GetPieceShape() == piecesVerified[k , j ].GetPieceShape())
                         {
                             counter_ShapeDiag_L++;
                         }
@@ -505,7 +507,7 @@ namespace ProjectGaloDaVelha.GameData
                             counter_ShapeDiag_L = 1;
                         }
 
-                        if (piecesVerified[i, j].GetPieceHole() == piecesVerified[i - 1, j - 1].GetPieceHole())
+                        if (piecesVerified[k - 1, j - 1].GetPieceHole() == piecesVerified[k , j ].GetPieceHole())
                         {
                             counter_HoleDiag_L++;
                         }
@@ -514,7 +516,7 @@ namespace ProjectGaloDaVelha.GameData
                             counter_HoleDiag_L = 1;
                         }
 
-                        if (piecesVerified[i, j].GetPieceSize() == piecesVerified[i - 1, j - 1].GetPieceSize())
+                        if (piecesVerified[k - 1, j - 1].GetPieceSize() == piecesVerified[k , j ].GetPieceSize())
                         {
                             counter_SizeDiag_L++;
                         }
@@ -532,7 +534,7 @@ namespace ProjectGaloDaVelha.GameData
                         }
                     }
 
-                    // Verificação DIAGONAL_RIGHT A
+                    // Verificação DIAGONAL_RIGHT
                     if (i > 0 && j < piecesVerified.GetLength(1) - 1 && piecesVerified[i, j] != null && piecesVerified[i - 1, j + 1] != null) // Se não for vazio
                     {
                         
