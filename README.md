@@ -90,5 +90,5 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 
 ### Links de pesquisa utilizados para realização do projeto
 * [Getters & Setters](https://www.w3schools.com/cs/cs_properties.php))
-* []
+* [Console.Clear()]()
 

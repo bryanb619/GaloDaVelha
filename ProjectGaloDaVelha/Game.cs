@@ -106,6 +106,9 @@ namespace ProjectGaloDaVelha
             {"M","N","O","P"}
         };
 
+        private Piece[] piecesArray;
+
+
         // Array of pieces
         private string[] pecas_array = new string[15]; 
 
@@ -140,17 +143,17 @@ namespace ProjectGaloDaVelha
 
 
             Console.WriteLine("Jogo consiste em colocar as peças no " 
-            +"tabuleiro e fazer uma sequência de uma cor, forma...");
+            +"tabuleiro e fazer uma sequência de uma cor, forma, tamanho ou furo");
 
             Console.WriteLine
-            ("O tabuleiro é composto por 4 linhas e 4 colunas "
-            +"Posições do tabuleiro são representadas por letras");
+            ("O tabuleiro é composto por 4 linhas e 4 colunas. "
+            +"As Posições do tabuleiro são representadas por letras\n");
 
             Console.WriteLine
-            ("As peças São representadas numericamente (input) "
-            +"e com cores e formas (visualmente)"
-            +"São de 4 tamanhos, 4 formatos e 4 "
-            +"cores totalizando 16 peças\n"
+            ("As peças são representadas numericamente (input) "
+            +"e com cores, formas e tamanhos diferentes "
+            +"são de 2 tamanhos, 4 formatos e 2 "
+            +"cores totalizando 16 peças únicas.\n"
             +"Boa sorte!\n"
             +"Pressione qualquer tecla para continuar..."); 
 
@@ -167,7 +170,6 @@ namespace ProjectGaloDaVelha
             
             while(gameStatus == GameStatus.playing)
             {
-            
                 CheckGameStatus();
 
                  // increment turn
@@ -177,17 +179,15 @@ namespace ProjectGaloDaVelha
                 if(turn % 2 != 0) //1, 3, 5
                 {
                     // Player 1 turn
-                    MovePiece(Player.player1);
+                    MovePiece(Player.Player1);
                 }
                 else
                 {
                     // Player 2 turn // 2, 4, 6
-                    MovePiece(Player.player2);
+                    MovePiece(Player.Player2);
                 }
-
-                 
-
             }
+
 
         }
 
@@ -208,134 +208,217 @@ namespace ProjectGaloDaVelha
                 piece13.GetPieceType(),piece14.GetPieceType(),
                 piece15.GetPieceType(),piece16.GetPieceType()
             };
-           
-            while (true)
+
+            /*
+            Player thisPlayer; 
+
+
+            if(player == Player.player1)
             {
-                if (count_player % 2 == 0)
-                {
-                    player_number = 1;
-                    
-                }
-                else
-                {
-                    player_number = 2;
-                }
+                thisPlayer = Player.player1;
+            }
+            else
+            {
+                thisPlayer = Player.player2;
+            }
 
 
-                for (int row = 0; row < 4; row++)
+            switch(thisPlayer)
+            {
+                case Player.player1:
                 {
-                    for (int col = 0; col < 4; col++)
-                    {
-                        Console.Write("+----");
-                    }
-                    Console.WriteLine("+");
-                    for (int col = 0; col < 4; col++)
-                    {
-                        Console.Write
-                        ($"| {pos[row,col]}\u001b[0m ".PadRight(9));
-                    }
-                    
-                    Console.WriteLine("|");
+                    // Player 1
+                    break;
                 }
-                // Desenha a última linha
+                case Player.player2:
+                {
+                    // Player 2
+                    break;
+                }
+            }
+            */
+
+
+            piecesArray = new Piece[]
+            {
+                piece1,    piece2,     piece3,     piece4,
+                piece5,    piece6,     piece7,     piece8,
+                piece9,    piece10,    piece11,    piece12,
+                piece13,   piece14,       piece15,    piece16
+            };
+
+
+            Piece[,] piecesVerified = new Piece[4,4];
+
+            /*
+            if (count_player % 2 == 0)
+            {
+                player_number = 1;
+                
+            }
+            else
+            {
+                player_number = 2;
+            }
+            */
+
+
+            for (int row = 0; row < 4; row++)
+            {
                 for (int col = 0; col < 4; col++)
                 {
                     Console.Write("+----");
                 }
                 Console.WriteLine("+");
-
-                Console.WriteLine("");
-
-                Console.WriteLine("[---Peças disponiveis---]");
-
-                for (int row = 0; row < 4; row++)
+                for (int col = 0; col < 4; col++)
                 {
-                    for (int col = 0; col < 4; col++)
-                    {
-                        int index = row * 4 + col; // Calcula o índice correto
-                        if (index < pecas_array.Length)
-                        {
-                            // Ajusta a largura da coluna
-                            Console.Write 
-                            ($"{pecas_array[index]}[{index}]".PadRight(15)); 
-                        }
-                        
-                    }
-                    Console.WriteLine(); // Nova linha após cada linha de elementos
+                    Console.Write
+                    ($"| {pos[row,col]}\u001b[0m ".PadRight(9));
                 }
                 
-
-                Console.WriteLine
-                ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair = ESC"
-                + "|| Ajuda = H" + "\n");
-
-                // ---------  WAITING HERE FOR NOW ---------
-                Console.Write("\u001b[0m");
-
-                Console.WriteLine
-                ($"\u001b[36m==[Jogador {player_number}]==\u001b[0m");
-                
-
-                Console.Write("Escreve a letra onde deseja colocar a peça:"
-                +" Ou ação adicional: ");
-
-                string user_place = Console.ReadLine();
-
-
-                Console.Write("Qual é o numero da peça que deseja: ");
-                int user_piece = int.Parse(Console.ReadLine());
-
-                //Verificar se a Letra existe na letra 
-                //e substituir pela peça
-                
-                for (int i = 0; i < 4; i++)
-                {
-                    for (int j = 0; j < 4; j++)
-                    {
-                        if (pos[i,j] == user_place)
-                        {
-                            if
-                            (user_piece < pecas_array.Length && user_piece >= 0)
-                            {
-                                pos[i,j] = pecas_array[user_piece];
-                                // TODO: Add link
-                                List<string> pecas_list = 
-                                new List<string>(pecas_array);
-
-                                pecas_list.RemoveAt(user_piece);
-                                pecas_array = pecas_list.ToArray();
-                                count_player++;
-
-                                break;
-                            }
-
-                        }
-                    }
-                }
-
-                //Verificar peças horizontal
-                for (int i = 0; i <pos.GetLength(0); i++)
-                {
-                    int counter = 1;
-
-                    for (int j = 1; j < pos.GetLength(1); j++) // Se a cor, forma, hole e tamanho for igual:
-                    {
-                        if (pos[i,j] == pos[i,j - 1] && pos[i,j] != null)
-                        {
-                            counter++;
-                            if (counter == 4) //Se for 4 peças de seguida:
-                            {
-                                Console.WriteLine("O jogador tal ganhou!"); // Um dos jogadores ganha
-                                
-                            }
-                        }
-
-                    }
-                }
-
-                // clear console
-                Console.Clear();
+                Console.WriteLine("|");
             }
+            // Desenha a última linha
+            for (int col = 0; col < 4; col++)
+            {
+                Console.Write("+----");
+            }
+            Console.WriteLine("+");
+
+            Console.WriteLine("");
+
+            Console.WriteLine("[---Peças disponiveis---]");
+
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    int index = row * 4 + col; // Calcula o índice correto
+                    if (index < pecas_array.Length)
+                    {   
+                        // Ajusta a largura da coluna
+                        Console.Write 
+                        ($"{pecas_array[index]}[{index}]".PadRight(15)); 
+                    }
+                    
+                }
+                Console.WriteLine(); // Nova linha após cada linha de elementos
+            }
+            
+
+            Console.WriteLine
+            ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair = ESC"
+            + "|| Ajuda = H" + "\n");
+
+            // ---------  WAITING HERE FOR NOW ---------
+            Console.Write("\u001b[0m");
+
+            Console.WriteLine
+            ($"\u001b[36m==[ {player.ToString()} ]==\u001b[0m");
+            
+
+            Console.Write("Escreve a letra onde deseja colocar a peça:"
+            +" Ou ação adicional: ");
+
+            string user_place = Console.ReadLine();
+
+
+            Console.Write("Qual é o numero da peça que deseja: ");
+            int user_piece = int.Parse(Console.ReadLine());
+
+            //Verificar se a Letra existe na letra 
+            //e substituir pela peça
+
+            // TODO: Adicionar condição para não poder 
+            //colocar peças em cima de outras
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (pos[i,j] == user_place)
+                    {
+
+                        // Classe de board, guarda essa info
+
+                        // pega na pos do 
+                        if
+                        (user_piece < pecas_array.Length && user_piece >= 0)
+                        {
+                            // representação visual do array
+                            pos[i,j] = pecas_array[user_piece];
+
+                            // representação lógica do array
+                            piecesVerified[i,j] = piecesArray[user_piece];
+                            
+
+                            // TODO: Add link
+                            List<string> pecas_list = 
+                            new List<string>(pecas_array);
+
+                            pecas_list.RemoveAt(user_piece);
+                            pecas_array = pecas_list.ToArray();
+                            count_player++;
+
+                            break;
+                        }
+
+                    }
+                }
+            }
+
+            //Verificar peças horizontal
+            for (int i = 0; i <piecesVerified.GetLength(0); i++)
+            {
+                int counter = 1;
+
+                for (int j = 1; j < piecesVerified.GetLength(1); j++) // Se a cor, forma, hole e tamanho for igual:
+                {
+                    if (piecesVerified[i,j] == piecesVerified[i,j - 1] && piecesVerified[i,j] != null)
+                    {
+                        counter++;
+
+                        if (counter == 4) //Se for 4 peças de seguida:
+                        {
+                            Console.WriteLine("O jogador tal ganhou!"); // Um dos jogadores ganha
+
+
+                            /*
+                            if(color)
+                            {
+                                bool color = true;
+                            }
+
+                            else if(shape )
+                                // tem devolver
+
+                            else if(hole )
+                                // tem devolver
+
+                            else if (size)
+                                // tem devolve
+                            else
+                            {
+                                // fail
+                            }
+
+
+                            if(someCondition)
+                            {
+                                //Condition(Player.player1Win)
+                            }
+
+                            
+
+                                */
+                            
+                        }
+                    }
+
+                }
+            }
+
+            // clear console
+            Console.Clear();
 
         }
 
@@ -343,12 +426,10 @@ namespace ProjectGaloDaVelha
         private void CheckGameStatus()
         {
 
-
             if(pecas_array.Length == 0 )
             {
                 gameStatus = GameStatus.draw;
                 //Condition(gameStatus);
-
             }
            
             // Check for player 1

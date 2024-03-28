@@ -2,8 +2,8 @@ namespace ProjectGaloDaVelha
 {
     public enum Player
     {
-        player1,
-        player2
+        Player1,
+        Player2
     }
 
 }

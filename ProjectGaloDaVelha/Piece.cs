@@ -148,11 +148,13 @@ namespace ProjectGaloDaVelha
             switch(shape)
             {
 
+                // in case of circle shape
                 case PieceShape.circle:
                 {
+                    // in case has hole 
                     if(hasHole) {pieceConfig = '\u25cf';}
                     
-                    else{pieceConfig = '\u25cb';}
+                    else {pieceConfig = '\u25cb';}
 
                     break;
                 }
@@ -174,7 +176,7 @@ namespace ProjectGaloDaVelha
         // Getters
 
         // Get Piece Size
-        /*
+        
         public string GetPieceSize()
         {
             return size;
@@ -182,7 +184,7 @@ namespace ProjectGaloDaVelha
 
         public string GetPieceColor()
         {
-            return color.ToString();
+            return color;
         }
 
         public string GetPieceShape()
@@ -190,12 +192,11 @@ namespace ProjectGaloDaVelha
             return shape.ToString();
         }
 
-        public bool GetPiecePuncture()
+        public bool GetPieceHole()
         {
-            return puncture;
+            return hasHole;
         }
 
-        */
         public string GetPieceType()
         {
             return pieceType;
