@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using ProjectGaloDaVelha.Pieces;
 
-namespace ProjectGaloDaVelha.Game
+namespace ProjectGaloDaVelha.GameData
 {
     /// <summary>
     /// 
