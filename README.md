@@ -1,42 +1,45 @@
 # Jogo Galo Da Velha
 
-## Autoria
+### Autoria
 
-### Elementos do grupo:
+#### Elementos do grupo:
 - Hugo Figueira Silva 22001815
 - Steven Hall 2200173
   
 ### Report:
+
 #### Hugo:
-- Sistema de inventário
-- Diagramas _UML_
-- Instanciação de objetos dentro do inventário
-- Inserção dos valores dos objetos presentes no dicionário
-- Criação das malas e leitura de objetos dentro da mala
-- _Bug fixing_  
+- Código:
+  - _Game_ Construção de tabuleiro e movimento de peças
+  - _Bug fixing_ 
+  - 
+- Relatório
 
 
 #### Steven: 
-- Leitura de diretório e ficheiros
-- Sistema de _warning_
-- _UI_:  
-  - indicação de Diretório  
-  - conteúdo de ficheiro  
-  -  ícones  
-  -  conteúdo de inventário   
-  -  código respectivo
+- Código:  
+  - _Piece_ Classe de peça
+  - _Game_ Instanciação de peças
+  - Enumeradores
+    - _GameStatus_  "Enumerador com estado de jogo" 
+    - _Player_  
+    - _PieceHole_
+    - _PieceShape_
+    - _PieceSize_
+    - _PieceColor_ 
+  - _Bug fixing_ 
 - Relatório
-
-- _Bug fixing_
 
 ## Arquitetura da solução
 ### Descrição da solução
-- Projeto desenvolvido utilizando o motor de jogo [_Unity Engine_ 2022.3.1 _LTS_](https://unity.com/releases/editor/whats-new/2022.3.1#release-notes).
-- Objetivo principal abrir um dado ficheiro e apresentar o seus conteúdos (itens para inventário neste caso) ao utilizador. 
+- Projeto desenvolvido utilizando a linguagem _C#_ 8.0 e com  [_.NET_](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1).
 
-A solução do projeto consiste em abrir o diretório ambiente de trabalho (Tecla Q). Em seguida é apresentado um menu esilo _pop up_ o qual solicita ao utilizador inserir o número de linha correspondente ao ficheiro desejado (Clicar em _done_).    
+- Projeto consiste no jogo do GaloDaVelha, mas apresentado visualmente em consola (terminal)
 
-Caso a operação anterior realize-se com sucesso, será apresentado um menu de inventário com os itens presentes no ficheiro selecionado no passo anterior.    
+A solução do projeto consiste em jogar o jogo do GaloDaVelha na consola, isto é um jogo para 2 jogadores (PvP), onde é possível cada jogador ganhar ou empatar se não houver mais peças disponíveis.
+
+
+Caso a operação anterior realize-se com sucesso, será apresentado um menu de inventário com os itens presentes no ficheiro selecionado no passo anterior.
 
 - Adicionar itens: Para adicionar itens a este inventário (clicar em _add_) e em seguida é apresentado outro menu com a lista de todos os itens disponíveis (clicar no item desejado). Assim será adicionado o item escolhido ao inventário.
 
@@ -54,10 +57,15 @@ Caso a operação anterior realize-se com sucesso, será apresentado um menu de 
   
 Portanto concluímos assim que as funções só fazem a uma função que lhes foi dada e não varias coisas diferentes.
 
-  
-
-  
 ### Diagrama _UML_
+
+```mermaid
+graph TD;
+    Main-->Game;
+    Game --> Piece;
+
+
+```
 
 ## Referências 
 
@@ -82,4 +90,5 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 
 ### Links de pesquisa utilizados para realização do projeto
 * [Getters & Setters](https://www.w3schools.com/cs/cs_properties.php))
+* []
 
