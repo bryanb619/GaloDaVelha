@@ -1,5 +1,3 @@
-using ProjectGaloDaVelha;
-
 namespace ProjectGaloDaVelha.Pieces
 {
     /// <summary>

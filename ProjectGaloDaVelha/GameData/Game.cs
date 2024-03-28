@@ -2,15 +2,18 @@ using System;
 using System.Collections.Generic;
 using ProjectGaloDaVelha.Pieces;
 
+//[System.Runtime]
+
 namespace ProjectGaloDaVelha.GameData
 {
     /// <summary>
+    /// Galo Da Velha Game class
     /// 
     /// </summary>
     public class Game
     {
         // Board mapping // consider static variables
-        private Piece[,] addedPiecesToBoard = new Piece[3, 3];
+        //private Piece[,] addedPiecesToBoard = new Piece[3, 3];
 
         // X       
         // Y  |player1|
@@ -18,7 +21,9 @@ namespace ProjectGaloDaVelha.GameData
 
         private int turn = 0;
 
-        private GameStatus gameStatus;
+        private static GameStatus gameStatus;
+
+        private  Player player; 
 
         // EXAMPLE OF PIECE CREATION => INSTACIATING
         
@@ -26,70 +31,70 @@ namespace ProjectGaloDaVelha.GameData
 
         //1st ROW (Yellow with no holes)
         // Big Yellow Square with no hole
-        private Piece piece1 = new Piece
+        private static Piece piece1 = new Piece
         (PieceSize.big,PieceColor.yellow,PieceShape.square,PieceHole.none);
         //public Piece Piece1 => piece1;
 
         // Big Yellow Circle with no hole
-        private Piece piece2 = new Piece
+        private static  Piece piece2 = new Piece
         (PieceSize.big,PieceColor.yellow,PieceShape.circle,PieceHole.none);
 
         // Small Yellow Square with no hole
-        private Piece piece3 = new Piece
+        private static Piece piece3 = new Piece
         (PieceSize.small,PieceColor.yellow,PieceShape.square,PieceHole.none);
         
         // Small Yellow Circle with no hole
-        private Piece piece4 = new Piece
+        private static Piece piece4 = new Piece
         (PieceSize.small,PieceColor.yellow,PieceShape.circle,PieceHole.none);
 
         // 2nd ROW (Yello with holes)
         // Big Yellow Square with hole
-        private Piece piece5 = new Piece
+        private static  Piece piece5 = new Piece
         (PieceSize.big,PieceColor.yellow,PieceShape.square,PieceHole.hole);
 
         // Big Yellow Circle with hole
-        private Piece piece6 = new Piece(
+        private static Piece piece6 = new Piece(
             PieceSize.big,PieceColor.yellow,PieceShape.circle,PieceHole.hole);
 
         // Small Yellow Square with hole
-        private Piece piece7 = new Piece
+        private static Piece piece7 = new Piece
         (PieceSize.small,PieceColor.yellow,PieceShape.square,PieceHole.hole);
 
         // Small Yellow Circle with hole    
-        private Piece piece8 = new Piece
+        private static  Piece piece8 = new Piece
         (PieceSize.small,PieceColor.yellow,PieceShape.circle,PieceHole.hole);
 
         // --- GREEN PIECES ---
-        private Piece piece9 = new Piece
+        private static  Piece piece9 = new Piece
         (PieceSize.big,PieceColor.green,PieceShape.square,PieceHole.none);
 
         // Big Yellow Circle with no hole
-        private Piece piece10 = new Piece
+        private static Piece piece10 = new Piece
         (PieceSize.big,PieceColor.green,PieceShape.circle,PieceHole.none);
 
         // Small Yellow Square with no hole
-        private Piece piece11 = new Piece
+        private static Piece piece11 = new Piece
         (PieceSize.small,PieceColor.green,PieceShape.square,PieceHole.none);
         
         // Small Yellow Circle with no hole
-        private Piece piece12 = new Piece
+        private static Piece piece12 = new Piece
         (PieceSize.small,PieceColor.green,PieceShape.circle,PieceHole.none);
 
         // 2nd ROW (Yello with holes)
         // Big Yellow Square with hole
-        private Piece piece13 = new Piece
+        private static Piece piece13 = new Piece
         (PieceSize.big,PieceColor.green,PieceShape.square,PieceHole.hole);
 
         // Big Yellow Circle with hole
-        private Piece piece14 = new Piece(
+        private static Piece piece14 = new Piece(
             PieceSize.big,PieceColor.green,PieceShape.circle,PieceHole.hole);
 
         // Small Yellow Square with hole
-        private Piece piece15 = new Piece
+        private static Piece piece15 = new Piece
         (PieceSize.small,PieceColor.green,PieceShape.square,PieceHole.hole);
 
         // Small Yellow Circle with hole    
-        private Piece piece16 = new Piece
+        private static Piece piece16 = new Piece
         (PieceSize.small,PieceColor.green,PieceShape.circle,PieceHole.hole);
 
 
@@ -106,17 +111,33 @@ namespace ProjectGaloDaVelha.GameData
             {"M","N","O","P"}
         };
 
-        private Piece[] piecesArray;
+        //private Piece[] piecesArray;
 
 
-        // Array of pieces
-        private string[] pecas_array = new string[15]; 
+        private string[] pecas_array =
+        {   
+            piece1.GetPieceType(),  piece2.GetPieceType(),
+            piece3.GetPieceType(),  piece4.GetPieceType(),
+            piece5.GetPieceType(),  piece6.GetPieceType(),
+            piece7.GetPieceType(),  piece8.GetPieceType(),
+            piece9.GetPieceType(),  piece10.GetPieceType(),
+            piece11.GetPieceType(), piece12.GetPieceType(),
+            piece13.GetPieceType(), piece14.GetPieceType(),
+            piece15.GetPieceType(), piece16.GetPieceType()
+        };
 
+
+        private Piece[] piecesArray = new Piece[15]; 
+
+        Piece[,] piecesVerified = new Piece[4,4];
+
+        
         /// <summary>
         /// 
         /// </summary>
         public void Start()
         {
+            // change game status to playing on start
             gameStatus = GameStatus.playing;
 
             Assistant(); 
@@ -149,17 +170,28 @@ namespace ProjectGaloDaVelha.GameData
             ("O tabuleiro é composto por 4 linhas e 4 colunas. "
             +"As Posições do tabuleiro são representadas por letras\n");
 
-            Console.WriteLine
+            Console.Write
             ("As peças são representadas numericamente (input) "
             +"e com cores, formas e tamanhos diferentes "
             +"são de 2 tamanhos, 4 formatos e 2 "
             +"cores totalizando 16 peças únicas.\n"
             +"Boa sorte!\n"
-            +"Pressione qualquer tecla para continuar..."); 
+            +"Pressione qualquer tecla para continuar... "); 
 
             Console.ReadLine();
 
-            Console.Clear();
+
+            try
+            {
+                Console.Clear();
+            }
+
+            catch
+            {
+                Console.WriteLine($"Failed to clear. Continuing..."); 
+            }
+
+            
         }
             
         /// <summary>
@@ -167,28 +199,32 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void ManageTurns()
         {
-            
+
+
             while(gameStatus == GameStatus.playing)
             {
+
                 CheckGameStatus();
 
-                 // increment turn
+                // increment turn if no 
                 turn++;
 
                 // determine player turn
-                if(turn % 2 != 0) //1, 3, 5
+
+                //1, 3, 5 // Player 1 turn
+                if(turn % 2 != 0) 
                 {
-                    // Player 1 turn
-                    MovePiece(Player.Player1);
+                    player = Player.Player1;
                 }
+
+                // Player 2 turn // 2, 4, 6
                 else
                 {
-                    // Player 2 turn // 2, 4, 6
-                    MovePiece(Player.Player2);
+                    player = Player.Player2; 
                 }
+
+                MovePiece(player); 
             }
-
-
         }
 
         /// <summary>
@@ -197,71 +233,8 @@ namespace ProjectGaloDaVelha.GameData
         /// <param name="player">Enum received to set player move piece</param>
         private void MovePiece(Player player)
         {
-            pecas_array = new string[]
-            {   
-                piece1.GetPieceType(),piece2.GetPieceType(),
-                piece3.GetPieceType(),piece4.GetPieceType(),
-                piece5.GetPieceType(),piece6.GetPieceType(),
-                piece7.GetPieceType(),piece8.GetPieceType(),
-                piece9.GetPieceType(),piece10.GetPieceType(),
-                piece11.GetPieceType(),piece12.GetPieceType(),
-                piece13.GetPieceType(),piece14.GetPieceType(),
-                piece15.GetPieceType(),piece16.GetPieceType()
-            };
-
-            /*
-            Player thisPlayer; 
-
-
-            if(player == Player.player1)
-            {
-                thisPlayer = Player.player1;
-            }
-            else
-            {
-                thisPlayer = Player.player2;
-            }
-
-
-            switch(thisPlayer)
-            {
-                case Player.player1:
-                {
-                    // Player 1
-                    break;
-                }
-                case Player.player2:
-                {
-                    // Player 2
-                    break;
-                }
-            }
-            */
-
-
-            piecesArray = new Piece[]
-            {
-                piece1,    piece2,     piece3,     piece4,
-                piece5,    piece6,     piece7,     piece8,
-                piece9,    piece10,    piece11,    piece12,
-                piece13,   piece14,       piece15,    piece16
-            };
-
-
-            Piece[,] piecesVerified = new Piece[4,4];
-
-            /*
-            if (count_player % 2 == 0)
-            {
-                player_number = 1;
-                
-            }
-            else
-            {
-                player_number = 2;
-            }
-            */
-
+            
+           
 
             for (int row = 0; row < 4; row++)
             {
@@ -322,6 +295,11 @@ namespace ProjectGaloDaVelha.GameData
 
             string user_place = Console.ReadLine();
 
+            // Upper case the string
+            //user_place.ToUpper(); 
+
+            //user_place = user_place.ToUpper(); 
+
 
             Console.Write("Qual é o numero da peça que deseja: ");
             int user_piece = int.Parse(Console.ReadLine());
@@ -380,37 +358,6 @@ namespace ProjectGaloDaVelha.GameData
                         if (counter == 4) //Se for 4 peças de seguida:
                         {
                             Console.WriteLine("O jogador tal ganhou!"); // Um dos jogadores ganha
-
-
-                            /*
-                            if(color)
-                            {
-                                bool color = true;
-                            }
-
-                            else if(shape )
-                                // tem devolver
-
-                            else if(hole )
-                                // tem devolver
-
-                            else if (size)
-                                // tem devolve
-                            else
-                            {
-                                // fail
-                            }
-
-
-                            if(someCondition)
-                            {
-                                //Condition(Player.player1Win)
-                            }
-
-                            
-
-                                */
-                            
                         }
                     }
 
@@ -418,47 +365,32 @@ namespace ProjectGaloDaVelha.GameData
             }
 
             // clear console
-            Console.Clear();
 
+            try
+            {
+                Console.Clear();
+            }
+
+            catch
+            {
+                Console.WriteLine("Continuing"); 
+            }
+            
         }
 
 
         private void CheckGameStatus()
         {
 
-            if(pecas_array.Length == 0 )
+            if(pecas_array.Length < 1 )
             {
                 gameStatus = GameStatus.draw;
-                //Condition(gameStatus);
+                
             }
+
+            Condition(gameStatus);
            
-            // Check for player 1
 
-            // Check for player 2
-
-            // Check for draw
-
-            /*
-            if(player1 has won)
-            {
-                gameStatus = GameStatus.player1Win;
-            }
-            else if(player2 has won)
-            {
-                gameStatus = GameStatus.player2Win;
-            }
-            else if(draw)
-            {
-                gameStatus = GameStatus.draw;
-            }
-            else
-            {
-                gameStatus = GameStatus.playing;
-            
-
-            */
-
-            //Condition(gameStatus);
         }
 
         /// <summary>
@@ -529,7 +461,7 @@ namespace ProjectGaloDaVelha.GameData
             Console.WriteLine(status + "Pressione enter para sair\n");
 
             // RESTART GAME
-            Console.ReadLine();
+            //Console.ReadLine();
 
             return;
             // clear console

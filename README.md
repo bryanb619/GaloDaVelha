@@ -89,6 +89,10 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 #
 
 ### Links de pesquisa utilizados para realização do projeto
-* [Getters & Setters](https://www.w3schools.com/cs/cs_properties.php))
+* [Getters & Setters](https://www.w3schools.com/cs/cs_properties.php)
 * [Console.Clear()]()
+* [C# Arrays W3 Schools](https://www.w3schools.com/cs/cs_arrays.php)
+#### API
+* [Arrays & Multidimensional Arrays](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
+
 
