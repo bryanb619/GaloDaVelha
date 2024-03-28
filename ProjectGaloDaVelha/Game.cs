@@ -285,7 +285,9 @@ namespace ProjectGaloDaVelha
                 Console.Write("Qual é o numero da peça que deseja: ");
                 int user_piece = int.Parse(Console.ReadLine());
 
-        
+                //Verificar se a Letra existe na letra 
+                //e substituir pela peça
+                
                 for (int i = 0; i < 4; i++)
                 {
                     for (int j = 0; j < 4; j++)
@@ -310,6 +312,27 @@ namespace ProjectGaloDaVelha
                         }
                     }
                 }
+
+                //Verificar peças horizontal
+                for (int i = 0; i <pos.GetLength(0); i++)
+                {
+                    int counter = 1;
+
+                    for (int j = 1; j < pos.GetLength(1); j++) // Se a cor, forma, hole e tamanho for igual:
+                    {
+                        if (pos[i,j] == pos[i,j - 1] && pos[i,j] != null)
+                        {
+                            counter++;
+                            if (counter == 4) //Se for 4 peças de seguida:
+                            {
+                                Console.WriteLine("O jogador tal ganhou!"); // Um dos jogadores ganha
+                                
+                            }
+                        }
+
+                    }
+                }
+
                 // clear console
                 Console.Clear();
             }
