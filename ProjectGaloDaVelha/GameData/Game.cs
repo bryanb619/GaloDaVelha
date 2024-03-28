@@ -157,10 +157,11 @@ namespace ProjectGaloDaVelha.GameData
             +"Boa sorte!\n"
             +"Pressione qualquer tecla para continuar..."); 
 
-            Console.ReadLine();
+            //Console.ReadLine();
 
-            Console.Clear();
+            //Console.Clear();
         }
+        
             
         /// <summary>
         /// 
@@ -179,6 +180,7 @@ namespace ProjectGaloDaVelha.GameData
                 if(turn % 2 != 0) //1, 3, 5
                 {
                     // Player 1 turn
+                
                     MovePiece(Player.Player1);
                 }
                 else
@@ -244,7 +246,7 @@ namespace ProjectGaloDaVelha.GameData
                 piece1,    piece2,     piece3,     piece4,
                 piece5,    piece6,     piece7,     piece8,
                 piece9,    piece10,    piece11,    piece12,
-                piece13,   piece14,       piece15,    piece16
+                piece13,   piece14,    piece15,    piece16
             };
 
 
@@ -351,12 +353,20 @@ namespace ProjectGaloDaVelha.GameData
                             piecesVerified[i,j] = piecesArray[user_piece];
                             
 
-                            // TODO: Add link
+                            // representação visual do array
                             List<string> pecas_list = 
                             new List<string>(pecas_array);
-
                             pecas_list.RemoveAt(user_piece);
                             pecas_array = pecas_list.ToArray();
+
+                            // representação lógica do array
+                            List<Piece> pecas_list_code = 
+                            new List<Piece>(piecesArray);
+                            pecas_list_code.RemoveAt(user_piece);
+                            piecesArray = pecas_list_code.ToArray();
+
+
+
                             count_player++;
 
                             break;
@@ -365,60 +375,70 @@ namespace ProjectGaloDaVelha.GameData
                     }
                 }
             }
+            
 
             //Verificar peças horizontal
-            for (int i = 0; i <piecesVerified.GetLength(0); i++)
+            //Verificar peças horizontal
+            for (int i = 0; i < piecesVerified.GetLength(0); i++)
             {
-                int counter = 1;
+                int counter_Color = 1;
+                int counter_Shape = 1;
+                int counter_Hole = 1;
+                int counter_Size = 1;
 
                 for (int j = 1; j < piecesVerified.GetLength(1); j++) // Se a cor, forma, hole e tamanho for igual:
                 {
-                    if (piecesVerified[i,j] == piecesVerified[i,j - 1] && piecesVerified[i,j] != null)
+                    if (piecesVerified[i,j] != null && piecesVerified[i,j - 1] != null) // Se não for vazio
                     {
-                        counter++;
-
-                        if (counter == 4) //Se for 4 peças de seguida:
+                        if (piecesVerified[i,j].GetPieceColor() == piecesVerified[i,j - 1].GetPieceColor())
                         {
-                            Console.WriteLine("O jogador tal ganhou!"); // Um dos jogadores ganha
+                            counter_Color++;
+                        }
+                        else
+                        {
+                            counter_Color = 1;
+                        }
 
+                        if (piecesVerified[i,j].GetPieceShape() == piecesVerified[i,j - 1].GetPieceShape())
+                        {
+                            counter_Shape++;
+                        }
+                        else
+                        {
+                            counter_Shape = 1;
+                        }
 
-                            /*
-                            if(color)
-                            {
-                                bool color = true;
-                            }
+                        if (piecesVerified[i,j].GetPieceHole() == piecesVerified[i,j - 1].GetPieceHole())
+                        {
+                            counter_Hole++;
+                        }
+                        else
+                        {
+                            counter_Hole = 1;
+                        }
 
-                            else if(shape )
-                                // tem devolver
+                        if (piecesVerified[i,j].GetPieceSize() == piecesVerified[i,j - 1].GetPieceSize())
+                        {
+                            counter_Size++;
+                        }
+                        else
+                        {
+                            counter_Size = 1;
+                        }
 
-                            else if(hole )
-                                // tem devolver
-
-                            else if (size)
-                                // tem devolve
-                            else
-                            {
-                                // fail
-                            }
-
-
-                            if(someCondition)
-                            {
-                                //Condition(Player.player1Win)
-                            }
-
-                            
-
-                                */
-                            
+                        if (counter_Color == 4 || counter_Shape == 4 || counter_Hole == 4 || counter_Size == 4)
+                        {
+                            Console.WriteLine("O jogador tal ganhou!"); // Um dos jogadores ganhou
+                            //JOGO FECHA
+                            break;
                         }
                     }
-
                 }
             }
 
+
             // clear console
-            Console.Clear();
+            //Console.Clear();
 
         }
 
