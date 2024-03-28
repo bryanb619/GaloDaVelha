@@ -532,7 +532,7 @@ namespace ProjectGaloDaVelha.GameData
                         }
                     }
 
-                    // Verificação DIAGONAL_RIGHT
+                    // Verificação DIAGONAL_RIGHT A
                     if (i > 0 && j < piecesVerified.GetLength(1) - 1 && piecesVerified[i, j] != null && piecesVerified[i - 1, j + 1] != null) // Se não for vazio
                     {
                         
