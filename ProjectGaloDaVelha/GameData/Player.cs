@@ -1,4 +1,4 @@
-namespace ProjectGaloDaVelha
+namespace ProjectGaloDaVelha.GameData
 {
     public enum Player
     {
