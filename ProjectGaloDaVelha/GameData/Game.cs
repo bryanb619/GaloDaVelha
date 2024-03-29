@@ -168,6 +168,8 @@ namespace ProjectGaloDaVelha.GameData
         {
             try
             {
+                Console.WriteLine(); 
+                
                 using (StreamReader sr = new StreamReader(fileDirectory.Info
                 +"/ProjectGaloDaVelha/GameData/WelcomeText.txt"))
                 {
