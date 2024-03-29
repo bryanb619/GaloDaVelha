@@ -12,6 +12,8 @@ namespace ProjectGaloDaVelha.GameData
     /// </summary>
     public class Game
     {
+
+        
         // Board mapping // consider static variables
         //private Piece[,] addedPiecesToBoard = new Piece[3, 3];
 
@@ -175,7 +177,9 @@ namespace ProjectGaloDaVelha.GameData
         {
             try
             {
-                using (StreamReader sr = new StreamReader("GameData/WelcomeText.txt"))
+                using 
+                (StreamReader sr = new StreamReader
+                ("GameData/WelcomeText.txt"))
                 {
 
                     string line;
