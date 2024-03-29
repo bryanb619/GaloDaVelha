@@ -35,11 +35,11 @@ namespace ProjectGaloDaVelha.Pieces
             // Set Hole
             SetPiecePuncture(hole);
 
-            shape = newShape;
+            //Set piece shape
+            SetPieceShape(newShape);
 
-            // DONE: Implement pieceType
+            // Set pieceType 
             SetPieceType();
-
         }
 
         // Setters
@@ -95,27 +95,15 @@ namespace ProjectGaloDaVelha.Pieces
         
         }
 
-        /*
-        private  SetPieceShape(PieceShape newShape)
+        private PieceShape SetPieceShape(PieceShape newShape)
         {
-           switch(newShape)
-           {
-               case PieceShape.circle:
-               {
-                    shape = PieceShape.circle;
-                    break;
-               }
-               case PieceShape.square:
-               {
-                   
-                   break;
-               }
-           }
+          
+            shape = newShape;
 
-           return shape;
+            return shape;
 
         }
-        */
+   
 
         private bool SetPiecePuncture(PieceHole puncture)
         {
@@ -177,32 +165,33 @@ namespace ProjectGaloDaVelha.Pieces
         
         public string GetPieceSize()
         {
+            // returns string of size
             return size;
         }
 
         public string GetPieceColor()
         {
+            // returns string of color
             return color;
         }
 
         public string GetPieceShape()
         {
+            // returns string of shape
             return shape.ToString();
         }
 
         public bool GetPieceHole()
         {
+            // returns boolean of hole
             return hasHole;
         }
 
         public string GetPieceType()
         {
+            // returns string of pieceType
             return pieceType;
         }
-
-        // Getters & Setters
-        // Get & Set Piece shape
-        //public PieceShape SetPieceShape { get; set; }
 
     }
 
