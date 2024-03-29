@@ -1,0 +1,8 @@
+Bem-vindo ao Jogo Galo da Velha! 
+O Jogo consiste em colocar as peças no tabuleiro e fazer uma sequência de uma cor, forma, tamanho ou furo
+O tabuleiro é composto por 4 linhas e 4 colunas. As Posições do tabuleiro são representadas por letras
+As peças são representadas numericamente (input) e com cores, formas e tamanhos diferentes são de 2 tamanhos, 
+4 formatos e 2 cores totalizando 16 peças únicas.
+
+Boa sorte!
+Pressione qualquer tecla para continuar... 

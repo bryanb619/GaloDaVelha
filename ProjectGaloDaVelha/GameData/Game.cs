@@ -1,8 +1,8 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using ProjectGaloDaVelha.Pieces;
 
-//[System.Runtime]
 
 namespace ProjectGaloDaVelha.GameData
 {
@@ -24,6 +24,10 @@ namespace ProjectGaloDaVelha.GameData
         private static GameStatus gameStatus;
 
         private Player player;
+
+
+        private string fileNamePath = "GameData/WelcomeText.txt";
+
 
         // EXAMPLE OF PIECE CREATION => INSTACIATING
 
@@ -138,8 +142,6 @@ namespace ProjectGaloDaVelha.GameData
         //Verificar as linhas horizontais, verticais e diagonais 
         private Piece[,] piecesVerified = new Piece[4, 4];
 
-        private bool isGameRunning = true;
-
 
 
         /// <summary>
@@ -156,8 +158,6 @@ namespace ProjectGaloDaVelha.GameData
 
             // TODO: STEVEN
             // XML comments
-            // File reading
-            // File writing
             // Fix CONSOLE CLEAR()
             // RESEARCH ON BOARD CLASS
 
@@ -173,37 +173,31 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void Assistant()
         {
-
-            Console.WriteLine("Bem-vindo to Galo da Velha! \n");
-
-            Console.WriteLine("Jogo consiste em colocar as peças no "
-            + "tabuleiro e fazer uma sequência de uma cor, forma, tamanho ou furo");
-
-            Console.WriteLine
-            ("O tabuleiro é composto por 4 linhas e 4 colunas. "
-            + "As Posições do tabuleiro são representadas por letras\n");
-
-            Console.Write
-            ("As peças são representadas numericamente (input) "
-            + "e com cores, formas e tamanhos diferentes "
-            + "são de 2 tamanhos, 4 formatos e 2 "
-            + "cores totalizando 16 peças únicas.\n"
-            + "Boa sorte!\n"
-            + "Pressione qualquer tecla para continuar... ");
-
-            Console.ReadLine();
-
-
             try
             {
+                using (StreamReader sr = new StreamReader(fileNamePath))
+                {
+
+                    string line;
+
+                    // Read and display lines from the file until the end of
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        Console.Write(line);
+                    }
+                }
+
+                Console.ReadLine();
                 Console.Clear();
+            
             }
 
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine($"Failed to clear. Continuing...");
-            }
 
+                Console.WriteLine(e.Message);
+            }
 
         }
 
