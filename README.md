@@ -89,10 +89,16 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 #
 
 ### Links de pesquisa utilizados para realização do projeto
-* [Getters & Setters](https://www.w3schools.com/cs/cs_properties.php)
-* [Console.Clear()]()
-* [C# Arrays W3 Schools](https://www.w3schools.com/cs/cs_arrays.php)
+* [_Getters & Setters_](https://www.w3schools.com/cs/cs_properties.php)
+* [_Console.Clear()_]()
+* [_C# Arrays W3 Schools_](https://www.w3schools.com/cs/cs_arrays.php)
 #### API
-* [Arrays & Multidimensional Arrays](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
+* [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
+* [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
+#### _Youtube_
+*[Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
+# [FUTURO VER BOARD CLASS](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
+*[_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
+
 
 
