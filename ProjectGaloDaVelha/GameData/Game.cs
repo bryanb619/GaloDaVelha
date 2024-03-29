@@ -332,13 +332,23 @@ namespace ProjectGaloDaVelha.GameData
             Console.Write("Escreve a letra onde deseja colocar a peça:"
             + " Ou ação adicional: ");
 
-            string user_place = Console.ReadLine();
+            string user_place = Console.ReadLine().ToUpper();
+
+            
+
 
             if (user_place == "ESC")
-            {
+            {   
                 gameStatus = GameStatus.exit;
 
                 Condition(gameStatus);
+            }
+
+            if (user_place != "ESC" && user_place.Length > 1) 
+            {
+                Console.Write("A letra tem mais do que 1 caracter, insira a letra novamente: ");
+                user_place = Console.ReadLine().ToUpper();
+
             }
 
             // TODO: Adicionar condição para não poder
@@ -351,59 +361,91 @@ namespace ProjectGaloDaVelha.GameData
             Console.Write("Qual é o numero da peça que deseja: ");
             int user_piece = int.Parse(Console.ReadLine());
 
+            if (user_piece > pecas_array.Length || user_piece < 0) 
+            {
+                Console.Write("O numero correspondente à peça não existe, insira o número novamente:  ");
+                user_piece = int.Parse(Console.ReadLine());
+
+            }
+
             //Verificar se a Letra existe na letra 
             //e substituir pela peça
 
+            bool letter_dont_exist = true;
 
-            for (int i = 0; i < 4; i++)
+            while (letter_dont_exist)
             {
-                for (int j = 0; j < 4; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if (pos[i, j] == user_place)
+                    for (int j = 0; j < 4; j++)
                     {
-
-                        // Classe de board, guarda essa info
-
-
-                        // TODO: Adicionar condição para não poder 
-                        //colocar peças em cima de outras
-
-                        /*
-                        if (user_place == invalido )
+                        if (pos[i, j] == user_place)
                         {
-                            user_place = Console.ReadLine();
+
+                            // Classe de board, guarda essa info
+
+
+                            // TODO: Adicionar condição para não poder 
+                            //colocar peças em cima de outras
+
+                            /*
+                            if (user_place == invalido )
+                            {
+                                user_place = Console.ReadLine();
+                            }
+
+                            */
+
+
+                            if
+                            (user_piece < pecas_array.Length && user_piece >= 0)
+                            {
+                                // representação visual do array
+                                pos[i, j] = pecas_array[user_piece];
+
+                                // representação lógica do array
+                                piecesVerified[i, j] = piecesArray[user_piece];
+
+
+                                // representação visual do array
+                                List<string> pecas_list =
+                                new List<string>(pecas_array);
+                                pecas_list.RemoveAt(user_piece);
+                                pecas_array = pecas_list.ToArray();
+
+                                // representação lógica do array
+                                List<Piece> pecas_list_code =
+                                new List<Piece>(piecesArray);
+                                pecas_list_code.RemoveAt(user_piece);
+                                piecesArray = pecas_list_code.ToArray();
+
+                                letter_dont_exist = false;
+                                break;
+
+                            }
+
                         }
-
-                        */
-
-
-                        if
-                        (user_piece < pecas_array.Length && user_piece >= 0)
-                        {
-                            // representação visual do array
-                            pos[i, j] = pecas_array[user_piece];
-
-                            // representação lógica do array
-                            piecesVerified[i, j] = piecesArray[user_piece];
-
-
-                            // representação visual do array
-                            List<string> pecas_list =
-                            new List<string>(pecas_array);
-                            pecas_list.RemoveAt(user_piece);
-                            pecas_array = pecas_list.ToArray();
-
-                            // representação lógica do array
-                            List<Piece> pecas_list_code =
-                            new List<Piece>(piecesArray);
-                            pecas_list_code.RemoveAt(user_piece);
-                            piecesArray = pecas_list_code.ToArray();
-
-                            break;
-                        }
+                    }
+                    
+                    
+                }
+                if (letter_dont_exist == false)
+                    {
+                        break;
 
                     }
-                }
+            
+            Console.Write("Essa letra não existe no tabuleiro, insira a letra novamente: ");
+            user_place = Console.ReadLine().ToUpper();
+
+            if (user_place == "ESC")
+            {
+                gameStatus = GameStatus.exit;
+
+                Condition(gameStatus);
+                break;
+            }
+
             }
 
 
