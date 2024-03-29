@@ -16,7 +16,14 @@ namespace ProjectGaloDaVelha.GameData
         private static GameStatus gameStatus;
 
         // Reference to the player enum
-        private Player player;
+        private static Player player;
+
+        // Reference to the turn
+        private static int turn = 0;
+        
+        // Reference to the file directory class
+        private FileDirectory fileDirectory = new FileDirectory();
+ 
 
         // --- YELLOW PIECES --- //
 
@@ -136,6 +143,8 @@ namespace ProjectGaloDaVelha.GameData
             // change game status to playing on start
             gameStatus = GameStatus.playing;
 
+
+
             Welcome();
 
             ManageTurns();
@@ -159,9 +168,8 @@ namespace ProjectGaloDaVelha.GameData
         {
             try
             {
-                using
-                (StreamReader sr = new StreamReader
-                ("GameData/WelcomeText.txt"))
+                using (StreamReader sr = new StreamReader(fileDirectory.Info
+                +"/ProjectGaloDaVelha/GameData/WelcomeText.txt"))
                 {
 
                     string line;
@@ -172,6 +180,8 @@ namespace ProjectGaloDaVelha.GameData
                     {
                         Console.Write(line);
                     }
+
+                   
                 }
 
                 Console.ReadLine();
@@ -185,6 +195,8 @@ namespace ProjectGaloDaVelha.GameData
                 Console.WriteLine(e.Message);
             }
 
+            //
+
         }
 
         /// <summary>
@@ -197,7 +209,7 @@ namespace ProjectGaloDaVelha.GameData
             while (gameStatus == GameStatus.playing)
             {
 
-                CheckGameStatus();
+                CheckForDraw();
 
                 // increment turn if no 
 
@@ -219,7 +231,6 @@ namespace ProjectGaloDaVelha.GameData
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="player">Enum received to set player move piece</param>
         private void DisplayBoard()
         {
 
@@ -266,26 +277,31 @@ namespace ProjectGaloDaVelha.GameData
                     }
 
                 }
-                Console.WriteLine(); // Nova linha após cada linha de elementos
+                // Nova linha após cada linha de elementos
+                Console.WriteLine(); 
             }
 
 
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void MovePiece()
         {
-            int turn = 0;
-
+        
             turn++;
+
             // determine player turn
 
-            //1, 3, 5 // Player 1 turn
+            //1, 3, 5 -> Player 1 turn
             if (turn % 2 != 0)
             {
                 player = Player.Player1;
             }
 
-            // Player 2 turn // 2, 4, 6
+            // Player 2 turn -> 2, 4, 6
             else
             {
                 player = Player.Player2;
@@ -295,7 +311,9 @@ namespace ProjectGaloDaVelha.GameData
             SetPieceOnBoard();
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetPieceOnBoard()
         {
 
@@ -307,7 +325,7 @@ namespace ProjectGaloDaVelha.GameData
 
 
             Console.WriteLine
-            ($"\u001b[36m==[ {player.ToString()} ]==\u001b[0m");
+            ($"\u001b[36m==[ {player} ]==\u001b[0m");
 
 
             Console.Write("Escreve a letra onde deseja colocar a peça:"
@@ -643,7 +661,7 @@ namespace ProjectGaloDaVelha.GameData
                         counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4)
                         {
                             Console.WriteLine
-                            ($"O {player.ToString()} ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
+                            ($"O {player} ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
                                                                                        // JOGO FECHA
                                                                                        // break;
 
@@ -741,8 +759,10 @@ namespace ProjectGaloDaVelha.GameData
 
         }
 
-
-        private void CheckGameStatus()
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CheckForDraw()
         {
 
             if (pecas_array.Length < 1)
@@ -772,14 +792,14 @@ namespace ProjectGaloDaVelha.GameData
                 case GameStatus.player1Win:
                     {
 
-                        endGameMessage = "Player 1 wins!";
+                        endGameMessage = "O jogador 1 ganhou!";
                         break;
                     }
 
                 // Player 2 wins
                 case GameStatus.player2Win:
                     {
-                        endGameMessage = "Player 2 wins!";
+                        endGameMessage = "O jogador 2 ganhou!";
                         break;
                     }
 
@@ -787,13 +807,13 @@ namespace ProjectGaloDaVelha.GameData
                 case GameStatus.draw:
                     {
 
-                        endGameMessage = "It's a draw!";
+                        endGameMessage = "Empate!";
                         break;
                     }
                 case GameStatus.exit:
                     {
 
-                        endGameMessage = "Game exited!";
+                        endGameMessage = "Jogo terminado!";
                         break;
                     }
 

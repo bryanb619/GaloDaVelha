@@ -92,13 +92,14 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 * [_Getters & Setters_](https://www.w3schools.com/cs/cs_properties.php)
 * [_Console.Clear()_]()
 * [_C# Arrays W3 Schools_](https://www.w3schools.com/cs/cs_arrays.php)
+* [_Tic Tac toe_ linhas, colunas e diagonal](https://www.c-sharpcorner.com/UploadFile/75a48f/tic-tac-toe-game-in-C-Sharp/)
 #### API
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 * [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
 #### _Youtube_
-*[Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
-# [FUTURO VER BOARD CLASS](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
-*[_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
+* [Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
+* [FUTURO VER BOARD CLASS](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
+* [_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
 
 
 
