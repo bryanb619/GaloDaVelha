@@ -175,7 +175,7 @@ namespace ProjectGaloDaVelha.GameData
         {
             try
             {
-                using (StreamReader sr = new StreamReader("GameData/WelcomeText.txt")
+                using (StreamReader sr = new StreamReader("GameData/WelcomeText.txt"))
                 {
 
                     string line;
