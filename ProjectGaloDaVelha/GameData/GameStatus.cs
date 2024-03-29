@@ -5,6 +5,7 @@ namespace ProjectGaloDaVelha.GameData
         player1Win,
         player2Win,
         draw,
+        exit, 
         playing
     }
 }
