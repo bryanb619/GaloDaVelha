@@ -26,7 +26,7 @@ namespace ProjectGaloDaVelha.GameData
         private Player player;
 
 
-        private string fileNamePath = "GameData/WelcomeText.txt";
+        //private string fileNamePath = "GameData/WelcomeText.txt";
 
 
         // EXAMPLE OF PIECE CREATION => INSTACIATING
@@ -175,7 +175,7 @@ namespace ProjectGaloDaVelha.GameData
         {
             try
             {
-                using (StreamReader sr = new StreamReader(fileNamePath))
+                using (StreamReader sr = new StreamReader("GameData/WelcomeText.txt")
                 {
 
                     string line;
