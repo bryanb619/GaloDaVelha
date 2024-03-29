@@ -152,7 +152,7 @@ namespace ProjectGaloDaVelha.GameData
             // change game status to playing on start
             gameStatus = GameStatus.playing;
 
-            Assistant();
+            Welcome();
 
             ManageTurns();
 
@@ -171,7 +171,7 @@ namespace ProjectGaloDaVelha.GameData
         /// <summary>
         /// 
         /// </summary>
-        private void Assistant()
+        private void Welcome()
         {
             try
             {
