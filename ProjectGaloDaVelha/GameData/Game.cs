@@ -2,6 +2,8 @@ using System;
 using System.IO; // Used for reading files
 using System.Collections.Generic;
 using ProjectGaloDaVelha.Pieces; // for pieces enum and classes
+using ProjectGaloDaVelha.GameData.BoardMapping; // for board class
+using ProjectGaloDaVelha.GameData.Enviroment; // for file directory class
 
 
 namespace ProjectGaloDaVelha.GameData
@@ -22,9 +24,15 @@ namespace ProjectGaloDaVelha.GameData
         private static int turn = 0;
         
         // Reference to the file directory class
-        private FileDirectory fileDirectory = new FileDirectory();
- 
+        private static FileDirectory fileDirectory = new FileDirectory();
 
+        // Mapping of the board
+        // start board
+        private static Board board = new Board();
+
+        private static string[,] boardMap = board.GetBoard();
+
+ 
         // --- YELLOW PIECES --- //
 
         //1st ROW (Yellow with no holes)
@@ -97,22 +105,9 @@ namespace ProjectGaloDaVelha.GameData
 
 
 
-        // Mapping of the board
-        private static string[,] pos =
-        {
-            {"A","B","C","D"},
-            {"E","F","G","H"},
-            {"I","J","K","L"},
-            {"M","N","O","P"}
-        };
-
-        // start board
-
-        private Board board = new Board(pos);
-
   
         // Array of pieces types
-        private string[] pecas_array =
+        private static string[] pecas_array =
         {
             piece1.GetPieceType(),  piece2.GetPieceType(),
             piece3.GetPieceType(),  piece4.GetPieceType(),
@@ -125,7 +120,7 @@ namespace ProjectGaloDaVelha.GameData
         };
 
         //
-        private Piece[] piecesArray =
+        private static Piece[] piecesArray =
         {
             piece1,     piece2,     piece3,     piece4,
             piece5,     piece6,     piece7,     piece8,
@@ -136,7 +131,7 @@ namespace ProjectGaloDaVelha.GameData
 
 
         //Verificar as linhas horizontais, verticais e diagonais 
-        private Piece[,] piecesVerified = new Piece[4, 4];
+        private static Piece[,] piecesVerified = new Piece[4, 4];
 
 
         /// <summary>
@@ -256,7 +251,7 @@ namespace ProjectGaloDaVelha.GameData
                 for (int col = 0; col < 4; col++)
                 {
                     Console.Write
-                    ($"| {pos[row, col]}\u001b[0m ".PadRight(9));
+                    ($"| {boardMap[row, col]}\u001b[0m ".PadRight(9));
                 }
 
                 Console.WriteLine("|");
@@ -418,7 +413,7 @@ namespace ProjectGaloDaVelha.GameData
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (pos[i, j] == user_place)
+                        if (boardMap[i, j] == user_place)
                         {
 
                             // Classe de board, guarda essa info
@@ -440,7 +435,7 @@ namespace ProjectGaloDaVelha.GameData
                             (user_piece < pecas_array.Length && user_piece >= 0)
                             {
                                 // representação visual do array
-                                pos[i, j] = pecas_array[user_piece];
+                                boardMap[i, j] = pecas_array[user_piece];
 
                                 // representação lógica do array
                                 piecesVerified[i, j] = piecesArray[user_piece];
