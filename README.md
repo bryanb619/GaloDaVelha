@@ -11,7 +11,7 @@
 #### Hugo:
 - Código:
   - _Game_ Construção do tabuleiro
-    - _UI_ (Layout do tabuleiro, menu peças disponiveis, legenda, frases de output e cores)
+    - _UI_ (Layout do tabuleiro, menu peças disponiveis, desenho das peças ,legenda, frases de output e cores)
     - Atualização do tabuleiro e movimento das peças
     - Condições de vitoria (Verificar linhas horizontais, verticais e diagonais)
     - Lógica de input e output (Como o jogador poderia escolher as peças e lugar do  tabuleiro desejado)
@@ -43,8 +43,13 @@
 
 A solução do projeto consiste em jogar o jogo do GaloDaVelha na consola, isto é um jogo para 2 jogadores (PvP). Cada jogador tem o seu respetivo turno, dai cada jogador tem a possibilidade ganhar ou empatar (se não houver mais peças disponíveis).
 
-Antes do jogo começar aparece um texto inicial, explicando as regras do jogo. Para proseguir tal
-como referido,
+Antes do jogo começar aparece um texto inicial, explicando as regras do jogo. Para avançar para o jogo, o utilizador precisa de carregar na tecla ENTER tal como referido.
+
+De seguida aparece a primeira visualização do jogo, apresentado um tabuleiro, menu das peças disponiveis, legenda e o turno do jogador.
+
+O tabuleiro no estado zero do jogo encontrasse vazio, estando apenas letras do abecedario a ocupar os espaços de cada dimensão. Essas letras representam o lugar de cada espaço disponivel no tabuleiro.
+
+O menu das peças disponiveis representam tal como o referido, as peças disponiveis.
 Caso a operação anterior realize-se com sucesso, será apresentado um menu de inventário com os itens presentes no ficheiro selecionado no passo anterior.
 
 - Adicionar itens: Para adicionar itens a este inventário (clicar em _add_) e em seguida é apresentado outro menu com a lista de todos os itens disponíveis (clicar no item desejado). Assim será adicionado o item escolhido ao inventário.
@@ -103,6 +108,7 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 * [PadRight(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=net-8.0)
 * [ANSI Color codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
 * [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=net-8.0)
+* [Unicode Symbols](https://symbl.cc/en/unicode-table/)
 #### API
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 * [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
