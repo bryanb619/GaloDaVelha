@@ -98,7 +98,7 @@ namespace ProjectGaloDaVelha.GameData
 
 
         // Mapping of the board
-        private string[,] pos =
+        private static string[,] pos =
         {
             {"A","B","C","D"},
             {"E","F","G","H"},
@@ -106,6 +106,11 @@ namespace ProjectGaloDaVelha.GameData
             {"M","N","O","P"}
         };
 
+        // start board
+
+        private Board board = new Board(pos);
+
+  
         // Array of pieces types
         private string[] pecas_array =
         {
