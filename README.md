@@ -11,11 +11,13 @@
 #### Hugo:
 - Código:
   - _Game_ Construção do tabuleiro
-    - UI (Tabuleiro, Peças disponiveis, Legenda e fra)
-    - Atualização Movimento das peças
-    - Lógica de input e output (Como o jogador poderia buscar as peças e lugar do  tabuleiro desejado)
-  - _Bug fixing_ 
-  - 
+    - _UI_ (Layout do tabuleiro, menu peças disponiveis, legenda, frases de output e cores)
+    - Atualização do tabuleiro e movimento das peças
+    - Condições de vitoria (Verificar linhas horizontais, verticais e diagonais)
+    - Lógica de input e output (Como o jogador poderia escolher as peças e lugar do  tabuleiro desejado)
+    - Mensagens de erro
+    - Reescrever mensagem inicial (WelcomeText.txt)
+  - _Bug fixing_
 - Relatório
 
 
@@ -39,9 +41,10 @@
 
 - Projeto consiste no jogo do GaloDaVelha, mas apresentado visualmente em consola (terminal)
 
-A solução do projeto consiste em jogar o jogo do GaloDaVelha na consola, isto é um jogo para 2 jogadores (PvP), onde é possível cada jogador ganhar ou empatar se não houver mais peças disponíveis.
+A solução do projeto consiste em jogar o jogo do GaloDaVelha na consola, isto é um jogo para 2 jogadores (PvP). Cada jogador tem o seu respetivo turno, dai cada jogador tem a possibilidade ganhar ou empatar (se não houver mais peças disponíveis).
 
-
+Antes do jogo começar aparece um texto inicial, explicando as regras do jogo. Para proseguir tal
+como referido,
 Caso a operação anterior realize-se com sucesso, será apresentado um menu de inventário com os itens presentes no ficheiro selecionado no passo anterior.
 
 - Adicionar itens: Para adicionar itens a este inventário (clicar em _add_) e em seguida é apresentado outro menu com a lista de todos os itens disponíveis (clicar no item desejado). Assim será adicionado o item escolhido ao inventário.
@@ -96,6 +99,10 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 * [_Console.Clear()_]()
 * [_C# Arrays W3 Schools_](https://www.w3schools.com/cs/cs_arrays.php)
 * [_Tic Tac toe_ linhas, colunas e diagonal](https://www.c-sharpcorner.com/UploadFile/75a48f/tic-tac-toe-game-in-C-Sharp/)
+* [ List ](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=net-8.0)
+* [PadRight(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=net-8.0)
+* [ANSI Color codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+* [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=net-8.0)
 #### API
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 * [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
