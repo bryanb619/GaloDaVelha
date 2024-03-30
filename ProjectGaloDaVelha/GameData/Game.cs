@@ -1,4 +1,4 @@
-using System; // for system ops such as console
+using System;
 using System.IO; // Used for reading files
 using System.Collections.Generic;
 using ProjectGaloDaVelha.Pieces; // for pieces enum and classes
@@ -134,20 +134,17 @@ namespace ProjectGaloDaVelha.GameData
         private Piece[,] piecesVerified = new Piece[4, 4];
 
 
-
         /// <summary>
-        /// 
+        /// Starts Game Operations
         /// </summary>
         public void Start()
         {
             // change game status to playing on start
             gameStatus = GameStatus.playing;
 
-
-
-            Welcome();
-
-            ManageTurns();
+            // Calls the manage turns method
+            // method, diceides the player turn
+            RunGame();
 
             // TODO: STEVEN
             // XML comments
@@ -161,19 +158,53 @@ namespace ProjectGaloDaVelha.GameData
             // Readme
         }
 
+
         /// <summary>
         /// 
         /// </summary>
+        private void RunGame()
+        {
+
+            // Calls the welcome text method
+            Welcome();
+
+            // Loop the the game while game status is playing
+            while (gameStatus == GameStatus.playing)
+            {
+                
+                // Check for draw
+                CheckForDraw();
+
+                // Update board
+                UpdateBoard();
+
+                // Move piece
+                MovePiece();
+            }
+
+        }
+         /// <summary>
+        ///  Display welcome message to the player
+        ///  provides instructions on how to play the game
+        ///  uses System.IO & StreamReader to read from text file
+        ///  Locates file using FileDirectory class & file path
+        ///  Loops thorugh each line of the file and prints it content
+        /// </summary>
         private void Welcome()
         {
+
+            // try to read text file
             try
-            {
+            {   
+                // enters enter before text
                 Console.WriteLine(); 
                 
-                using (StreamReader sr = new StreamReader(fileDirectory.Info
+                
+                using (StreamReader sr = new StreamReader
+                (fileDirectory.Info
                 +"/ProjectGaloDaVelha/GameData/WelcomeText.txt"))
                 {
-
+                    // line to be printed
                     string line;
 
                     // Read and display lines from the file until the end of
@@ -187,14 +218,15 @@ namespace ProjectGaloDaVelha.GameData
                 }
 
                 Console.ReadLine();
+
                 Console.Clear();
 
             }
 
-            catch (Exception e)
+            catch 
             {
 
-                Console.WriteLine(e.Message);
+               // Console.WriteLine(e.Message);
             }
 
             //
@@ -204,37 +236,9 @@ namespace ProjectGaloDaVelha.GameData
         /// <summary>
         /// 
         /// </summary>
-        private void ManageTurns()
+        private void UpdateBoard()
         {
-
-            // Loop the the game while game status is playing
-            while (gameStatus == GameStatus.playing)
-            {
-
-                CheckForDraw();
-
-                // increment turn if no 
-
-                DisplayBoard();
-                MovePiece();
-            }
-
-
-
-            if (gameStatus == GameStatus.player1Win || gameStatus == GameStatus.player2Win || gameStatus == GameStatus.draw)
-            {
-                //Condition(gameStatus);
-                DisplayBoard();
-            }
-
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void DisplayBoard()
-        {
+            Console.WriteLine();
 
             // Display board
             for (int row = 0; row < 4; row++)
@@ -337,9 +341,9 @@ namespace ProjectGaloDaVelha.GameData
 
             if (user_place == "ESC")
             {
-                gameStatus = GameStatus.exit;
+                //gameStatus = GameStatus.exit;
                 EndGame(GameStatus.exit);
-                Environment.Exit(0); //Meter no relatorio
+                //Environment.Exit(0); //Meter no relatorio
                 
             }
 
@@ -348,9 +352,9 @@ namespace ProjectGaloDaVelha.GameData
             {
                 if (user_place == "ESC")
                 {
-                gameStatus = GameStatus.exit;
-                EndGame(GameStatus.exit);
-                Environment.Exit(0); //Meter no relatorio
+                    //gameStatus = GameStatus.exit;
+                    EndGame(GameStatus.exit);
+                    //Environment.Exit(0); //Meter no relatorio
                 }
                 
                 Console.Write
@@ -373,7 +377,7 @@ namespace ProjectGaloDaVelha.GameData
             if (user_piece_string == "ESC")
             {
                 EndGame(GameStatus.exit);
-                Environment.Exit(0); //Meter no relatorio
+                //Meter no relatorio
             }
 
             //Se o input do número não for um numero valido:
@@ -384,8 +388,8 @@ namespace ProjectGaloDaVelha.GameData
 
                 if (user_piece_string == "ESC")
                 {
-                EndGame(GameStatus.exit);
-                Environment.Exit(0); //Meter no relatorio
+                    EndGame(GameStatus.exit);
+                //Environment.Exit(0); //Meter no relatorio
                 }
 
             }
@@ -470,10 +474,10 @@ namespace ProjectGaloDaVelha.GameData
 
                 if (user_place == "ESC")
                 {
-                    gameStatus = GameStatus.exit;
+                    //gameStatus = GameStatus.exit;
 
-                    EndGame(gameStatus);
-                    Environment.Exit(0); //Meter no relatorio
+                    EndGame(GameStatus.exit);        
+                    //Environment.Exit(0); //Meter no relatorio
                     break;
                 }
 
@@ -554,7 +558,7 @@ namespace ProjectGaloDaVelha.GameData
                             mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
-                            Console.WriteLine($"O {player.ToString()} ganhou na horizontal!"); // Um dos jogadores ganhou
+                            //Console.WriteLine($"O {player.ToString()} ganhou na horizontal!"); // Um dos jogadores ganhou
                             // JOGO FECHA
                             switch (player)
                             {
@@ -562,13 +566,15 @@ namespace ProjectGaloDaVelha.GameData
                                     {
 
                                         //gameStatus = GameStatus.player1Win;
-                                        EndGame(GameStatus.player1Win);
+                                        EndGame(GameStatus.player1Win,
+                                        "na horizontal!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
                                         //gameStatus = GameStatus.player2Win;
-                                        EndGame(GameStatus.player2Win);
+                                        EndGame(GameStatus.player2Win,
+                                        "na horizontal!");
                                         break;
                                     }
                             }
@@ -628,7 +634,7 @@ namespace ProjectGaloDaVelha.GameData
                             Console.WriteLine
                             ($"***********************************\n"); 
 
-                            Console.WriteLine($"O {player.ToString()} ganhou na vertical!"); // Um dos jogadores ganhou
+                            //Console.WriteLine($"O {player.ToString()} ganhou na vertical!"); // Um dos jogadores ganhou
                                                                                              // JOGO FECHA
                                                                                              // break;
                             switch (player)
@@ -636,17 +642,19 @@ namespace ProjectGaloDaVelha.GameData
                                 case Player.Player1:
                                     {
                                         //gameStatus = GameStatus.player1Win;
-                                        EndGame(GameStatus.player1Win);
+                                        EndGame(GameStatus.player1Win,
+                                        "na vertical!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
                                         //gameStatus = GameStatus.player2Win;
-                                        EndGame(GameStatus.player2Win);
+                                        EndGame(GameStatus.player2Win,
+                                        "na vertical!");
                                         break;
                                     }
                             }
-                            break;
+                            //break;
 
                         }
                     }
@@ -705,8 +713,8 @@ namespace ProjectGaloDaVelha.GameData
                             mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
-                            Console.WriteLine
-                            ($"O {player} ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
+                            //Console.WriteLine
+                            //($"O {player} ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
                                                                                        // JOGO FECHA
                                                                                        // break;
 
@@ -715,17 +723,19 @@ namespace ProjectGaloDaVelha.GameData
                                 case Player.Player1:
                                     {
                                         //gameStatus = GameStatus.player1Win;
-                                        EndGame(GameStatus.player1Win);
+                                        EndGame(GameStatus.player1Win,
+                                        "na diagonal da esquerda!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
                                         //gameStatus = GameStatus.player2Win;
-                                        EndGame(GameStatus.player2Win);
+                                        EndGame(GameStatus.player2Win,
+                                        "na diagonal da esquerda!");
                                         break;
                                     }
                             }
-                            break;
+                            //break;
                         }
                         
                     }
@@ -784,25 +794,27 @@ namespace ProjectGaloDaVelha.GameData
                             Console.WriteLine
                             ($"***********************************\n"); 
                             // Um dos jogadores ganhou
-                            Console.WriteLine
-                            ($"O {player.ToString()} ganhou na diagonal da direita"); 
+                            //Console.WriteLine
+                           //($"O {player.ToString()} ganhou na diagonal da direita"); 
 
                             switch (player)
                             {
                                 case Player.Player1:
                                     {
                                         //gameStatus = GameStatus.player1Win;
-                                        EndGame(GameStatus.player1Win);
+                                        EndGame(GameStatus.player1Win,
+                                        "na diagonal da direita!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
                                         //gameStatus = GameStatus.player2Win;
-                                        EndGame(GameStatus.player2Win);
+                                        EndGame(GameStatus.player2Win,
+                                        "na diagonal da direita!");
                                         break;
                                     }
                             }
-                            break;
+                           // break;
                             
                         }
                         
@@ -829,16 +841,22 @@ namespace ProjectGaloDaVelha.GameData
 
         }
 
+
+        private void Win(Player player)
+        {
+            
+        }
+
         /// <summary>
         ///  TODO: Must clear board and reset game status
         /// </summary>
-        private void EndGame(GameStatus status)
+        private void EndGame(GameStatus status, string winCondition = "")
         {
             // change game status
             gameStatus = status;
 
             // Final message
-            string endGameMessage = "";
+            string message = "";
 
             switch (gameStatus)
             {
@@ -847,14 +865,14 @@ namespace ProjectGaloDaVelha.GameData
                 case GameStatus.player1Win:
                     {
 
-                        endGameMessage = "O jogador 1 ganhou!";
+                        message = "O jogador 1 ganhou";
                         break;
                     }
 
                 // Player 2 wins
                 case GameStatus.player2Win:
                     {
-                        endGameMessage = "O jogador 2 ganhou!";
+                        message = "O jogador 2 ganhou";
                         break;
                     }
 
@@ -862,13 +880,13 @@ namespace ProjectGaloDaVelha.GameData
                 case GameStatus.draw:
                     {
 
-                        endGameMessage = "Empate!";
+                        message = "Empate!";
                         break;
                     }
                 case GameStatus.exit:
                     {
 
-                        endGameMessage = "Jogo terminado!";
+                        message= "Jogo terminado!";
                         break;
                     }
 
@@ -876,8 +894,26 @@ namespace ProjectGaloDaVelha.GameData
 
             }
 
-            // display final message
-            Console.WriteLine(endGameMessage);
+
+            if(winCondition.Length > 1)
+            {
+               // message += winCondition;
+               Console.WriteLine($"{message} {winCondition}");
+
+            }
+            else
+            {
+                // display final message
+                Console.WriteLine(message);
+
+            }
+
+            // update board one more time
+            UpdateBoard(); 
+                       
+            // exit game 
+            // similar command to return 
+            Environment.Exit(0); 
             
             
         }
