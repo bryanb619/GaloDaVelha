@@ -110,10 +110,10 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 * [_Console.Clear()_]()
 * [_C# Arrays W3 Schools_](https://www.w3schools.com/cs/cs_arrays.php)
 * [_Tic Tac toe_ linhas, colunas e diagonal](https://www.c-sharpcorner.com/UploadFile/75a48f/tic-tac-toe-game-in-C-Sharp/)
-* [ List ](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=net-8.0)
-* [PadRight(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=net-8.0)
+* [ List ](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netstandard-2.1)
+* [PadRight(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=netstandard-2.1)
 * [ANSI Color codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
-* [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=net-8.0)
+* [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
 * [Unicode Symbols](https://symbl.cc/en/unicode-table/)
 #### API
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
