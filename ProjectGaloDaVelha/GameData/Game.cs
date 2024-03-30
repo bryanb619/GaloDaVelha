@@ -339,6 +339,7 @@ namespace ProjectGaloDaVelha.GameData
             {
                 gameStatus = GameStatus.exit;
                 EndGame(GameStatus.exit);
+                Environment.Exit(0); //Meter no relatorio
                 
             }
 
@@ -349,6 +350,7 @@ namespace ProjectGaloDaVelha.GameData
                 {
                 gameStatus = GameStatus.exit;
                 EndGame(GameStatus.exit);
+                Environment.Exit(0); //Meter no relatorio
                 }
                 
                 Console.Write
@@ -371,6 +373,7 @@ namespace ProjectGaloDaVelha.GameData
             if (user_piece_string == "ESC")
             {
                 EndGame(GameStatus.exit);
+                Environment.Exit(0); //Meter no relatorio
             }
 
             //Se o input do número não for um numero valido:
@@ -464,6 +467,7 @@ namespace ProjectGaloDaVelha.GameData
                     gameStatus = GameStatus.exit;
 
                     EndGame(gameStatus);
+                    Environment.Exit(0); //Meter no relatorio
                     break;
                 }
 
@@ -540,6 +544,8 @@ namespace ProjectGaloDaVelha.GameData
 
                         if (counter_ColorHorizontal == 4 || counter_ShapeHorizontal == 4 || counter_HoleHorizontal == 4 || counter_SizeHorizontal == 4)
                         {
+                            Console.WriteLine
+                            ($"***********************************\n"); 
                             Console.WriteLine($"O {player.ToString()} ganhou na horizontal!"); // Um dos jogadores ganhou
                             // JOGO FECHA
                             switch (player)
@@ -610,6 +616,8 @@ namespace ProjectGaloDaVelha.GameData
                         if (counter_ColorVertical == 4 || counter_ShapeVertical
                         == 4 || counter_HoleVertical == 4 || counter_SizeVertical == 4)
                         {
+                            Console.WriteLine
+                            ($"***********************************\n"); 
 
                             Console.WriteLine($"O {player.ToString()} ganhou na vertical!"); // Um dos jogadores ganhou
                                                                                              // JOGO FECHA
@@ -686,6 +694,8 @@ namespace ProjectGaloDaVelha.GameData
                         counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4)
                         {
                             Console.WriteLine
+                            ($"***********************************\n"); 
+                            Console.WriteLine
                             ($"O {player} ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
                                                                                        // JOGO FECHA
                                                                                        // break;
@@ -759,6 +769,8 @@ namespace ProjectGaloDaVelha.GameData
                         if (counter_ColorDiag_R_ == 4 || counter_ShapeDiag_R == 4
                         || counter_HoleDiag_R == 4 || counter_SizeDiag_R == 4)
                         {
+                            Console.WriteLine
+                            ($"***********************************\n"); 
                             // Um dos jogadores ganhou
                             Console.WriteLine
                             ($"O {player.ToString()} ganhou na diagonal da direita"); 
@@ -852,7 +864,8 @@ namespace ProjectGaloDaVelha.GameData
 
             // display final message
             Console.WriteLine(endGameMessage);
-            Environment.Exit(0); //Meter no relatorio
+            
+            
         }
 
     }

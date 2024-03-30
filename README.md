@@ -10,7 +10,10 @@
 
 #### Hugo:
 - Código:
-  - _Game_ Construção de tabuleiro e movimento de peças
+  - _Game_ Construção do tabuleiro
+    - UI (Tabuleiro, Peças disponiveis, Legenda e fra)
+    - Atualização Movimento das peças
+    - Lógica de input e output (Como o jogador poderia buscar as peças e lugar do  tabuleiro desejado)
   - _Bug fixing_ 
   - 
 - Relatório
