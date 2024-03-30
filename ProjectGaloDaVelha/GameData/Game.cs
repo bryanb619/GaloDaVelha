@@ -382,6 +382,12 @@ namespace ProjectGaloDaVelha.GameData
                 Console.Write("Por favor, insira um número válido: ");
                 user_piece_string = Console.ReadLine();
 
+                if (user_piece_string == "ESC")
+                {
+                EndGame(GameStatus.exit);
+                Environment.Exit(0); //Meter no relatorio
+                }
+
             }
             
             user_piece = int.Parse(user_piece_string);
@@ -473,6 +479,7 @@ namespace ProjectGaloDaVelha.GameData
 
             }
 
+            bool mensagemExibida = false; //Mensagem para quem ganhou, para certificar que a mensagem só dá print 1 vez
 
             // Verificar peças horizontal e vertical
             for (int i = 0; i < piecesVerified.GetLength(0); i++)
@@ -542,8 +549,9 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeHorizontal = 1;
                         }
 
-                        if (counter_ColorHorizontal == 4 || counter_ShapeHorizontal == 4 || counter_HoleHorizontal == 4 || counter_SizeHorizontal == 4)
+                        if ((counter_ColorHorizontal == 4 || counter_ShapeHorizontal == 4 || counter_HoleHorizontal == 4 || counter_SizeHorizontal == 4) && !mensagemExibida)
                         {
+                            mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
                             Console.WriteLine($"O {player.ToString()} ganhou na horizontal!"); // Um dos jogadores ganhou
@@ -613,9 +621,10 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeVertical = 1;
                         }
 
-                        if (counter_ColorVertical == 4 || counter_ShapeVertical
-                        == 4 || counter_HoleVertical == 4 || counter_SizeVertical == 4)
+                        if ((counter_ColorVertical == 4 || counter_ShapeVertical
+                        == 4 || counter_HoleVertical == 4 || counter_SizeVertical == 4) && !mensagemExibida)
                         {
+                            mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
 
@@ -690,9 +699,10 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeDiag_L = 1;
                         }
 
-                        if (counter_ColorDiag_L == 4 || counter_ShapeDiag_L == 4 ||
-                        counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4)
+                        if ((counter_ColorDiag_L == 4 || counter_ShapeDiag_L == 4 ||
+                        counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4) && !mensagemExibida)
                         {
+                            mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
                             Console.WriteLine
@@ -717,6 +727,7 @@ namespace ProjectGaloDaVelha.GameData
                             }
                             break;
                         }
+                        
                     }
 
                     // Verificação DIAGONAL_RIGHT
@@ -766,9 +777,10 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeDiag_R = 1;
                         }
 
-                        if (counter_ColorDiag_R_ == 4 || counter_ShapeDiag_R == 4
-                        || counter_HoleDiag_R == 4 || counter_SizeDiag_R == 4)
+                        if ((counter_ColorDiag_R_ == 4 || counter_ShapeDiag_R == 4
+                        || counter_HoleDiag_R == 4 || counter_SizeDiag_R == 4) && !mensagemExibida)
                         {
+                            mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
                             // Um dos jogadores ganhou
@@ -792,6 +804,7 @@ namespace ProjectGaloDaVelha.GameData
                             }
                             break;
                         }
+                        
                     }
                 }
             }
