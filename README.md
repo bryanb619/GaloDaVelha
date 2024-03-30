@@ -49,7 +49,13 @@ De seguida aparece a primeira visualização do jogo, apresentado um tabuleiro, 
 
 O tabuleiro no estado zero do jogo encontrasse vazio, estando apenas letras do abecedario a ocupar os espaços de cada dimensão. Essas letras representam o lugar de cada espaço disponivel no tabuleiro.
 
-O menu das peças disponiveis representam tal como o referido, as peças disponiveis.
+O menu das peças disponiveis representam tal como o referido, as peças disponiveis. Cada peça tem o seu tamanho, cor, forma e furo. A forma é representado por simbolos Unicode, tendo visualmente quadrados e circulos. Para representar aqueles que têm furo ou não, as formas que estão preenchidas não têm furo, aquelas que só têm um conturno a volta representam as formas com furo. A cor é presentado pela própria cor que cada peça tem, tendo peças verdes ou amarelas. O tamanho é representado pelas letras _B_ (grande) e _s_ (pequeno). Essas letras são sempre representadas como 2º caracter da forma. Cada peça tem o seu número dentro de um parentesses reto. Esse número serve como referencia ao jogador para poder escolher a peça desejada ao intrudizir o numero correspondente ao mesmo.
+
+
+
+
+
+
 Caso a operação anterior realize-se com sucesso, será apresentado um menu de inventário com os itens presentes no ficheiro selecionado no passo anterior.
 
 - Adicionar itens: Para adicionar itens a este inventário (clicar em _add_) e em seguida é apresentado outro menu com a lista de todos os itens disponíveis (clicar no item desejado). Assim será adicionado o item escolhido ao inventário.
