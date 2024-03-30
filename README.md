@@ -10,7 +10,7 @@
 
 #### Hugo:
 - Código:
-  - _Game_ Construção do tabuleiro
+  - _Game_ Construção do tabuleiro, mais tarde passado a classe _boardMapping_
     - _UI_ (Layout do tabuleiro, menu peças disponiveis, desenho das peças ,legenda, frases de output e cores)
     - Atualização do tabuleiro e movimento das peças
     - Condições de vitoria (Verificar linhas horizontais, verticais e diagonais)
@@ -22,11 +22,15 @@
 
 
 #### Steven: 
-- Código:  
-  - _Piece_ Classe de peça
-  - _Game_ Instanciação de peças
+- Código: 
+  - Classes  
+     - _Piece_ 
+     - _Game_ Instanciação de peças, organização, formatão e métodos: _RunGame, Welcome, CheckForDraw_ e _EndGame_.
+    - _BoardMapping_ 
+    - _FileDirectory_
+   
   - Enumeradores
-    - _GameStatus_  "Enumerador com estado de jogo" 
+    - _GameStatus_ 
     - _Player_  
     - _PieceHole_
     - _PieceShape_
