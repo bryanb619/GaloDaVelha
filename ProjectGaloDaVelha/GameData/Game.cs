@@ -180,7 +180,7 @@ namespace ProjectGaloDaVelha.GameData
                     // the file is reached.
                     while ((line = sr.ReadLine()) != null)
                     {
-                        Console.Write(line);
+                        Console.WriteLine(line);
                     }
 
                    
@@ -358,6 +358,11 @@ namespace ProjectGaloDaVelha.GameData
 
 
             Console.Write("Qual é o numero da peça que deseja: ");
+
+            try
+            {
+                
+            }
             int user_piece = int.Parse(Console.ReadLine());
 
             if (user_piece > pecas_array.Length || user_piece < 0)
@@ -367,6 +372,8 @@ namespace ProjectGaloDaVelha.GameData
                 user_piece = int.Parse(Console.ReadLine());
 
             }
+
+            if (user_piece != int user_piece); //Se o input nao for um numero
 
             //Verificar se a Letra existe na letra 
             //e substituir pela peça
@@ -537,6 +544,7 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
+                            break;
 
                         }
                     }
@@ -607,6 +615,7 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
+                            break;
 
                         }
                     }
@@ -682,6 +691,7 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
+                            break;
                         }
                     }
 
@@ -754,10 +764,13 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
+                            break;
                         }
                     }
                 }
             }
+            Console.WriteLine
+            ($"***********************************\n"); 
 
         }
 
