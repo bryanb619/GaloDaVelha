@@ -318,27 +318,26 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void SetPieceOnBoard()
         {
-
+            // Muda cor para vermelho
             Console.WriteLine
-            ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair = ESC\n");
+            ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair do jogo = ESC\n");
 
             // ---------  WAITING HERE FOR NOW ---------
-            Console.Write("\u001b[0m");
+            Console.Write("\u001b[0m"); // Muda cor para branco
 
 
             Console.WriteLine
             ($"\u001b[36m==[ {player} ]==\u001b[0m");
 
 
-            Console.Write("Escreve a letra onde deseja colocar a peça:"
-            + " Ou ação adicional: ");
+            Console.Write("Escreve a letra onde deseja colocar a peça: ");
 
             string user_place = Console.ReadLine().ToUpper();
 
 
             if (user_place == "ESC")
             {
-                //gameStatus = GameStatus.exit;
+                gameStatus = GameStatus.exit;
                 EndGame(GameStatus.exit);
             }
 
@@ -358,25 +357,32 @@ namespace ProjectGaloDaVelha.GameData
 
 
             Console.Write("Qual é o numero da peça que deseja: ");
+            string user_piece_string = Console.ReadLine();
+            int user_piece;
 
-            try
+            if (user_piece_string == "ESC")
             {
-                
+                EndGame(GameStatus.exit);
             }
-            int user_piece = int.Parse(Console.ReadLine());
 
+            //Se o input do número não for um numero valido:
+            while (!int.TryParse(user_piece_string, out user_piece))
+            {
+                Console.Write("Por favor, insira um número válido: ");
+                user_piece_string = Console.ReadLine();
+
+            }
+            
+            user_piece = int.Parse(user_piece_string);
+
+            //Se o input do número for maior/menos que os numeros existentes: 
             if (user_piece > pecas_array.Length || user_piece < 0)
             {
                 Console.Write
-                ("O numero correspondente à peça não existe, insira o número novamente:  ");
+                ("O número atribuido à peça não existe, insira o número novamente: ");
                 user_piece = int.Parse(Console.ReadLine());
 
             }
-
-            if (user_piece != int user_piece); //Se o input nao for um numero
-
-            //Verificar se a Letra existe na letra 
-            //e substituir pela peça
 
             bool letter_dont_exist = true;
 
