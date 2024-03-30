@@ -910,6 +910,10 @@ namespace ProjectGaloDaVelha.GameData
 
             // update board one more time
             UpdateBoard(); 
+
+
+            Console.WriteLine
+            ("Utilize o comando: dotnet run --project ProjectGaloDaVelha para jogar novamente!");
                        
             // exit game 
             // similar command to return 
