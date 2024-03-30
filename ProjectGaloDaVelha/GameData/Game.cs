@@ -339,10 +339,18 @@ namespace ProjectGaloDaVelha.GameData
             {
                 gameStatus = GameStatus.exit;
                 EndGame(GameStatus.exit);
+                
             }
 
-            if (user_place != "ESC" && user_place.Length > 1)
+            //Se o input for maior de 1 caracter e não for ESC
+            while (user_place != "ESC" && user_place.Length > 1)
             {
+                if (user_place == "ESC")
+                {
+                gameStatus = GameStatus.exit;
+                EndGame(GameStatus.exit);
+                }
+                
                 Console.Write
                 ("A letra tem mais do que 1 caracter, insira a letra novamente: ");
                 user_place = Console.ReadLine().ToUpper();
@@ -376,7 +384,7 @@ namespace ProjectGaloDaVelha.GameData
             user_piece = int.Parse(user_piece_string);
 
             //Se o input do número for maior/menos que os numeros existentes: 
-            if (user_piece > pecas_array.Length || user_piece < 0)
+            while (user_piece > pecas_array.Length || user_piece < 0)
             {
                 Console.Write
                 ("O número atribuido à peça não existe, insira o número novamente: ");
@@ -844,6 +852,7 @@ namespace ProjectGaloDaVelha.GameData
 
             // display final message
             Console.WriteLine(endGameMessage);
+            Environment.Exit(0); //Meter no relatorio
         }
 
     }
