@@ -201,7 +201,7 @@ namespace ProjectGaloDaVelha.GameData
                 
                 
                 using (StreamReader sr = new StreamReader
-                (fileDirectory.Info
+                (fileDirectory.GetDir
                 +"/ProjectGaloDaVelha/GameData/WelcomeText.txt"))
                 {
                     // line to be printed

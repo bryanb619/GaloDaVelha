@@ -23,20 +23,20 @@ namespace ProjectGaloDaVelha.Pieces
 
    
         // Class constructor
-        public Piece(PieceSize newSize, PieceColor color, PieceShape newShape, PieceHole hole)
+        public Piece(PieceSize setSize, PieceColor setColor, PieceShape setShape, PieceHole setHole)
         {
 
             // Set Size
-            SetPieceSize(newSize);
+            SetPieceSize(setSize);
 
             // Set Color
-            SetPieceColor(color);
-
-            // Set Hole
-            SetPiecePuncture(hole);
+            SetPieceColor(setColor);
 
             //Set piece shape
-            SetPieceShape(newShape);
+            SetPieceShape(setShape);
+
+            // Set Hole
+            SetPiecePuncture(setHole);
 
             // Set pieceType 
             SetPieceType();

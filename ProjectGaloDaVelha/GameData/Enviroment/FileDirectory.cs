@@ -8,15 +8,15 @@ namespace ProjectGaloDaVelha.GameData.Enviroment
     public class FileDirectory
     {
         // Folder path to project directory
-        private DirectoryInfo info = Directory.CreateDirectory
+        private DirectoryInfo dir = Directory.CreateDirectory
         (Environment.CurrentDirectory);
 
 
         // Automatic property
-        public DirectoryInfo Info
+        public DirectoryInfo GetDir
         {
-            get => info;
-            set => info = value;
+            get => dir;
+            set => dir = value;
         }
     }
 }

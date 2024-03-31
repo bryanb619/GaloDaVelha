@@ -81,12 +81,49 @@ Portanto concluímos assim que as funções só fazem a uma função que lhes fo
 ### Diagrama _UML_
 
 ```mermaid
-graph TD;
-    Main-->Game;
-    Game --> Piece;
+classDiagram
+    class Program{
+    -Main()
+    }
 
+    class Game {
+        +start()
+        -RunGame()
+        -Welcome()
+        -CheckForDraw()
+        -UpdateBoard()
+        -MovePieces()
+        -EndGame(gameStatus, winCondition)
+    }
+
+    class Board {
+      - boardMap
+      + GetBoard()
+      
+    }
+    class Piece {
+      -pieceType
+      -size
+      -color
+      -shape
+      +Piece(setSize,setColor,setShape, setHole)
+    }
+    class FileDirectory {
+      -dir
+      +GetDir()
+    }
+    
+    Main --> Start
+    Board --> Game
+    Piece --> Game
+    FileDirectory --> Game
 
 ```
+
+
+
+
+
 
 ## Referências 
 
@@ -119,6 +156,7 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 * [ANSI Color codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
 * [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
 * [Unicode Symbols](https://symbl.cc/en/unicode-table/)
+* [Digrama UML Mermaid](https://mermaid.js.org/syntax/classDiagram.html)
 #### API
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 * [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
