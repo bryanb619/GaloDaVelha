@@ -55,6 +55,17 @@ O tabuleiro no estado zero do jogo encontrasse vazio, estando apenas letras do a
 
 O menu das peças disponiveis representam tal como o referido, as peças disponiveis. Cada peça tem o seu tamanho, cor, forma e furo. A forma é representado por simbolos Unicode, tendo visualmente quadrados e circulos. Para representar aqueles que têm furo ou não, as formas que estão preenchidas não têm furo, aquelas que só têm um conturno a volta representam as formas com furo. A cor é presentado pela própria cor que cada peça tem, tendo peças verdes ou amarelas. O tamanho é representado pelas letras _B_ (grande) e _s_ (pequeno). Essas letras são sempre representadas como 2º caracter da forma. Cada peça tem o seu número dentro de um parentesses reto. Esse número serve como referencia ao jogador para poder escolher a peça desejada ao intrudizir o numero correspondente ao mesmo.
 
+De seguinda, encontra-se uma legenda ao mencionar o que as letras a seguir a forma significam, tal como referido anteriormente, letra _B_ (maiosculo) demostra que a tal peça é grande e letra _s_ (minisculo) demostra que a tal peça é pequena. Caso o jogador queira sair do programa em caso o programa lhe é pedido qualquer um dos inputs, é só escrever _ESC_ para encerrar o projeto.
+
+Em cada turno, é referido qual jogador é a sua vez de jogar. Após essa informação, é feita a primeira frase de instrução: _Escreve a letra onde deseja colocar a peça:_. Aqui o jogador devera colocar uma das letras representados no tabuleiro, indicando em que espaço quer a peça desejada. Caso o jogador coloque mais do que uma letra ou uma letra que não exista no tabuleiro, aparecera uma mensagem de erro e o jogador não perde o turno. Depois é perguntado _Qual é o numero da peça que deseja:_. Aqui o jogador deve selecionar o numero desejado que corresponda a peça que deseja. Caso insira um numero invalido ou um numero que seja maior ou menos que os numeros disponiveis correspondentes a peça, aparecerá uma mensagem de erro, sem que o jogador perca o turno.
+
+Após o turno acabar, é mostrado novamente as mesmas informação (tabuleiro, peças, legenda, instruções, etc), no entando estas estarao atualizdas tendo em conta o turno anterior. As letras do tabuleiro serao substituidas pelas peças desejadas e as peças disponiveis iram diminuindo conforme for selecionado as peças. Este ciclo se repetira até um dos jogadores ganharem ou empatem entre si.
+
+Se um dos jogadores ganhar, seja na horizontal, vertical ou na diagonal, aparecerá um mensagem a indicar qual dos jogadores ganhou e como, exemplo: (_O jogador 2 ganhou na horizontal!_). Caso empanem, aparece uma frase a referir que foi um empate. Após essa frase de vitoria ou empate, é visualizado pela ultima vez, a ultima atualização do tabuleiro com as peças nos seus respetivos lugares, como também a ultima atualização do menu das peças disponiveis.
+Por fim, a ultima mensagem do programa (_Utilize o comando: dotnet run --project ProjectGaloDaVelha para jogar novamente!_) refere-se aqui caso um dos jogadores queiram jogar novamente.
+
+
+
 
 
 
