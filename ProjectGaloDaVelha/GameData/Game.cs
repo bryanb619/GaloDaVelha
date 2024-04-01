@@ -1,6 +1,7 @@
-using System;
+using System; 
+using System.Linq; // user for Set List operations
 using System.IO; // Used for reading files
-using System.Collections.Generic;
+using System.Collections.Generic; // Used for List
 using ProjectGaloDaVelha.Pieces; // for pieces enum and classes
 using ProjectGaloDaVelha.GameData.BoardMapping; // for board class
 using ProjectGaloDaVelha.GameData.Enviroment; // for file directory class
@@ -32,107 +33,10 @@ namespace ProjectGaloDaVelha.GameData
 
         private static string[,] boardMap = board.GetBoard();
 
- 
-        // --- YELLOW PIECES --- //
-
-        //1st ROW (Yellow with no holes)
-        // Big Yellow Square with no hole
-        private static Piece piece1 = new Piece
-        (PieceSize.big, PieceColor.yellow, PieceShape.square, PieceHole.none);
-        //public Piece Piece1 => piece1;
-
-        // Big Yellow Circle with no hole
-        private static Piece piece2 = new Piece
-        (PieceSize.big, PieceColor.yellow, PieceShape.circle, PieceHole.none);
-
-        // Small Yellow Square with no hole
-        private static Piece piece3 = new Piece
-        (PieceSize.small, PieceColor.yellow, PieceShape.square, PieceHole.none);
-
-        // Small Yellow Circle with no hole
-        private static Piece piece4 = new Piece
-        (PieceSize.small, PieceColor.yellow, PieceShape.circle, PieceHole.none);
-
-        // 2nd ROW (Yello with holes)
-        // Big Yellow Square with hole
-        private static Piece piece5 = new Piece
-        (PieceSize.big, PieceColor.yellow, PieceShape.square, PieceHole.hole);
-
-        // Big Yellow Circle with hole
-        private static Piece piece6 = new Piece
-        (PieceSize.big, PieceColor.yellow, PieceShape.circle, PieceHole.hole);
-
-        // Small Yellow Square with hole
-        private static Piece piece7 = new Piece
-        (PieceSize.small, PieceColor.yellow, PieceShape.square, PieceHole.hole);
-
-        // Small Yellow Circle with hole    
-        private static Piece piece8 = new Piece
-        (PieceSize.small, PieceColor.yellow, PieceShape.circle, PieceHole.hole);
-
-        // --- GREEN PIECES ---
-        private static Piece piece9 = new Piece
-        (PieceSize.big, PieceColor.green, PieceShape.square, PieceHole.none);
-
-        // Big Yellow Circle with no hole
-        private static Piece piece10 = new Piece
-        (PieceSize.big, PieceColor.green, PieceShape.circle, PieceHole.none);
-
-        // Small Yellow Square with no hole
-        private static Piece piece11 = new Piece
-        (PieceSize.small, PieceColor.green, PieceShape.square, PieceHole.none);
-
-        // Small Yellow Circle with no hole
-        private static Piece piece12 = new Piece
-        (PieceSize.small, PieceColor.green, PieceShape.circle, PieceHole.none);
-
-        // 2nd ROW (Yello with holes)
-        // Big Yellow Square with hole
-        private static Piece piece13 = new Piece
-        (PieceSize.big, PieceColor.green, PieceShape.square, PieceHole.hole);
-
-        // Big Yellow Circle with hole
-        private static Piece piece14 = new Piece(
-            PieceSize.big, PieceColor.green, PieceShape.circle, PieceHole.hole);
-
-        // Small Yellow Square with hole
-        private static Piece piece15 = new Piece
-        (PieceSize.small, PieceColor.green, PieceShape.square, PieceHole.hole);
-
-        // Small Yellow Circle with hole    
-        private static Piece piece16 = new Piece
-        (PieceSize.small, PieceColor.green, PieceShape.circle, PieceHole.hole);
-
-
-
-  
         // Array of pieces types
-        private static string[] pecas_array =
+
+        private static Piece[] piecesArray = 
         {
-            piece1.GetPieceType(),  piece2.GetPieceType(),
-            piece3.GetPieceType(),  piece4.GetPieceType(),
-            piece5.GetPieceType(),  piece6.GetPieceType(),
-            piece7.GetPieceType(),  piece8.GetPieceType(),
-            piece9.GetPieceType(),  piece10.GetPieceType(),
-            piece11.GetPieceType(), piece12.GetPieceType(),
-            piece13.GetPieceType(), piece14.GetPieceType(),
-            piece15.GetPieceType(), piece16.GetPieceType()
-        };
-
-        //
-        private static Piece[] piecesArray =
-        {
-            piece1,     piece2,     piece3,     piece4,
-            piece5,     piece6,     piece7,     piece8,
-            piece9,     piece10,    piece11,    piece12,
-            piece13,    piece14,    piece15,    piece16
-
-        };
-
-        // TODO: Testing new piece array to replace this mess
-        private static Piece[] piecesArrayTODO =
-        {
-
             // Yellow pieces
             new Piece(PieceSize.big, 
             PieceColor.yellow, PieceShape.square, PieceHole.none),
@@ -169,7 +73,6 @@ namespace ProjectGaloDaVelha.GameData
             new Piece(PieceSize.small, 
             PieceColor.green, PieceShape.circle, PieceHole.hole)
         };
-
 
         //Verificar as linhas horizontais, verticais e diagonais 
         private static Piece[,] piecesVerified = new Piece[4, 4];
@@ -317,11 +220,11 @@ namespace ProjectGaloDaVelha.GameData
                 for (int col = 0; col < 4; col++)
                 {
                     int index = row * 4 + col; // Calcula o índice correto
-                    if (index < pecas_array.Length)
+                    if (index < piecesArray.Length)
                     {
                         // Ajusta a largura da coluna
-                        Console.Write
-                        ($"{pecas_array[index]}[{index}]".PadRight(15));
+                        Console.Write 
+                        ($"{piecesArray[index].GetPieceType()}[{index}]".PadRight(15)); // GetPieceType()
                     }
 
                 }
@@ -366,7 +269,7 @@ namespace ProjectGaloDaVelha.GameData
         private void CheckForDraw()
         {
 
-            if (pecas_array.Length < 1)
+            if (piecesArray.Length < 1)
             {
                 // Set game status to draw
                 EndGame(GameStatus.draw);
@@ -381,8 +284,25 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void SetPieceOnBoard()
         {
-            // 
+
+            // Suport Variables 
+
+            // ...
             bool letter_dont_exist = true;
+
+            // Mensagem para quem ganhou, para certificar que a 
+            // mensagem só dá print 1 vez
+            bool mensagemExibida = false; 
+
+            string user_place, user_piece_string;
+
+            string[] visualPieces = new string[16];
+
+            int user_piece;
+
+            
+
+          
 
             // Muda cor para vermelho
             Console.WriteLine("\u001b[31m[Legenda: B = Grande" 
@@ -398,7 +318,7 @@ namespace ProjectGaloDaVelha.GameData
 
             Console.Write("Escreve a letra onde deseja colocar a peça: ");
 
-            string user_place = Console.ReadLine().ToUpper();
+            user_place = Console.ReadLine().ToUpper();
 
 
             if (user_place == "ESC")
@@ -425,8 +345,8 @@ namespace ProjectGaloDaVelha.GameData
 
 
             Console.Write("Qual é o numero da peça que deseja: ");
-            string user_piece_string = Console.ReadLine();
-            int user_piece;
+            user_piece_string = Console.ReadLine();
+          
 
             if (user_piece_string == "ESC")
             {
@@ -450,7 +370,7 @@ namespace ProjectGaloDaVelha.GameData
             user_piece = int.Parse(user_piece_string);
 
             //Se o input do número for maior/menos que os numeros existentes: 
-            while (user_piece > pecas_array.Length || user_piece < 0)
+            while (user_piece > piecesArray.Length || user_piece < 0)
             {
                 Console.Write("O número atribuido à peça não existe," 
                 +"insira o número novamente: ");
@@ -460,7 +380,7 @@ namespace ProjectGaloDaVelha.GameData
             }
 
          
-
+            
             while (letter_dont_exist)
             {
                 for (int i = 0; i < 4; i++)
@@ -471,22 +391,32 @@ namespace ProjectGaloDaVelha.GameData
                         {
 
 
-
-                            if
-                            (user_piece < pecas_array.Length && user_piece >= 0)
+                            if(user_piece < piecesArray.Length && user_piece >= 0)
                             {
                                 // representação visual do array
-                                boardMap[i, j] = pecas_array[user_piece];
+                                //  string = piecesArray[user_piece].GetPieceType();
+
+                                boardMap[i, j] = piecesArray[user_piece].GetPieceType();
 
                                 // representação lógica do array
                                 piecesVerified[i, j] = piecesArray[user_piece];
 
 
                                 // representação visual do array
-                                List<string> pecas_list =
-                                new List<string>(pecas_array);
-                                pecas_list.RemoveAt(user_piece);
-                                pecas_array = pecas_list.ToArray();
+                                //List<string> pecas_list =
+                                //new List<string>(pecas_array);
+
+                                List<string> pieceTypeList = 
+                                piecesArray.Select
+                                (piece => piece.GetPieceType()).ToList();
+
+                                pieceTypeList.RemoveAt(user_piece);
+
+                                visualPieces = pieceTypeList.ToArray();
+
+                                //string type = piecesArray[6].GetPieceType();
+
+                                
 
                                 // representação lógica do array
                                 List<Piece> pecas_list_code =
@@ -496,6 +426,9 @@ namespace ProjectGaloDaVelha.GameData
 
                                 letter_dont_exist = false;
                                 break;
+
+
+                            
 
                             }
 
@@ -521,9 +454,7 @@ namespace ProjectGaloDaVelha.GameData
                 }
 
             }
-            //Mensagem para quem ganhou, para certificar que a 
-            // mensagem só dá print 1 vez
-            bool mensagemExibida = false; 
+
 
             // Verificar peças horizontal e vertical
             for (int i = 0; i < piecesVerified.GetLength(0); i++)

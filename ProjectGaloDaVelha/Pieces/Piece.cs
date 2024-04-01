@@ -22,8 +22,16 @@ namespace ProjectGaloDaVelha.Pieces
         private bool hasHole;
 
    
-        // Class constructor
-        public Piece(PieceSize setSize, PieceColor setColor, PieceShape setShape, PieceHole setHole)
+        /// <summary>
+        ///  Constructor of Piece class
+        ///  
+        /// </summary>
+        /// <param name="setSize">Enum </param>
+        /// <param name="setColor">Enum</param>
+        /// <param name="setShape">Enum</param>
+        /// <param name="setHole">Enum</param>
+        public Piece(PieceSize setSize, PieceColor setColor, 
+        PieceShape setShape, PieceHole setHole)
         {
 
             // Set Size
@@ -94,7 +102,12 @@ namespace ProjectGaloDaVelha.Pieces
             return color;
         
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="newShape"></param>
+        /// <returns></returns>
         private PieceShape SetPieceShape(PieceShape newShape)
         {
           
@@ -104,7 +117,11 @@ namespace ProjectGaloDaVelha.Pieces
 
         }
    
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="puncture"></param>
+        /// <returns></returns>
         private bool SetPiecePuncture(PieceHole puncture)
         {
             switch (puncture)
@@ -163,30 +180,50 @@ namespace ProjectGaloDaVelha.Pieces
 
         // Get Piece Size
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string GetPieceSize()
         {
             // returns string of size
             return size;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string GetPieceColor()
         {
             // returns string of color
             return color;
         }
-
-        public string GetPieceShape()
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public PieceShape GetPieceShape()
         {
             // returns string of shape
-            return shape.ToString();
+            return shape;
         }
-
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool GetPieceHole()
         {
             // returns boolean of hole
             return hasHole;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string GetPieceType()
         {
             // returns string of pieceType
