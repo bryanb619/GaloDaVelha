@@ -1,5 +1,10 @@
 namespace ProjectGaloDaVelha.GameData.BoardMapping
 {
+
+    /// <summary>
+    /// Class that represents the game board
+    ///  
+    /// /// </summary>
     public class Board 
     {
         private string[,] boardMap =
@@ -10,10 +15,16 @@ namespace ProjectGaloDaVelha.GameData.BoardMapping
             {"M","N","O","P"}
         };
 
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <returns>returns board layout</returns>
         public string[,] GetBoard()
         {
+            // board layout
             return boardMap;
         }
+
     }
 
 }
