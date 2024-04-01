@@ -398,11 +398,6 @@ namespace ProjectGaloDaVelha.GameData
                                 // representação lógica do array
                                 piecesVerified[i, j] = piecesArray[user_piece];
 
-
-                                // representação visual do array
-                                //List<string> pecas_list =
-                                //new List<string>(pecas_array);
-
                                 List<string> pieceTypeList = 
                                 piecesArray.Select
                                 (piece => piece.GetPieceType()).ToList();
@@ -410,9 +405,6 @@ namespace ProjectGaloDaVelha.GameData
                                 pieceTypeList.RemoveAt(user_piece);
 
                                 visualPieces = pieceTypeList.ToArray();
-
-                                //string type = piecesArray[6].GetPieceType();
-
                                 
 
                                 // representação lógica do array
@@ -544,15 +536,12 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 case Player.Player1:
                                     {
-
-                                        //gameStatus = GameStatus.player1Win;
                                         EndGame(GameStatus.player1Win,
                                         "na horizontal!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
-                                        //gameStatus = GameStatus.player2Win;
                                         EndGame(GameStatus.player2Win,
                                         "na horizontal!");
                                         break;
@@ -619,14 +608,14 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 case Player.Player1:
                                     {
-                                        //gameStatus = GameStatus.player1Win;
+    
                                         EndGame(GameStatus.player1Win,
                                         "na vertical!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
-                                        //gameStatus = GameStatus.player2Win;
+
                                         EndGame(GameStatus.player2Win,
                                         "na vertical!");
                                         break;
@@ -699,14 +688,12 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 case Player.Player1:
                                     {
-                                        //gameStatus = GameStatus.player1Win;
                                         EndGame(GameStatus.player1Win,
                                         "na diagonal da esquerda!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
-                                        //gameStatus = GameStatus.player2Win;
                                         EndGame(GameStatus.player2Win,
                                         "na diagonal da esquerda!");
                                         break;
@@ -778,14 +765,12 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 case Player.Player1:
                                     {
-                                        //gameStatus = GameStatus.player1Win;
                                         EndGame(GameStatus.player1Win,
                                         "na diagonal da direita!");
                                         break;
                                     }
                                 case Player.Player2:
                                     {
-                                        //gameStatus = GameStatus.player2Win;
                                         EndGame(GameStatus.player2Win,
                                         "na diagonal da direita!");
                                         break;
