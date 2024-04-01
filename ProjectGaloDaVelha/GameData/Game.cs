@@ -24,7 +24,7 @@ namespace ProjectGaloDaVelha.GameData
         private static int turn = 0;
         
         // Reference to the file directory class
-        private static FileDirectory fileDirectory = new FileDirectory();
+        //private static 
 
         // Mapping of the board
         // start board
@@ -129,6 +129,47 @@ namespace ProjectGaloDaVelha.GameData
 
         };
 
+        // TODO: Testing new piece array to replace this mess
+        private static Piece[] piecesArrayTODO =
+        {
+
+            // Yellow pieces
+            new Piece(PieceSize.big, 
+            PieceColor.yellow, PieceShape.square, PieceHole.none),
+            new Piece(PieceSize.big, 
+            PieceColor.yellow, PieceShape.circle, PieceHole.none),
+            new Piece(PieceSize.small, 
+            PieceColor.yellow, PieceShape.square, PieceHole.none),
+            new Piece(PieceSize.small, 
+            PieceColor.yellow, PieceShape.circle, PieceHole.none),
+            new Piece(PieceSize.big, 
+            PieceColor.yellow, PieceShape.square, PieceHole.hole),
+            new Piece(PieceSize.big, 
+            PieceColor.yellow, PieceShape.circle, PieceHole.hole),
+            new Piece(PieceSize.small, 
+            PieceColor.yellow, PieceShape.square, PieceHole.hole),
+            new Piece(PieceSize.small, 
+            PieceColor.yellow, PieceShape.circle, PieceHole.hole),
+
+            // Greenn pieces
+            new Piece(PieceSize.big, 
+            PieceColor.green, PieceShape.square, PieceHole.none),
+            new Piece(PieceSize.big, 
+            PieceColor.green, PieceShape.circle, PieceHole.none),
+            new Piece(PieceSize.small, 
+            PieceColor.green, PieceShape.square, PieceHole.none),
+            new Piece(PieceSize.small, 
+            PieceColor.green, PieceShape.circle, PieceHole.none),
+            new Piece(PieceSize.big, 
+            PieceColor.green, PieceShape.square, PieceHole.hole),
+            new Piece(PieceSize.big, 
+            PieceColor.green, PieceShape.circle, PieceHole.hole),
+            new Piece(PieceSize.small, 
+            PieceColor.green, PieceShape.square, PieceHole.hole),
+            new Piece(PieceSize.small, 
+            PieceColor.green, PieceShape.circle, PieceHole.hole)
+        };
+
 
         //Verificar as linhas horizontais, verticais e diagonais 
         private static Piece[,] piecesVerified = new Piece[4, 4];
@@ -192,6 +233,8 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void Welcome()
         {
+
+            FileDirectory fileDirectory = new FileDirectory();
 
             // try to read text file
             try
@@ -389,7 +432,7 @@ namespace ProjectGaloDaVelha.GameData
                 if (user_piece_string == "ESC")
                 {
                     EndGame(GameStatus.exit);
-                //Environment.Exit(0); //Meter no relatorio
+
                 }
 
             }
@@ -416,19 +459,6 @@ namespace ProjectGaloDaVelha.GameData
                         if (boardMap[i, j] == user_place)
                         {
 
-                            // Classe de board, guarda essa info
-
-
-                            // TODO: Adicionar condição para não poder 
-                            //colocar peças em cima de outras
-
-                            /*
-                            if (user_place == invalido )
-                            {
-                                user_place = Console.ReadLine();
-                            }
-
-                            */
 
 
                             if
@@ -469,21 +499,21 @@ namespace ProjectGaloDaVelha.GameData
 
                 }
 
-                Console.Write("Essa letra não existe no tabuleiro, insira a letra novamente: ");
+                Console.Write
+                ("Essa letra não existe no tabuleiro, insira a letra novamente: ");
                 user_place = Console.ReadLine().ToUpper();
 
                 if (user_place == "ESC")
                 {
-                    //gameStatus = GameStatus.exit;
 
                     EndGame(GameStatus.exit);        
-                    //Environment.Exit(0); //Meter no relatorio
                     break;
                 }
 
             }
-
-            bool mensagemExibida = false; //Mensagem para quem ganhou, para certificar que a mensagem só dá print 1 vez
+            //Mensagem para quem ganhou, para certificar que a 
+            // mensagem só dá print 1 vez
+            bool mensagemExibida = false; 
 
             // Verificar peças horizontal e vertical
             for (int i = 0; i < piecesVerified.GetLength(0); i++)
@@ -628,15 +658,13 @@ namespace ProjectGaloDaVelha.GameData
                         }
 
                         if ((counter_ColorVertical == 4 || counter_ShapeVertical
-                        == 4 || counter_HoleVertical == 4 || counter_SizeVertical == 4) && !mensagemExibida)
+                        == 4 || counter_HoleVertical == 4 || counter_SizeVertical 
+                        == 4) && !mensagemExibida)
                         {
                             mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
 
-                            //Console.WriteLine($"O {player.ToString()} ganhou na vertical!"); // Um dos jogadores ganhou
-                                                                                             // JOGO FECHA
-                                                                                             // break;
                             switch (player)
                             {
                                 case Player.Player1:
@@ -793,9 +821,7 @@ namespace ProjectGaloDaVelha.GameData
                             mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
-                            // Um dos jogadores ganhou
-                            //Console.WriteLine
-                           //($"O {player.ToString()} ganhou na diagonal da direita"); 
+
 
                             switch (player)
                             {
