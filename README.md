@@ -65,24 +65,6 @@ Se um dos jogadores ganhar, seja na horizontal, vertical ou diagonal, uma mensag
 
 Por fim, a última mensagem do programa (_'Utilize o comando: dotnet run --project ProjectGaloDaVelha para jogar novamente!'_) indica que os jogadores podem usar este comando para jogar novamente.
 
-
-
-
-
-
-
-
-
-
-#
-
-#### Princípios _SOLID_
-
-- Princípios _SOLID_ utilizados nesse projeto foram: _**Single Responsability Principle**_.  
-  - O inventário ou a classe inventário apenas tem a responsabilidade de cuidar do inventário em si.  
-   - _ItemUI_ trata das funções presentes no _UI_ do item respectivo.  
-   -  _FileIO_ apenas trata dos ficheiros.
-   -  _ItemAdder_ adiciona itens.  
   
 Portanto concluímos assim que as funções só fazem a uma função que lhes foi dada e não varias coisas diferentes.
 
@@ -145,11 +127,6 @@ classDiagram
 
 
 ### Consultas com docentes
-Relativamente a consulta feita com professores, um professor foi consultado para ajudar em algumas questões. Este foi o professor Diogo Andrade onde auxiliou em 2 questões sendo essas respectivamente:
-
-- [_UnauthorizedAccessException_](https://learn.microsoft.com/en-us/dotnet/api/system.unauthorizedaccessexception?view=netstandard-2.1). Este erro foi apresentado ao docente para poder obter-se alguma explicação do porque poderia estar a acontecer tal erro. Para resolver o problema foi sugerido pelo professor Diogo rever o código, verificar valor das variáveis e usar _Debug.log_ que indicassem exatamente o que acontecia com o código presente. Nenhum foi código foi fornecido pelo professor e erro resolveu-se utilizando a documentação [._NET STANDARD_ 2.1](https://learn.microsoft.com/en-us/dotnet/api/system.environment.specialfolder?view=netstandard-2.1#system-environment-specialfolder-desktopdirectory) onde verificou-se que há 2 tipos de ambientes de trabalho e de facto estavamos a usar o errado para além do facto de havia falhas no código de escritura.
-  
-- Gestão e criação de itens inventário. No que toca a criação do sistema de inventário consultou-se também o professor Diogo Andrade para saber qual a melhor de forma de podermos construir um sistema de inventário a partir de um dado ficheiro. O mesmo explicou que não existe nenhuma melhor de realizar sem ter em consideração o peso total do projeto em si. Novamente nenhum código foi fornecido por via de docentes da [Universidade Lusófona](https://www.ulusofona.pt/) ou qualuqer outro docente.  
   
   A Realização deste projeto consistiu essencialmente em pesquisa própria, conhecimento adquirido por trabalhos e ensino fornecido por proferessores em diversas unidades curriculares lecionadas na [licenciatura de Videojogos](https://www.ulusofona.pt/lisboa/licenciaturas/videojogos).
 #
@@ -159,15 +136,16 @@ Relativamente a consulta feita com professores, um professor foi consultado para
 * [_Console.Clear()_]()
 * [_C# Arrays W3 Schools_](https://www.w3schools.com/cs/cs_arrays.php)
 * [_Tic Tac toe_ linhas, colunas e diagonal](https://www.c-sharpcorner.com/UploadFile/75a48f/tic-tac-toe-game-in-C-Sharp/)
-* [ List ](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netstandard-2.1)
-* [PadRight(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=netstandard-2.1)
-* [ANSI Color codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
-* [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
+
 * [Unicode Symbols](https://symbl.cc/en/unicode-table/)
 * [Digrama UML Mermaid](https://mermaid.js.org/syntax/classDiagram.html)
 #### API
 * [_Arrays & Multidimensional Arrays_](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/arrays)
 * [_Stream Reader & Error Handling_](https://learn.microsoft.com/en-us/dotnet/api/system.io.streamreader?view=netstandard-2.1)
+* [ List ](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1?view=netstandard-2.1)
+* [PadRight(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.string.padright?view=netstandard-2.1)
+* [ANSI Color codes](https://www.lihaoyi.com/post/BuildyourownCommandLinewithANSIescapecodes.html)
+* [Envrionment.Exit(Int32)](https://learn.microsoft.com/en-us/dotnet/api/system.environment.exit?view=netstandard-2.1)
 #### _Youtube_
 * [Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
 * [FUTURO VER BOARD CLASS](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
