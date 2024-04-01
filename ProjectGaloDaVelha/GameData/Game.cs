@@ -367,7 +367,7 @@ namespace ProjectGaloDaVelha.GameData
         {
             // Muda cor para vermelho
             Console.WriteLine
-            ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair do jogo = ESC\n");
+            ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair do jogo = ESC]\n");
 
             // ---------  WAITING HERE FOR NOW ---------
             Console.Write("\u001b[0m"); // Muda cor para branco
