@@ -183,8 +183,7 @@ namespace ProjectGaloDaVelha.GameData
             // change game status to playing on start
             gameStatus = GameStatus.playing;
 
-            // Calls the manage turns method
-            // method, diceides the player turn
+            // Calls Further game methods
             RunGame();
 
             // TODO: STEVEN
@@ -220,7 +219,7 @@ namespace ProjectGaloDaVelha.GameData
                 UpdateBoard();
 
                 // Move piece
-                MovePiece();
+                DecidePlayerTurn();
             }
 
         }
@@ -236,6 +235,8 @@ namespace ProjectGaloDaVelha.GameData
 
             FileDirectory fileDirectory = new FileDirectory();
 
+            string welcomeText = "/ProjectGaloDaVelha/GameData/WelcomeText.txt";
+
             // try to read text file
             try
             {   
@@ -243,9 +244,8 @@ namespace ProjectGaloDaVelha.GameData
                 Console.WriteLine(); 
                 
                 
-                using (StreamReader sr = new StreamReader
-                (fileDirectory.GetDir
-                +"/ProjectGaloDaVelha/GameData/WelcomeText.txt"))
+                using (StreamReader sr = new StreamReader(fileDirectory.GetDir 
+                + welcomeText))
                 {
                     // line to be printed
                     string line;
@@ -262,17 +262,16 @@ namespace ProjectGaloDaVelha.GameData
 
                 Console.ReadLine();
 
-                Console.Clear();
+                //Console.Clear();
 
             }
 
-            catch 
+            // Catches any exceptions
+            catch (Exception error)
             {
-
-               // Console.WriteLine(e.Message);
+                // Print error message
+                Console.WriteLine(error.Message);
             }
-
-            //
 
         }
 
@@ -337,11 +336,11 @@ namespace ProjectGaloDaVelha.GameData
         /// <summary>
         /// 
         /// </summary>
-        private void MovePiece()
+        private void DecidePlayerTurn()
         {
         
+      
             turn++;
-
             // determine player turn
 
             //1, 3, 5 -> Player 1 turn
@@ -356,18 +355,38 @@ namespace ProjectGaloDaVelha.GameData
                 player = Player.Player2;
             }
 
-
             SetPieceOnBoard();
         }
+
+
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        private void CheckForDraw()
+        {
+
+            if (pecas_array.Length < 1)
+            {
+                // Set game status to draw
+                EndGame(GameStatus.draw);
+
+            }
+
+        }
+
 
         /// <summary>
         /// 
         /// </summary>
         private void SetPieceOnBoard()
         {
+            // 
+            bool letter_dont_exist = true;
+
             // Muda cor para vermelho
-            Console.WriteLine
-            ("\u001b[31m[Legenda: B = Grande || s = Pequeno] || Sair do jogo = ESC]\n");
+            Console.WriteLine("\u001b[31m[Legenda: B = Grande" 
+            +"|| s = Pequeno] || Sair do jogo = ESC]\n");
 
             // ---------  WAITING HERE FOR NOW ---------
             Console.Write("\u001b[0m"); // Muda cor para branco
@@ -384,9 +403,9 @@ namespace ProjectGaloDaVelha.GameData
 
             if (user_place == "ESC")
             {
-                //gameStatus = GameStatus.exit;
+
                 EndGame(GameStatus.exit);
-                //Environment.Exit(0); //Meter no relatorio
+
                 
             }
 
@@ -395,22 +414,14 @@ namespace ProjectGaloDaVelha.GameData
             {
                 if (user_place == "ESC")
                 {
-                    //gameStatus = GameStatus.exit;
                     EndGame(GameStatus.exit);
-                    //Environment.Exit(0); //Meter no relatorio
                 }
                 
-                Console.Write
-                ("A letra tem mais do que 1 caracter, insira a letra novamente: ");
+                Console.Write("A letra tem mais do que 1 caracter, " 
+                +"insira a letra novamente: ");
                 user_place = Console.ReadLine().ToUpper();
 
             }
-
-            // TODO: Adicionar condição para não poder
-            // Upper case the string
-            //user_place.ToUpper(); 
-
-            //user_place = user_place.ToUpper(); 
 
 
             Console.Write("Qual é o numero da peça que deseja: ");
@@ -420,7 +431,6 @@ namespace ProjectGaloDaVelha.GameData
             if (user_piece_string == "ESC")
             {
                 EndGame(GameStatus.exit);
-                //Meter no relatorio
             }
 
             //Se o input do número não for um numero valido:
@@ -442,13 +452,14 @@ namespace ProjectGaloDaVelha.GameData
             //Se o input do número for maior/menos que os numeros existentes: 
             while (user_piece > pecas_array.Length || user_piece < 0)
             {
-                Console.Write
-                ("O número atribuido à peça não existe, insira o número novamente: ");
+                Console.Write("O número atribuido à peça não existe," 
+                +"insira o número novamente: ");
+
                 user_piece = int.Parse(Console.ReadLine());
 
             }
 
-            bool letter_dont_exist = true;
+         
 
             while (letter_dont_exist)
             {
@@ -496,7 +507,6 @@ namespace ProjectGaloDaVelha.GameData
                 if (letter_dont_exist == false)
                 {
                     break;
-
                 }
 
                 Console.Write
@@ -540,13 +550,17 @@ namespace ProjectGaloDaVelha.GameData
 
                 int j, k, n;
 
-                for (j = 1, k = 1, n = 3; j < piecesVerified.GetLength(1); j++, k++, n--) // Se a cor, forma, hole e tamanho for igual:
+                // Se a cor, forma, hole e tamanho for igual:
+                for (j = 1, k = 1, n = 3; j < 
+                piecesVerified.GetLength(1); j++, k++, n--) 
                 {
                     // Verificação horizontal
-                    if (piecesVerified[i, j] != null && piecesVerified[i, j - 1] != null) // Se não for vazio
+                    if (piecesVerified[i, j] != null && 
+                    piecesVerified[i, j - 1] != null) // Se não for vazio
                     {
 
-                        if (piecesVerified[i, j].GetPieceColor() == piecesVerified[i, j - 1].GetPieceColor())
+                        if (piecesVerified[i, j].GetPieceColor() == 
+                        piecesVerified[i, j - 1].GetPieceColor())
                         {
                             counter_ColorHorizontal++;
 
@@ -556,7 +570,8 @@ namespace ProjectGaloDaVelha.GameData
                             counter_ColorHorizontal = 1;
                         }
 
-                        if (piecesVerified[i, j].GetPieceShape() == piecesVerified[i, j - 1].GetPieceShape())
+                        if (piecesVerified[i, j].GetPieceShape() == 
+                        piecesVerified[i, j - 1].GetPieceShape())
                         {
                             counter_ShapeHorizontal++;
                         }
@@ -565,7 +580,8 @@ namespace ProjectGaloDaVelha.GameData
                             counter_ShapeHorizontal = 1;
                         }
 
-                        if (piecesVerified[i, j].GetPieceHole() == piecesVerified[i, j - 1].GetPieceHole())
+                        if (piecesVerified[i, j].GetPieceHole() == 
+                        piecesVerified[i, j - 1].GetPieceHole())
                         {
                             counter_HoleHorizontal++;
                         }
@@ -574,7 +590,8 @@ namespace ProjectGaloDaVelha.GameData
                             counter_HoleHorizontal = 1;
                         }
 
-                        if (piecesVerified[i, j].GetPieceSize() == piecesVerified[i, j - 1].GetPieceSize())
+                        if (piecesVerified[i, j].GetPieceSize() ==
+                         piecesVerified[i, j - 1].GetPieceSize())
                         {
                             counter_SizeHorizontal++;
                         }
@@ -583,13 +600,18 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeHorizontal = 1;
                         }
 
-                        if ((counter_ColorHorizontal == 4 || counter_ShapeHorizontal == 4 || counter_HoleHorizontal == 4 || counter_SizeHorizontal == 4) && !mensagemExibida)
+                        if ((counter_ColorHorizontal == 4 ||
+                         counter_ShapeHorizontal == 4 || 
+                         counter_HoleHorizontal == 4 || 
+                         counter_SizeHorizontal == 4) 
+                         && !mensagemExibida)
+
                         {
                             mensagemExibida = true;
                             Console.WriteLine
                             ($"***********************************\n"); 
-                            //Console.WriteLine($"O {player.ToString()} ganhou na horizontal!"); // Um dos jogadores ganhou
-                            // JOGO FECHA
+                       
+
                             switch (player)
                             {
                                 case Player.Player1:
@@ -735,16 +757,15 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeDiag_L = 1;
                         }
 
-                        if ((counter_ColorDiag_L == 4 || counter_ShapeDiag_L == 4 ||
-                        counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4) && !mensagemExibida)
+                        if ((counter_ColorDiag_L == 4 || counter_ShapeDiag_L == 
+                        4 ||counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4) 
+                        && !mensagemExibida)
                         {
                             mensagemExibida = true;
+
                             Console.WriteLine
                             ($"***********************************\n"); 
-                            //Console.WriteLine
-                            //($"O {player} ganhou na diagonal da esquerda"); // Um dos jogadores ganhou
-                                                                                       // JOGO FECHA
-                                                                                       // break;
+
 
                             switch (player)
                             {
@@ -815,8 +836,10 @@ namespace ProjectGaloDaVelha.GameData
                             counter_SizeDiag_R = 1;
                         }
 
-                        if ((counter_ColorDiag_R_ == 4 || counter_ShapeDiag_R == 4
-                        || counter_HoleDiag_R == 4 || counter_SizeDiag_R == 4) && !mensagemExibida)
+                        if ((counter_ColorDiag_R_ == 4 ||
+                         counter_ShapeDiag_R == 4
+                        || counter_HoleDiag_R == 4 ||
+                         counter_SizeDiag_R == 4) && !mensagemExibida)
                         {
                             mensagemExibida = true;
                             Console.WriteLine
@@ -853,28 +876,7 @@ namespace ProjectGaloDaVelha.GameData
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        private void CheckForDraw()
-        {
-
-            if (pecas_array.Length < 1)
-            {
-                //gameStatus = GameStatus.draw;
-                EndGame(GameStatus.draw);
-
-            }
-
-        }
-
-
-        private void Win(Player player)
-        {
-            
-        }
-
-        /// <summary>
-        ///  TODO: Must clear board and reset game status
+        ///  
         /// </summary>
         private void EndGame(GameStatus status, string winCondition = "")
         {
@@ -939,7 +941,8 @@ namespace ProjectGaloDaVelha.GameData
 
 
             Console.WriteLine
-            ("Utilize o comando: dotnet run --project ProjectGaloDaVelha para jogar novamente!");
+            ("Utilize o comando: dotnet run --project"
+            +" ProjectGaloDaVelha para jogar novamente!");
                        
             // exit game 
             // similar command to return 
