@@ -146,7 +146,6 @@ namespace ProjectGaloDaVelha.GameData
                 // enters enter before text
                 Console.WriteLine(); 
                 
-                
                 using (StreamReader sr = new StreamReader(fileDirectory.GetDir 
                 + welcomeText))
                 {
@@ -224,7 +223,7 @@ namespace ProjectGaloDaVelha.GameData
                     {
                         // Ajusta a largura da coluna
                         Console.Write 
-                        ($"{piecesArray[index].GetPieceType()}[{index}]".PadRight(15)); // GetPieceType()
+                        ($"{piecesArray[index].GetPieceType()}[{index}]".PadRight(15));
                     }
 
                 }
@@ -301,8 +300,6 @@ namespace ProjectGaloDaVelha.GameData
             int user_piece;
 
             
-
-          
 
             // Muda cor para vermelho
             Console.WriteLine("\u001b[31m[Legenda: B = Grande" 
@@ -807,8 +804,10 @@ namespace ProjectGaloDaVelha.GameData
         }
 
         /// <summary>
-        ///  
+        /// 
         /// </summary>
+        /// <param name="status">Enum game status</param>
+        /// <param name="winCondition">string condition of win</param>
         private void EndGame(GameStatus status, string winCondition = "")
         {
             // change game status
