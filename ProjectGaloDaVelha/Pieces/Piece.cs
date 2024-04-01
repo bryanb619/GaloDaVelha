@@ -229,7 +229,6 @@ namespace ProjectGaloDaVelha.Pieces
             // returns string of pieceType
             return pieceType;
         }
-
     }
 
 }
