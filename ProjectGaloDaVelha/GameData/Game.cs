@@ -143,10 +143,10 @@ namespace ProjectGaloDaVelha.GameData
             // try to read text file
             try
             {   
-                // enters enter before text
+                // Enter before text
                 Console.WriteLine(); 
                 
-                using (StreamReader sr = new StreamReader(fileDirectory.GetDir 
+                using (StreamReader sr = new StreamReader(fileDirectory.GetDir() 
                 + welcomeText))
                 {
                     // line to be printed

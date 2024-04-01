@@ -11,12 +11,10 @@ namespace ProjectGaloDaVelha.GameData.Enviroment
         private DirectoryInfo dir = Directory.CreateDirectory
         (Environment.CurrentDirectory);
 
-
-        // Automatic property
-        public DirectoryInfo GetDir
+ 
+        public DirectoryInfo GetDir()
         {
-            get => dir;
-            set => dir = value;
+            return dir;
         }
     }
 }
