@@ -43,19 +43,19 @@
 ### Descrição da solução
 - Projeto desenvolvido utilizando a linguagem _C#_ 8.0 e com  [_.NET_](https://learn.microsoft.com/en-us/dotnet/api/?view=netstandard-2.1).
 
-- Projeto consiste no jogo do GaloDaVelha, mas apresentado visualmente em consola (terminal)
+- Projeto consiste no jogo do GaloDaVelha, apresentado visualmente em consola (terminal)
 
-A solução do projeto consiste em jogar o jogo do GaloDaVelha na consola, isto é um jogo para 2 jogadores (PvP). Cada jogador tem o seu respetivo turno, dai cada jogador tem a possibilidade ganhar ou empatar (se não houver mais peças disponíveis).
+A solução do projeto consiste em jogar o jogo do Galo da Velha na consola, que é um jogo para 2 jogadores (_PvP_). Cada jogador tem o seu turno respectivo, dando a cada um a possibilidade de ganhar ou empatar (caso não haja mais peças disponíveis)
 
-Antes do jogo começar aparece um texto inicial, explicando as regras do jogo. Para avançar para o jogo, o utilizador precisa de carregar na tecla ENTER tal como referido.
+Antes do início do jogo, é apresentado um texto inicial que explica as regras do jogo. Para avançar, o utilizador precisa de pressionar a tecla ENTER, conforme mencionado."
 
-De seguida aparece a primeira visualização do jogo, apresentado um tabuleiro, menu das peças disponiveis, legenda e o turno do jogador.
+De seguida, surge a primeira visualização do jogo, que apresenta um tabuleiro, o menu das peças disponíveis, uma legenda e o turno do jogador.
 
-O tabuleiro no estado zero do jogo encontrasse vazio, estando apenas letras do abecedario a ocupar os espaços de cada dimensão. Essas letras representam o lugar de cada espaço disponivel no tabuleiro.
+O tabuleiro no estado inicial do jogo encontra-se vazio, contendo apenas letras do alfabeto ocupando os espaços de cada dimensão. Essas letras representam a posição de cada espaço disponível no tabuleiro
 
-O menu das peças disponiveis representam tal como o referido, as peças disponiveis. Cada peça tem o seu tamanho, cor, forma e furo. A forma é representado por simbolos Unicode, tendo visualmente quadrados e circulos. Para representar aqueles que têm furo ou não, as formas que estão preenchidas não têm furo, aquelas que só têm um conturno a volta representam as formas com furo. A cor é presentado pela própria cor que cada peça tem, tendo peças verdes ou amarelas. O tamanho é representado pelas letras _B_ (grande) e _s_ (pequeno). Essas letras são sempre representadas como 2º caracter da forma. Cada peça tem o seu número dentro de um parentesses reto. Esse número serve como referencia ao jogador para poder escolher a peça desejada ao intrudizir o numero correspondente ao mesmo.
+O menu das peças disponíveis representa, tal como referido, as peças disponíveis. Cada peça tem o seu tamanho, cor, forma e presença de furo. A forma é representada por símbolos _Unicode_, visualmente distinguindo quadrados e círculos. Para representar se as peças têm furo ou não, as formas preenchidas não têm furo, enquanto aquelas com um contorno à volta têm furo. A cor é apresentada pela própria cor de cada peça, podendo ser verdes ou amarelas. O tamanho é indicado pelas letras _'B'_ (grande) e _'S'_ (pequeno), sendo sempre o segundo caractere da forma. Cada peça é identificada por um número entre parênteses retos. Este número serve como referência ao jogador para selecionar a peça desejada ao introduzir o número correspondente.
 
-De seguinda, encontra-se uma legenda ao mencionar o que as letras a seguir a forma significam, tal como referido anteriormente, letra _B_ (maiosculo) demostra que a tal peça é grande e letra _s_ (minisculo) demostra que a tal peça é pequena. Caso o jogador queira sair do programa em caso o programa lhe é pedido qualquer um dos inputs, é só escrever _ESC_ para encerrar o projeto.
+Em seguida, encontra-se uma legenda que explica o significado das letras que seguem a forma, como mencionado anteriormente. A letra _'B'_ (maiúscula) indica que a peça é grande, enquanto a letra _'s'_ (minúscula) indica que a peça é pequena. Caso o jogador deseje sair do programa quando for solicitado qualquer input, basta escrever 'ESC' para encerrar o projeto.
 
 Em cada turno, é referido qual jogador é a sua vez de jogar. Após essa informação, é feita a primeira frase de instrução: _Escreve a letra onde deseja colocar a peça:_. Aqui o jogador devera colocar uma das letras representados no tabuleiro, indicando em que espaço quer a peça desejada. Caso o jogador coloque mais do que uma letra ou uma letra que não exista no tabuleiro, aparecera uma mensagem de erro e o jogador não perde o turno. Depois é perguntado _Qual é o numero da peça que deseja:_. Aqui o jogador deve selecionar o numero desejado que corresponda a peça que deseja. Caso insira um numero invalido ou um numero que seja maior ou menos que os numeros disponiveis correspondentes a peça, aparecerá uma mensagem de erro, sem que o jogador perca o turno.
 
@@ -71,11 +71,7 @@ Por fim, a ultima mensagem do programa (_Utilize o comando: dotnet run --project
 
 
 
-Caso a operação anterior realize-se com sucesso, será apresentado um menu de inventário com os itens presentes no ficheiro selecionado no passo anterior.
 
-- Adicionar itens: Para adicionar itens a este inventário (clicar em _add_) e em seguida é apresentado outro menu com a lista de todos os itens disponíveis (clicar no item desejado). Assim será adicionado o item escolhido ao inventário.
-
-- Remover itens: Para remover itens devemos passar o rato em cima do item desejado (clicar no item para a janela de descrição fixar-se) e clicar no ícone x. Assim será removido do inventário o item escolhido.
 
 #
 
