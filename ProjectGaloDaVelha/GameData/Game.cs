@@ -247,7 +247,7 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void DecidePlayerTurn()
         {
-        
+            
       
             turn++;
             // determine player turn
@@ -297,10 +297,7 @@ namespace ProjectGaloDaVelha.GameData
         /// 
         /// Finally, there a for cicle to count each sequence possible to win the game,
         /// counting the vertical, horizontal and diagonal lines. If theres no sequence, 
-        /// the code just ignores and moves to the next turn
-        /// 
-        /// 
-        /// 
+        /// the code just ignores and moves to the next turn        /// 
         /// </summary>
         private void SetPieceOnBoard()
         {
@@ -312,7 +309,7 @@ namespace ProjectGaloDaVelha.GameData
 
             // Mensagem para quem ganhou, para certificar que a 
             // mensagem só dá print 1 vez
-            bool mensagemExibida = false; 
+           
 
             string user_place, user_piece_string;
 
@@ -436,11 +433,8 @@ namespace ProjectGaloDaVelha.GameData
 
                                 // now we know that the letter exists
                                 letter_dont_exist = false;
+
                                 break;
-
-
-                            
-
                             }
 
                         }
@@ -461,10 +455,19 @@ namespace ProjectGaloDaVelha.GameData
                 {
 
                     EndGame(GameStatus.exit);        
-                    break;
                 }
 
             }
+
+            VerfifiedGameStatus();
+
+        }
+
+
+        private void VerfifiedGameStatus()
+        {
+
+            bool mensagemExibida = false; 
 
 
             // Check lines sequence horizontal, vertical and diagnoal
@@ -569,7 +572,6 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
-                            break;
 
                         }
                     }
@@ -643,8 +645,6 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
-                            //break;
-
                         }
                     }
 
@@ -721,7 +721,6 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
-                            //break;
                         }
                         
                     }
@@ -798,7 +797,7 @@ namespace ProjectGaloDaVelha.GameData
                                         break;
                                     }
                             }
-                           // break;
+                       
                             
                         }
                         
@@ -806,8 +805,7 @@ namespace ProjectGaloDaVelha.GameData
                 }
             }
             Console.WriteLine
-            ($"***********************************\n"); 
-
+            ($"***********************************\n");
         }
 
         /// <summary>
@@ -885,7 +883,6 @@ namespace ProjectGaloDaVelha.GameData
             // exit game 
             // similar command to return 
             Environment.Exit(0); 
-            
             
         }
 
