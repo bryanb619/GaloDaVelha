@@ -178,10 +178,16 @@ namespace ProjectGaloDaVelha.GameData
         }
 
         /// <summary>
+        /// Method that creates the layout boardgame
+        /// using character with "for" loops to each row and colum
+        /// 
+        /// </summary> <summary>
+        /// It also creates the remaining pieces menu
         /// 
         /// </summary>
         private void UpdateBoard()
         {
+            //Space
             Console.WriteLine();
 
             // Display board
@@ -236,7 +242,8 @@ namespace ProjectGaloDaVelha.GameData
 
 
         /// <summary>
-        /// 
+        /// Turn value starts at 1. If turn is a odd number, its player 1 turn, 
+        /// else is player 2 turn
         /// </summary>
         private void DecidePlayerTurn()
         {
@@ -263,7 +270,8 @@ namespace ProjectGaloDaVelha.GameData
 
         
         /// <summary>
-        /// 
+        /// If the number of pieces available array is 0, call a get method that 
+        /// return a draw match
         /// </summary>
         private void CheckForDraw()
         {
@@ -279,6 +287,19 @@ namespace ProjectGaloDaVelha.GameData
 
 
         /// <summary>
+        /// This method is where the console asks the input of the player.
+        /// Such as witch place you want to place the piece, 
+        /// and what piece do you want.
+        /// In case the input is not valid, error messages will appeard.
+        /// 
+        /// Afher that input is valid, it takes the pieces available array 
+        /// and removes the piece that the player as choosen.
+        /// 
+        /// Finally, there a for cicle to count each sequence possible to win the game,
+        /// counting the vertical, horizontal and diagonal lines. If theres no sequence, 
+        /// the code just ignores and moves to the next turn
+        /// 
+        /// 
         /// 
         /// </summary>
         private void SetPieceOnBoard()
@@ -299,7 +320,6 @@ namespace ProjectGaloDaVelha.GameData
 
             int user_piece;
 
-            
 
             // Muda cor para vermelho
             Console.WriteLine("\u001b[31m[Legenda: B = Grande" 
@@ -377,13 +397,14 @@ namespace ProjectGaloDaVelha.GameData
             }
 
          
-            
+            // While the code doenst know that the letter given by the player exists:  
             while (letter_dont_exist)
             {
                 for (int i = 0; i < 4; i++)
                 {
                     for (int j = 0; j < 4; j++)
                     {
+                        // if letter place given by the player exist in the boargame:
                         if (boardMap[i, j] == user_place)
                         {
 
@@ -413,6 +434,7 @@ namespace ProjectGaloDaVelha.GameData
                                 pecas_list_code.RemoveAt(user_piece);
                                 piecesArray = pecas_list_code.ToArray();
 
+                                // now we know that the letter exists
                                 letter_dont_exist = false;
                                 break;
 
@@ -445,7 +467,7 @@ namespace ProjectGaloDaVelha.GameData
             }
 
 
-            // Verificar peças horizontal e vertical
+            // Check lines sequence horizontal, vertical and diagnoal
             for (int i = 0; i < piecesVerified.GetLength(0); i++)
             {
                 int counter_ColorHorizontal = 1;
@@ -789,7 +811,8 @@ namespace ProjectGaloDaVelha.GameData
         }
 
         /// <summary>
-        /// 
+        /// Prints the result of the end of the match, 
+        /// like (win, draw or quit) condition
         /// </summary>
         /// <param name="status">Enum game status</param>
         /// <param name="winCondition">string condition of win</param>

@@ -61,12 +61,6 @@ O jogo continua até um jogador ganhar ou haver empate.
 Mensagens indicam a vitória do jogador ou empate.
 O programa sugere o comando para jogar novamente.
 
-
-
-
-  
-Portanto concluímos assim que as funções só fazem a uma função que lhes foi dada e não varias coisas diferentes.
-
 CODIGO ALGORITMO
 
 ### Diagrama _UML_
