@@ -72,38 +72,10 @@ CODIGO ALGORITMO
 ### Diagrama _UML_
 
 ```mermaid
-classDiagram
-    class Program{
-    -Main()
-    }
-
-    class Game {
-        +start()
-        -RunGame()
-        -Welcome()
-        -CheckForDraw()
-        -UpdateBoard()
-        -MovePieces()
-        -EndGame(gameStatus, winCondition)
-    }
-
-    class Board {
-      - boardMap
-      + GetBoard()
-      
-    }
-    class Piece {
-      -pieceType
-      -size
-      -color
-      -shape
-      +Piece(setSize,setColor,setShape, setHole)
-    }
-    class FileDirectory {
-      -dir
-      +GetDir()
-    }
-    
+graph TD
+  A([Main]) --> B[/"Welcome(Pedir Input)"/]
+  B --> C{Game Status}
+  C --> D(["EndGame(GameStatus,string)"])
 
 ```
 
@@ -143,6 +115,7 @@ classDiagram
 * [Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
 * [FUTURO VER BOARD CLASS](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
 * [_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
+
 
 
 
