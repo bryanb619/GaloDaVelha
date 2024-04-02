@@ -31,7 +31,7 @@ namespace ProjectGaloDaVelha.GameData
         // start board
         private static Board board = new Board();
 
-        private static string[,] boardMap = board.GetBoard();
+        //private static string[,] boardMap = board.GetBoard();
 
         // Array of pieces types
 
@@ -201,7 +201,7 @@ namespace ProjectGaloDaVelha.GameData
                 for (int col = 0; col < 4; col++)
                 {
                     Console.Write
-                    ($"| {boardMap[row, col]}\u001b[0m ".PadRight(9));
+                    ($"| {board.GetBoard()[row, col]}\u001b[0m ".PadRight(9));
                 }
 
                 Console.WriteLine("|");
@@ -402,16 +402,18 @@ namespace ProjectGaloDaVelha.GameData
                     for (int j = 0; j < 4; j++)
                     {
                         // if letter place given by the player exist in the boargame:
-                        if (boardMap[i, j] == user_place)
+                        if (board.GetBoard()[i, j] == user_place)
                         {
 
 
-                            if(user_piece < piecesArray.Length && user_piece >= 0)
+                            if(user_piece < piecesArray.Length 
+                            && user_piece >= 0)
                             {
                                 // representação visual do array
                                 //  string = piecesArray[user_piece].GetPieceType();
 
-                                boardMap[i, j] = piecesArray[user_piece].GetPieceType();
+                                board.GetBoard()[i, j] = 
+                                piecesArray[user_piece].GetPieceType();
 
                                 // representação lógica do array
                                 piecesVerified[i, j] = piecesArray[user_piece];
@@ -419,6 +421,8 @@ namespace ProjectGaloDaVelha.GameData
                                 List<string> pieceTypeList = 
                                 piecesArray.Select
                                 (piece => piece.GetPieceType()).ToList();
+
+
 
                                 pieceTypeList.RemoveAt(user_piece);
 
