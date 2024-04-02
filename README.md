@@ -67,11 +67,32 @@ CODIGO ALGORITMO
 
 ```mermaid
 graph TD
-  A([Main]) --> B[/"Welcome(Pedir Input)"/]
-  B --> C{Game Status}
-  C --> D(["EndGame(GameStatus,string)"])
+
+  A([Main]) --> B[/"Start"/];
+  B         --> C[RunGame];
+
+  C --> J{CheckFoDraw};
+  C --> D[UpdateBoard];
+  C --> E{DecidePlayerTurn};
+
+  E --> F[SetPieceOnBoard]
+  F --> G[VerifiedGameStatus]
+
+  G --> H{WinOnLateral}
+
+
+
+J --> Y([EndGame])
+
+
+
+
+
 
 ```
+  
+
+  E --> F(["EndGame(GameStatus,string)"])
 
 ## Referências 
 
