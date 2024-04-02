@@ -47,23 +47,22 @@
 
 A solução do projeto consiste em jogar o jogo do Galo da Velha na consola, que é um jogo para 2 jogadores (_PvP_). Cada jogador tem o seu turno respectivo, dando a cada um a possibilidade de ganhar ou empatar (caso não haja mais peças disponíveis)
 
-Antes do início do jogo, é apresentado um texto inicial que explica as regras do jogo. Para avançar, o utilizador precisa de pressionar a tecla ENTER, conforme mencionado."
+Antes do jogo começar, o utilizador é apresentado com as regras. Para avançar, pressiona ENTER.
+A primeira visualização mostra o tabuleiro, peças disponíveis, legenda e turno do jogador.
+O tabuleiro inicial está vazio, com letras representando os espaços.
 
-De seguida, surge a primeira visualização do jogo, que apresenta um tabuleiro, o menu das peças disponíveis, uma legenda e o turno do jogador.
+O menu das peças mostra tamanho, cor, forma e presença de furo. A forma é representada por símbolos Unicode, distinguindo quadrados e círculos. 'B' significa grande e 's' significa pequeno. Cada peça é numerada.
+Uma legenda explica os símbolos.
 
-O tabuleiro no estado inicial do jogo encontra-se vazio, contendo apenas letras do alfabeto ocupando os espaços de cada dimensão. Essas letras representam a posição de cada espaço disponível no tabuleiro
+Se desejar sair, o jogador escreve 'ESC'.
+Em cada turno, o jogador escolhe onde colocar a peça e seu número.
+Após o turno, o tabuleiro e peças são atualizados.
+O jogo continua até um jogador ganhar ou haver empate.
+Mensagens indicam a vitória do jogador ou empate.
+O programa sugere o comando para jogar novamente.
 
-O menu das peças disponíveis representa, tal como referido, as peças disponíveis. Cada peça tem o seu tamanho, cor, forma e presença de furo. A forma é representada por símbolos _Unicode_, visualmente distinguindo quadrados e círculos. Para representar se as peças têm furo ou não, as formas preenchidas não têm furo, enquanto aquelas com um contorno à volta têm furo. A cor é apresentada pela própria cor de cada peça, podendo ser verdes ou amarelas. O tamanho é indicado pelas letras _'B'_ (grande) e _'S'_ (pequeno), sendo sempre o segundo caractere da forma. Cada peça é identificada por um número entre parênteses retos. Este número serve como referência ao jogador para selecionar a peça desejada ao introduzir o número correspondente.
 
-Em seguida, encontra-se uma legenda que explica o significado das letras que seguem a forma, como mencionado anteriormente. A letra _'B'_ (maiúscula) indica que a peça é grande, enquanto a letra _'s'_ (minúscula) indica que a peça é pequena. Caso o jogador deseje sair do programa quando for solicitado qualquer input, basta escrever 'ESC' para encerrar o projeto.
 
-Em cada turno, é indicado qual jogador está a vez de jogar. Após esta informação, é apresentada a primeira instrução: _'Escreva a letra onde deseja colocar a peça:'_. Aqui, o jogador deve inserir uma das letras representadas no tabuleiro, indicando em que espaço deseja colocar a peça escolhida. Se o jogador inserir mais do que uma letra ou uma letra que não exista no tabuleiro, será exibida uma mensagem de erro, mas o jogador não perderá o turno. Em seguida, é perguntado: _'Qual é o número da peça que deseja:'_. Aqui, o jogador deve selecionar o número correspondente à peça desejada. Se inserir um número inválido ou um número maior ou menor do que os números disponíveis para as peças, será exibida uma mensagem de erro, sem que o jogador perca o turno.
-
-Após o término do turno, as mesmas informações são mostradas novamente (tabuleiro, peças, legenda, instruções, etc.), porém, estas estarão atualizadas de acordo com o turno anterior. As letras do tabuleiro serão substituídas pelas peças selecionadas, e as peças disponíveis irão diminuir conforme forem selecionadas. Este ciclo se repetirá até que um dos jogadores vença ou ocorra um empate.
-
-Se um dos jogadores ganhar, seja na horizontal, vertical ou diagonal, uma mensagem indicando qual jogador venceu e como será exibida, por exemplo: _'O jogador 2 ganhou na horizontal!'_. Em caso de empate, uma mensagem referindo que ocorreu um empate será exibida. Após esta mensagem de vitória ou empate, será exibida pela última vez a atualização final do tabuleiro com as peças nos seus lugares correspondentes, bem como a última atualização do menu das peças disponíveis.
-
-Por fim, a última mensagem do programa (_'Utilize o comando: dotnet run --project ProjectGaloDaVelha para jogar novamente!'_) indica que os jogadores podem usar este comando para jogar novamente.
 
   
 Portanto concluímos assim que as funções só fazem a uma função que lhes foi dada e não varias coisas diferentes.
