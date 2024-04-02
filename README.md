@@ -71,26 +71,32 @@ graph TD
   A([Main]) --> B[/"Start"/];
   B         --> C[RunGame];
 
-  C --> J{CheckFoDraw};
-  C --> D[UpdateBoard];
-  C --> E{DecidePlayerTurn};
+  B     --> EXIT{Exit}
+  EXIT  --> Z([EndGame])
 
-  E --> F[SetPieceOnBoard]
-  F --> G[VerifiedGameStatus]
+  C     --> D{CheckFoDraw};
+  C     --> E[UpdateBoard];
+  C     --> F{DecidePlayerTurn};
 
-  G --> H{WinOnLateral}
+  D     --> Z([EndGame])
 
+  F     --> G[SetPieceOnBoard];
+  G     --> H[VerifiedGameStatus];
 
+  H     --> I{WinOnLateral};
+  H     --> K{WinOnDiagonal};
+  H     --> L{WinOnVertical}
 
-J --> Y([EndGame])
+  I     --> Z([EndGame])
+  K     --> Z([EndGame])
+  L     --> Z([EndGame])
 
-
-
+  Z     -->E([UpdateBoard])
 
 
 
 ```
-  
+  x --> y([EndGame])
 
   E --> F(["EndGame(GameStatus,string)"])
 
