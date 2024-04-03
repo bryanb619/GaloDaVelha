@@ -1,25 +1,27 @@
 namespace ProjectGaloDaVelha.Pieces
 {
     /// <summary>
-    /// 
+    ///  Base class for Piece
+    ///  This Class is responsible for storing the piece attributes
+    ///  such type representated by a string further on
     /// </summary>
     public class Piece
     {
-        // --------------------- Attributes --------------------- //
+        // --------------------------- Attributes --------------------------- //
 
-        private string pieceType; 
+        private string          pieceType; 
 
         // ref to PieceSize enum
-        private string size;
+        private string          size;
 
         // ref to PieceColor enum
-        private string color;
+        private string          color;
 
         // ref to PieceShape enum
-        private PieceShape shape;
+        private PieceShape      shape;
 
         // ref to piece hole
-        private bool hasHole;
+        private bool            hasHole;
 
 
         // -------------------------- Constructor --------------------------- //
@@ -27,7 +29,7 @@ namespace ProjectGaloDaVelha.Pieces
         /// <summary>
         ///  Constructor of Piece class
         ///  Receives 4 parameters being each type an enumerator
-        ///  This constructor sets the piece attributes:
+        ///  This constructor sets the piece attributes for:
         ///  SIZE - COLOR - SHAPE - HOLE
         ///  
         ///   
@@ -44,19 +46,19 @@ namespace ProjectGaloDaVelha.Pieces
         {
 
             // Set Size
-            SetPieceSize(setSize);
+            size            = SetPieceSize(setSize);
 
             // Set Color
-            SetPieceColor(setColor);
+            color           = SetPieceColor(setColor);
 
             //Set piece shape
-            SetPieceShape(setShape);
+            shape           = setShape;
 
             // Set Hole
-            SetPiecePuncture(setHole);
+            hasHole         = SetPieceHole(setHole);
 
             // Set pieceType 
-            SetPieceType();
+            pieceType        = SetPieceType();
         }
 
 
@@ -69,22 +71,24 @@ namespace ProjectGaloDaVelha.Pieces
         /// <returns></returns>
         private string SetPieceSize(PieceSize newSize)
         {
+
+            string rSize = ""; 
    
             switch(newSize)
             {
                 case PieceSize.small:
                 {
-                    size = "s";
+                    rSize = "s";
                     break;
                 }
                 case PieceSize.big:
                 {
-                    size = "B";
+                    rSize = "B";
                     break;
                 }
             }
         
-            return size;
+            return rSize;
         }
 
         /// <summary>
@@ -95,78 +99,70 @@ namespace ProjectGaloDaVelha.Pieces
         private string SetPieceColor(PieceColor newColor)
         {
 
+            string rColor = "";
+
             switch (newColor)
             {
                 case PieceColor.green:
                 {
                     // Green
-                    color = "\u001b[32m";
+                    rColor= "\u001b[32m";
                     break;
                 }
                    
                 case PieceColor.yellow:
                 {
                     // Yellow
-                    color = "\u001b[33m";
+                    rColor= "\u001b[33m";
                     break;
                 }
                     
             }
 
             // string color
-            return color;
+            return rColor;
         
         }
         
-        /// <summary>
-        ///  Setter for Piece Shape
-        ///  Receives an enumerator of PieceShape type
-        ///  sets the shape attribute equal to parameter received
-        /// </summary>
-        /// <param name="newShape"></param>
-        /// <returns></returns>
-        private PieceShape SetPieceShape(PieceShape newShape)
-        {
-          
-            shape = newShape;
 
-            return shape;
-
-        }
-   
         /// <summary>
         /// 
         /// </summary>
         /// <param name="hole">Enum </param>
         /// <returns>returns bool stating hole condition</returns>
-        private bool SetPiecePuncture(PieceHole hole)
+        private bool SetPieceHole(PieceHole hole)
         {
+
+            bool rHasHole = false;
+
             switch (hole)
             {
                 case PieceHole.none:
                 {
-                    hasHole = false;
+                    rHasHole = false;
                     break;
                 }
                 
                 case PieceHole.hole:
                 {
-                    hasHole = true;
+                    rHasHole = true;
                     break;
                 }
                
             }
             
             // bool hasHole
-            return hasHole;
+            return rHasHole;
         }
 
         /// <summary>
         ///  Sets Piece Type
         ///  Uses all initialized & 
         /// </summary>
-        private void SetPieceType()
+        private string SetPieceType()
         {
+            //Support variables
+            string rPieceType = "";
             char pieceConfig = '\0';
 
             switch(shape)
@@ -194,7 +190,9 @@ namespace ProjectGaloDaVelha.Pieces
             } 
 
             // set pieceType
-            pieceType = color + pieceConfig + size;    
+            rPieceType = color + pieceConfig + size;    
+            
+            return rPieceType;
         }
 
 
