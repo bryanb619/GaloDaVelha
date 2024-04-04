@@ -63,6 +63,8 @@ O programa sugere o comando para jogar novamente.
 
 CODIGO ALGORITMO
 
+O tabuleiro é construido visualmente por caracteres como '+' ou '-', onde esses caracteres encontram-se em ciclos for. Em cada espaço vazio do tabuleiro, tem feito print de cada elemento array de letras. Onde mais tarde podem ser substituidos pelas peças que o jogador escolhe. Depois de ser dado os inputs do jogador, caso não é dado erro de mensagem, é corrida o metodo VerifiedGameStatus. Isso verifica que existe uma sequencia de cores, tamanho, forma ou furo na vertical, horizontal e diagonal. E para verificar, é corrido por cada 2 elementos da array 'piecesVerified'. Se os elemtos não forem vazios, é verificado se existe uma sequencia. Se tiver e se a ,emsage,Exibida é false, então a mensagemExibida passa para true, para evitar repitição da frase de vitorio e é mostrado o jogador vencendor e como venceu.
+
 ### Diagrama _UML_
 
 ```mermaid
