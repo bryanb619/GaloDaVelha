@@ -1,10 +1,10 @@
 using System; 
-using System.Linq; // user for Set List operations
-using System.IO; // Used for reading files
-using System.Collections.Generic; // Used for List
-using ProjectGaloDaVelha.Pieces; // for pieces enum and classes
-using ProjectGaloDaVelha.GameData.BoardMapping; // for board class
-using ProjectGaloDaVelha.GameData.Enviroment; // for file directory class
+using System.Linq;                                  // user for Set List ops
+using System.IO;                                    // Used for reading files
+using System.Collections.Generic;                   // Used for List
+using ProjectGaloDaVelha.Pieces;                    // Pieces enum and classes
+using ProjectGaloDaVelha.GameData.BoardMapping;     // Board class
+using ProjectGaloDaVelha.GameData.Enviroment;       // File directory class
 
 
 namespace ProjectGaloDaVelha.GameData
@@ -23,18 +23,11 @@ namespace ProjectGaloDaVelha.GameData
 
         // Reference to the turn
         private static int turn = 0;
-        
-        // Reference to the file directory class
-        //private static 
 
-        // Mapping of the board
-        // start board
+        // Mapping of the board, creates a new instance of the board
         private static Board board = new Board();
 
-        //private static string[,] boardMap = board.GetBoard();
-
-        // Array of pieces types
-
+        // Array of Pieces
         private static Piece[] piecesArray = 
         {
             // Yellow pieces
@@ -74,37 +67,38 @@ namespace ProjectGaloDaVelha.GameData
             PieceColor.green, PieceShape.circle, PieceHole.hole)
         };
 
-        //Verificar as linhas horizontais, verticais e diagonais 
+        // arrays of pieces placed on the board
         private static Piece[,] piecesVerified = new Piece[4, 4];
 
 
         /// <summary>
-        /// Starts Game Operations
+        /// Method starts Game Operations.
+        /// Sets games status to playing so the the game can be played and 
+        /// controled with a while loop inside of the RunGame() method
+        /// Finaly calls RunGame() 
         /// </summary>
         public void Start()
         {
-            // change game status to playing on start
+            // changes game status to playing on start to enable playtime
+            // operations
             gameStatus = GameStatus.playing;
 
             // Calls Further game methods
+            // starts a a game loop
             RunGame();
 
-            // TODO: STEVEN
-            // XML comments
-            // Fix CONSOLE CLEAR()
-            // RESEARCH ON BOARD CLASS
-
-            //TODO: HUGO
-            // Same pos Pieces issues & Turn issue
-            // upper case the string
-            // Letter lenght check
-            // Readme
         }
 
 
         /// <summary>
-        /// 
-        /// </summary>
+        /// Called by the Start() method. 
+        /// Calls Welcome() (that displays a welcome & explanation text)
+        /// Loops the game while the game status is playing.
+        /// While in the loop it:
+        /// - Checks for a draw         => CheckForDraw()
+        /// - Updates the board         =>UpdateBoard()
+        /// - Decides the player turn   => DecidePlayerTurn()
+        /// /// </summary>
         private void RunGame()
         {
 
@@ -126,7 +120,8 @@ namespace ProjectGaloDaVelha.GameData
             }
 
         }
-         /// <summary>
+
+        /// <summary>
         ///  Display welcome message to the player
         ///  provides instructions on how to play the game
         ///  uses System.IO & StreamReader to read from text file
@@ -135,17 +130,19 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void Welcome()
         {
-
+            // Instance of FileDirectory 
             FileDirectory fileDirectory = new FileDirectory();
 
             string welcomeText = "/ProjectGaloDaVelha/GameData/WelcomeText.txt";
 
-            // try to read text file
+            // try code
             try
             {   
+
                 // Enter before text
                 Console.WriteLine(); 
                 
+                // use stream reader to read text
                 using (StreamReader sr = new StreamReader(fileDirectory.GetDir() 
                 + welcomeText))
                 {
@@ -162,9 +159,8 @@ namespace ProjectGaloDaVelha.GameData
                    
                 }
 
+                // whait for any input
                 Console.ReadLine();
-
-                //Console.Clear();
 
             }
 
@@ -181,13 +177,11 @@ namespace ProjectGaloDaVelha.GameData
         /// Method that creates the layout boardgame
         /// using character with "for" loops to each row and colum
         /// 
-        /// </summary> <summary>
         /// It also creates the remaining pieces menu
-        /// 
         /// </summary>
         private void UpdateBoard()
         {
-            //Space
+            // Enter on console
             Console.WriteLine();
 
             // Display board
@@ -237,7 +231,6 @@ namespace ProjectGaloDaVelha.GameData
                 Console.WriteLine(); 
             }
 
-
         }
 
 
@@ -248,7 +241,6 @@ namespace ProjectGaloDaVelha.GameData
         private void DecidePlayerTurn()
         {
             
-      
             turn++;
             // determine player turn
 
@@ -297,7 +289,7 @@ namespace ProjectGaloDaVelha.GameData
         /// 
         /// Finally, there a for cicle to count each sequence possible to win the game,
         /// counting the vertical, horizontal and diagonal lines. If theres no sequence, 
-        /// the code just ignores and moves to the next turn        /// 
+        /// the code just ignores and moves to the next turn  
         /// </summary>
         private void SetPieceOnBoard()
         {
@@ -468,6 +460,10 @@ namespace ProjectGaloDaVelha.GameData
         }
 
 
+
+        /// <summary>
+        /// 
+        /// </summary>
         private void VerfifiedGameStatus()
         {
 
@@ -477,6 +473,8 @@ namespace ProjectGaloDaVelha.GameData
             // Check lines sequence horizontal, vertical and diagnoal
             for (int i = 0; i < piecesVerified.GetLength(0); i++)
             {
+
+                //  
                 int counter_ColorHorizontal = 1;
                 int counter_ShapeHorizontal = 1;
                 int counter_HoleHorizontal = 1;
@@ -876,7 +874,7 @@ namespace ProjectGaloDaVelha.GameData
 
             }
 
-            // update board one more time
+            // update board one last time
             UpdateBoard(); 
 
 
