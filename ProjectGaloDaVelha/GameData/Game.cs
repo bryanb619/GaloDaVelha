@@ -30,7 +30,10 @@ namespace ProjectGaloDaVelha.GameData
         // Array of Pieces
         private static Piece[] piecesArray = 
         {
-            // Yellow pieces
+            // ----------------------- Yellow pieces ------------------------ //
+
+            // Instances of Yellow pieces
+            // 7 pieces in total 
             new Piece(PieceSize.big, 
             PieceColor.yellow, PieceShape.square, PieceHole.none),
             new Piece(PieceSize.big, 
@@ -48,7 +51,11 @@ namespace ProjectGaloDaVelha.GameData
             new Piece(PieceSize.small, 
             PieceColor.yellow, PieceShape.circle, PieceHole.hole),
 
-            // Greenn pieces
+
+            // ----------------------- Green pieces ------------------------- //
+
+            // Instances of Yellow pieces
+            // 7 pieces in total 
             new Piece(PieceSize.big, 
             PieceColor.green, PieceShape.square, PieceHole.none),
             new Piece(PieceSize.big, 
@@ -67,10 +74,12 @@ namespace ProjectGaloDaVelha.GameData
             PieceColor.green, PieceShape.circle, PieceHole.hole)
         };
 
+
         // arrays of pieces placed on the board
         private static Piece[,] piecesVerified = new Piece[4, 4];
+        // ------------------- END OF VARIABLES ----------------------------- //
 
-
+        
         /// <summary>
         /// Method starts Game Operations.
         /// Sets games status to playing so the the game can be played and 
@@ -130,12 +139,16 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void Welcome()
         {
+            // -------------- Suport Variables -------------------------------//
+
             // Instance of FileDirectory 
             FileDirectory fileDirectory = new FileDirectory();
 
+            // path of text file
             string welcomeText = "/ProjectGaloDaVelha/GameData/WelcomeText.txt";
 
-            // try code
+            // Error Handling
+            // try to read & output file content
             try
             {   
 
@@ -164,10 +177,10 @@ namespace ProjectGaloDaVelha.GameData
 
             }
 
-            // Catches any exceptions
+            // Catches any exceptions as output
             catch (Exception error)
             {
-                // Print error message
+                // Print exception message
                 Console.WriteLine(error.Message);
             }
 
@@ -248,15 +261,17 @@ namespace ProjectGaloDaVelha.GameData
             //1, 3, 5 -> Player 1 turn
             if (turn % 2 != 0)
             {
+                // Player 1 is now playing
                 player = Player.Player1;
             }
 
             // Player 2 turn -> 2, 4, 6
             else
-            {
+            {   // Player 2 is now playing
                 player = Player.Player2;
             }
 
+            // proceed to set pieces on board
             SetPieceOnBoard();
         }
 
@@ -264,11 +279,17 @@ namespace ProjectGaloDaVelha.GameData
         
         /// <summary>
         /// If the number of pieces available array is 0, call a get method that 
-        /// return a draw match
+        /// that sets game to draw status and terminates the game
+        /// the if stamente becomes valid once the length of the array
+        /// (piecesArray) is 0 or lower. In other words, there are no more pieces
+        /// available to play & now one has won the game, since checkForDraw()
+        /// is the first method to run in the game loop.
         /// </summary>
         private void CheckForDraw()
         {
-
+            // If there are no more pieces available
+            // Set game status to draw.
+            // End the game with a draw status
             if (piecesArray.Length < 1)
             {
                 // Set game status to draw
@@ -295,7 +316,7 @@ namespace ProjectGaloDaVelha.GameData
         private void SetPieceOnBoard()
         {
 
-            // Suport Variables 
+            // -------------- Suport Variables -------------------------------//
 
             // If one of the letters given by the user donst exist in the boargame 
             bool letter_dont_exist = true;
@@ -328,9 +349,10 @@ namespace ProjectGaloDaVelha.GameData
             Console.WriteLine
             ($"\u001b[36m==[ {player} ]==\u001b[0m");
 
-
+            // Request input for piece placement 
             Console.Write("Escreve a letra onde deseja colocar a peça: ");
 
+            // store value of input & convert to upper case
             user_place = Console.ReadLine().ToUpper();
 
 
@@ -400,9 +422,11 @@ namespace ProjectGaloDaVelha.GameData
             //If input number is higher/less then available numbers 
             while (user_piece > piecesArray.Length || user_piece < 0)
             {
+                // request a valid input again
                 Console.Write("O número atribuido à peça não existe," 
                 +"insira o número novamente: ");
 
+                // store input
                 user_piece = int.Parse(Console.ReadLine());
 
             }
@@ -511,31 +535,39 @@ namespace ProjectGaloDaVelha.GameData
             for (int i = 0; i < piecesVerified.GetLength(0); i++)
             {
 
-                // Support Variables
+                // -------------- Suport Variables ---------------------------//
                 // Sequence count numbers (Vertical,Horizontal and Diagnoal)
-                int counter_ColorHorizontal = 1;
-                int counter_ShapeHorizontal = 1;
-                int counter_HoleHorizontal = 1;
-                int counter_SizeHorizontal = 1;
 
-                int counter_ColorVertical = 1;
-                int counter_ShapeVertical = 1;
-                int counter_HoleVertical = 1;
-                int counter_SizeVertical = 1;
+                // Horizontal
+                int counterColorHorizontal      = 1;
+                int counterShapeHorizontal      = 1;
+                int counterHoleHorizontal       = 1;
+                int counterSizeHorizontal       = 1;
 
-                int counter_ColorDiag_L = 1;
-                int counter_ShapeDiag_L = 1;
-                int counter_HoleDiag_L = 1;
-                int counter_SizeDiag_L = 1;
+                // Vertical
+                int counterColorVertical        = 1;
+                int counterShapeVertical        = 1;
+                int counterHoleVertical         = 1;
+                int counterSizeVertical         = 1;
 
-                int counter_ColorDiag_R_ = 1;
-                int counter_ShapeDiag_R = 1;
-                int counter_HoleDiag_R = 1;
-                int counter_SizeDiag_R = 1;
+                // LEFT Diagonal
+                int counterColorDiag_L          = 1;
+                int counterShapeDiag_L          = 1;
+                int counterHoleDiag_L           = 1;
+                int counterSizeDiag_L           = 1;
+
+                // RIGHT Diagonal
+                int counterColorDiag_R_         = 1;
+                int counterShapeDiag_R          = 1;
+                int counterHoleDiag_R           = 1;
+                int counterSizeDiag_R           = 1;
+
 
                 // K and N are speciall chars to verified diagonal sequences
                 int j, k, n;
                 
+
+                // ------------------ Verifying code ------------------------ //
 
                 // Cicle for that runs every sequence possible 
                 //inside of the PiecesVerified Array
@@ -543,21 +575,22 @@ namespace ProjectGaloDaVelha.GameData
                 piecesVerified.GetLength(1); j++, k++, n--) 
                 {
                     // Horizontal Verification
+                     //If 1 and 2 elements are not empty
                     if (piecesVerified[i, j] != null && 
-                    piecesVerified[i, j - 1] != null) //If 1 and 2 elements are not empty
+                    piecesVerified[i, j - 1] != null)
                     {
                         //If element 1 and 2 as the same color:
                         if (piecesVerified[i, j].GetPieceColor() == 
                         piecesVerified[i, j - 1].GetPieceColor())
                         {
                             //Incress count for same Color in Horizontal
-                            counter_ColorHorizontal++;
+                            counterColorHorizontal++;
 
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ColorHorizontal = 1;
+                            counterColorHorizontal = 1;
                         }
 
                         //If element 1 and 2 as the same shape:
@@ -565,44 +598,44 @@ namespace ProjectGaloDaVelha.GameData
                         piecesVerified[i, j - 1].GetPieceShape())
                         {
                             // increment horizontal shape counter
-                            counter_ShapeHorizontal++;
+                            counterShapeHorizontal++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ShapeHorizontal = 1;
+                            counterShapeHorizontal = 1;
                         }
 
                         //If element 1 and 2 as the same hole:
                         if (piecesVerified[i, j].GetPieceHole() == 
                         piecesVerified[i, j - 1].GetPieceHole())
                         {
-                            counter_HoleHorizontal++;
+                            counterHoleHorizontal++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_HoleHorizontal = 1;
+                            counterHoleHorizontal = 1;
                         }
 
                         //If element 1 and 2 as the same size:
                         if (piecesVerified[i, j].GetPieceSize() ==
                          piecesVerified[i, j - 1].GetPieceSize())
                         {
-                            counter_SizeHorizontal++;
+                            counterSizeHorizontal++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_SizeHorizontal = 1;
+                            counterSizeHorizontal = 1;
                         }
 
                         //If any of the counter Horizontal sequences equals 4 
                         //and the message was not printed yet:
-                        if ((counter_ColorHorizontal == 4 ||
-                         counter_ShapeHorizontal == 4 || 
-                        counter_HoleHorizontal == 4 || 
-                         counter_SizeHorizontal == 4) 
+                        if ((counterColorHorizontal == 4 ||
+                        counterShapeHorizontal == 4 || 
+                        counterHoleHorizontal == 4 || 
+                         counterSizeHorizontal == 4) 
                          && !mensagemExibida)
 
                         {
@@ -615,81 +648,85 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 //If its player 1 turn, then player 1 wins
                                 case Player.Player1:
-                                    {
-                                        EndGame(GameStatus.player1Win,
-                                        "na horizontal!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player1 win status
+                                    // send adicional message (Horizontal win)
+                                    EndGame(GameStatus.player1Win,
+                                    "na horizontal!");
+                                    break;
+                                }
 
                                 //If its player 2 turn, then player 2 wins
                                 case Player.Player2:
-                                    {
-                                        EndGame(GameStatus.player2Win,
-                                        "na horizontal!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player2 win status
+                                    // send adicional message (Horizontal win)
+                                    EndGame(GameStatus.player2Win,
+                                    "na horizontal!");
+                                    break;
+                                }
                             }
-
                         }
                     }
 
                     // Vertical Verification
+                    //If 1 and 2 elements are not empty
                     if (piecesVerified[j, i] != null &&
-                    piecesVerified[j - 1, i] != null) //If 1 and 2 elements are not empty
+                    piecesVerified[j - 1, i] != null) 
                     {
                         //If element 1 and 2 as the same color:
                         if (piecesVerified[j, i].GetPieceColor() ==
                          piecesVerified[j - 1, i].GetPieceColor())
                         {
                             //Incress count for same Color in Vertical
-                            counter_ColorVertical++;
+                            counterColorVertical++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ColorVertical = 1;
+                            counterColorVertical = 1;
                         }
 
                         //If element 1 and 2 as the same shape:
                         if (piecesVerified[j, i].GetPieceShape() ==
                          piecesVerified[j - 1, i].GetPieceShape())
                         {
-                            counter_ShapeVertical++;
+                            counterShapeVertical++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ShapeVertical = 1;
+                            counterShapeVertical = 1;
                         }
 
                         //If element 1 and 2 as the same hole:
                         if (piecesVerified[j, i].GetPieceHole() ==
                          piecesVerified[j - 1, i].GetPieceHole())
                         {
-                            counter_HoleVertical++;
+                            counterHoleVertical++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_HoleVertical = 1;
+                            counterHoleVertical = 1;
                         }
 
                         //If element 1 and 2 as the same Size:
                         if (piecesVerified[j, i].GetPieceSize() ==
                          piecesVerified[j - 1, i].GetPieceSize())
                         {
-                            counter_SizeVertical++;
+                            counterSizeVertical++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_SizeVertical = 1;
+                            counterSizeVertical = 1;
                         }
 
                         //If any of the counter Vertical sequences equals 4 
                         //and the message was not printed yet:
-                        if ((counter_ColorVertical == 4 || counter_ShapeVertical
-                        == 4 || counter_HoleVertical == 4 || counter_SizeVertical 
+                        if ((counterColorVertical == 4 || counterShapeVertical
+                        == 4 || counterHoleVertical == 4 || counterSizeVertical 
                         == 4) && !mensagemExibida)
                         {
                             //Mensage will be printed
@@ -701,21 +738,23 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 //If its player 1 turn, then player 1 wins
                                 case Player.Player1:
-                                    {
-    
-                                        EndGame(GameStatus.player1Win,
-                                        "na vertical!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player1 win status
+                                    // send adicional message (Vertical win)
+                                    EndGame(GameStatus.player1Win,
+                                    "na vertical!");
+                                    break;
+                                }
 
                                 //If its player 2 turn, then player 2 wins
                                 case Player.Player2:
-                                    {
-
-                                        EndGame(GameStatus.player2Win,
-                                        "na vertical!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player2 win status
+                                    // send adicional message (Vertical win)
+                                    EndGame(GameStatus.player2Win,
+                                    "na vertical!");
+                                    break;
+                                }
                             }
                         }
                     }
@@ -733,55 +772,55 @@ namespace ProjectGaloDaVelha.GameData
                         if (piecesVerified[k - 1, j - 1].GetPieceColor() ==
                          piecesVerified[k, j].GetPieceColor())
                         {
-                            counter_ColorDiag_L++;
+                            counterColorDiag_L++;
 
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ColorDiag_L = 1;
+                            counterColorDiag_L = 1;
                         }
 
                         //If element 1 and 2 as the same shape:
                         if (piecesVerified[k - 1, j - 1].GetPieceShape() ==
                         piecesVerified[k, j].GetPieceShape())
                         {
-                            counter_ShapeDiag_L++;
+                            counterShapeDiag_L++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ShapeDiag_L = 1;
+                            counterShapeDiag_L = 1;
                         }
 
                         //If element 1 and 2 as the same hole:
                         if (piecesVerified[k - 1, j - 1].GetPieceHole() ==
                         piecesVerified[k, j].GetPieceHole())
                         {
-                            counter_HoleDiag_L++;
+                            counterHoleDiag_L++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_HoleDiag_L = 1;
+                            counterHoleDiag_L = 1;
                         }
 
                         //If element 1 and 2 as the same size:
                         if (piecesVerified[k - 1, j - 1].GetPieceSize() ==
                         piecesVerified[k, j].GetPieceSize())
                         {
-                            counter_SizeDiag_L++;
+                            counterSizeDiag_L++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_SizeDiag_L = 1;
+                            counterSizeDiag_L = 1;
                         }
 
                         //If any of the counter Diagonal_Left sequences equals 4 
                         //and the message was not printed yet:
-                        if ((counter_ColorDiag_L == 4 || counter_ShapeDiag_L == 
-                        4 ||counter_HoleDiag_L == 4 || counter_SizeDiag_L == 4) 
+                        if ((counterColorDiag_L == 4 || counterShapeDiag_L == 
+                        4 ||counterHoleDiag_L == 4 || counterSizeDiag_L == 4) 
                         && !mensagemExibida)
                         {
                             //Mensage will be printed
@@ -794,84 +833,88 @@ namespace ProjectGaloDaVelha.GameData
                             switch (player)
                             {
                                 case Player.Player1:
-                                    {
-                                        //If its player 1 turn, then player 1 wins
-                                        EndGame(GameStatus.player1Win,
-                                        "na diagonal da esquerda!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player1 win status
+                                    // send adicional message (Diag Left win)
+                                    EndGame(GameStatus.player1Win,
+                                    "na diagonal da esquerda!");
+
+                                    break;
+                                }
                                 case Player.Player2:
-                                    {
-                                        //If its player 2 turn, then player 2 wins
-                                        EndGame(GameStatus.player2Win,
-                                        "na diagonal da esquerda!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player2 win status
+                                    // send adicional message (Diag Left win)   
+                                    EndGame(GameStatus.player2Win,
+                                    "na diagonal da esquerda!");
+
+                                    break;
+                                }
                             }
                         }
                         
                     }
 
                     // Verificação DIAGONAL_RIGHT Verification
+                    //If 1 and 2 elements are not empty
                     if (i > 0 && j > 0 && piecesVerified[k - 1, n] != null &&
-                    piecesVerified[k, n - 1] != null) //If 1 and 2 elements are not empty
+                    piecesVerified[k, n - 1] != null) 
                     {
 
                         //If element 1 and 2 as the same color:
                         if (piecesVerified[k - 1, n].GetPieceColor() ==
                          piecesVerified[k, n - 1].GetPieceColor())
                         {
-                            counter_ColorDiag_R_++;
+                            counterColorDiag_R_++;
 
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ColorDiag_R_ = 1;
+                            counterColorDiag_R_ = 1;
                         }
 
                         //If element 1 and 2 as the same shape:
                         if (piecesVerified[k - 1, n].GetPieceShape()
                         == piecesVerified[k, n - 1].GetPieceShape())
                         {
-                            counter_ShapeDiag_R++;
+                            counterShapeDiag_R++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_ShapeDiag_R = 1;
+                            counterShapeDiag_R = 1;
                         }
 
                         //If element 1 and 2 as the same hole:
                         if (piecesVerified[k - 1, n].GetPieceHole()
                         == piecesVerified[k, n - 1].GetPieceHole())
                         {
-                            counter_HoleDiag_R++;
+                            counterHoleDiag_R++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_HoleDiag_R = 1;
+                            counterHoleDiag_R = 1;
                         }
 
                         //If element 1 and 2 as the same Size:
-                        if (piecesVerified[k - 1, n].GetPieceSize()
-                        == piecesVerified[k, n - 1].GetPieceSize())
+                        if (piecesVerified[k - 1, n].GetPieceSize() == 
+                        piecesVerified[k, n - 1].GetPieceSize())
                         {
-                            counter_SizeDiag_R++;
+                            counterSizeDiag_R++;
                         }
                         else
                         {
                             //Reset count if sequence was interupted
-                            counter_SizeDiag_R = 1;
+                            counterSizeDiag_R = 1;
                         }
 
                         //If any of the counter Vertical sequences equals 4 
                         //and the message was not printed yet:
-                        if ((counter_ColorDiag_R_ == 4 ||
-                         counter_ShapeDiag_R == 4
-                        || counter_HoleDiag_R == 4 ||
-                         counter_SizeDiag_R == 4) && !mensagemExibida)
+                        if ((counterColorDiag_R_ == 4 || counterShapeDiag_R == 4
+                        || counterHoleDiag_R == 4 ||counterSizeDiag_R == 4) 
+                        && !mensagemExibida)
                         {
                             //Mensage will be printed
                             mensagemExibida = true;
@@ -883,19 +926,25 @@ namespace ProjectGaloDaVelha.GameData
                             {
                                 //If its player 1 turn, then player 1 wins
                                 case Player.Player1:
-                                    {
-                                        EndGame(GameStatus.player1Win,
-                                        "na diagonal da direita!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player1 win status
+                                    // send adicional message (Diag Right win)
+                                    EndGame(GameStatus.player1Win,
+                                    "na diagonal da direita!");
+
+                                    break;
+                                }
                                 
                                 //If its player 2 turn, then player 2 wins
                                 case Player.Player2:
-                                    {
-                                        EndGame(GameStatus.player2Win,
-                                        "na diagonal da direita!");
-                                        break;
-                                    }
+                                {
+                                    // End game with player2 win status
+                                    // send adicional message (Diag Right win)
+                                    EndGame(GameStatus.player2Win,
+                                    "na diagonal da direita!");
+
+                                    break;
+                                }
                             }
                        
                             
@@ -910,7 +959,13 @@ namespace ProjectGaloDaVelha.GameData
 
         /// <summary>
         /// Prints the result of the end of the match, 
-        /// like (win, draw or quit) condition
+        /// like (win, draw or quit) condition.
+        /// Depending on the match result, a extra message will be printed
+        /// If the match is a draw, output is just "Empate!"
+        /// if the match is a win, output could be "Jogador 1 ganhou" 
+        /// + "Condition of win" that can be vertical, diagonal or horizontal.
+        /// messages are combined with interpolation
+        /// In any sitituation, the game ends.
         /// </summary>
         /// <param name="status">Enum game status</param>
         /// <param name="winCondition">string condition of win</param>
@@ -928,7 +983,7 @@ namespace ProjectGaloDaVelha.GameData
                 // Player 1 wins
                 case GameStatus.player1Win:
                     {
-
+                        // Player 1 message
                         message = "O jogador 1 ganhou";
                         break;
                     }
@@ -936,6 +991,7 @@ namespace ProjectGaloDaVelha.GameData
                 // Player 2 wins
                 case GameStatus.player2Win:
                     {
+                        // Player 2 message
                         message = "O jogador 2 ganhou";
                         break;
                     }
@@ -943,13 +999,13 @@ namespace ProjectGaloDaVelha.GameData
                 // Draw
                 case GameStatus.draw:
                     {
-
+                        // Draw message
                         message = "Empate!";
                         break;
                     }
                 case GameStatus.exit:
                     {
-
+                        // Exit message
                         message= "Jogo terminado!";
                         break;
                     }
@@ -959,6 +1015,8 @@ namespace ProjectGaloDaVelha.GameData
             }
 
 
+            // if win condition is not empty
+            // concatenate message with win condition
             if(winCondition.Length > 1)
             {
                // message += winCondition;
@@ -967,7 +1025,7 @@ namespace ProjectGaloDaVelha.GameData
             }
             else
             {
-                // display final message
+                // display final message without concatenation
                 Console.WriteLine(message);
 
             }
@@ -975,7 +1033,7 @@ namespace ProjectGaloDaVelha.GameData
             // update board one last time
             UpdateBoard(); 
 
-
+            // print command to play again
             Console.WriteLine
             ("Utilize o comando: dotnet run --project"
             +" ProjectGaloDaVelha para jogar novamente!");
