@@ -1,98 +1,107 @@
 namespace ProjectGaloDaVelha.Pieces
 {
     /// <summary>
-    ///  Base class for Piece
-    ///  This Class is responsible for storing the piece attributes
-    ///  such type representated by a string further on
+    /// Base class for Piece.
+    /// This Class is responsible for storing the piece attributes.
+    /// Such type is representated by a string. 
+    /// The atrributes are used to create the equation of what piece it is.
+    /// pieceType = color + pieceConfig + size; 
+    /// 
     /// </summary>
     public class Piece
     {
         // --------------------------- Attributes --------------------------- //
 
-        private string          pieceType; 
+        private string              pieceType; 
 
         // ref to PieceSize enum
-        private string          size;
+        private string              size;
 
         // ref to PieceColor enum
-        private string          color;
+        private string              color;
 
         // ref to PieceShape enum
-        private PieceShape      shape;
+        private PieceShape          shape;
 
         // ref to piece hole
-        private bool            hasHole;
+        private bool                hasHole;
 
 
         // -------------------------- Constructor --------------------------- //
    
         /// <summary>
-        ///  Constructor of Piece class
-        ///  Receives 4 parameters being each type an enumerator
-        ///  This constructor sets the piece attributes for:
-        ///  SIZE - COLOR - SHAPE - HOLE
-        ///  
-        ///   
+        /// Constructor of Piece class.
+        /// Receives 4 parameters being each type an enumerator
+        /// this constructor sets the piece attributes for:
+        /// SIZE - COLOR - SHAPE - HOLE
+        /// Atributes are equalized by functions calls except shape
+        /// Finaly this piece will have a type that is equal to the sum of 
+        /// strings defined by the functions.
         /// </summary>
-        /// <param name="setSize">Enum Size </param>
-        /// <param name="setColor">Enum Color </param>
-        /// <param name="setShape">Enum Shape</param>
-        /// <param name="setHole">Enum Hole</param>
-        public Piece(
-        PieceSize setSize, 
-        PieceColor setColor, 
-        PieceShape setShape, 
-        PieceHole setHole)
+        /// <param name="setSize">Enum: Size of piece </param>
+        /// <param name="setColor">Enum: Color of piece </param>
+        /// <param name="setShape">Enum: Shape of piece</param>
+        /// <param name="setHole">Enum: Hole of piece</param>
+        public Piece( PieceSize setSize, PieceColor setColor, 
+                      PieceShape setShape, PieceHole setHole)
         {
 
-            // Set Size
-            size            = SetPieceSize(setSize);
+            // Set Piece Size
+            size                = SetPieceSize(setSize);
 
-            // Set Color
-            color           = SetPieceColor(setColor);
+            // Set Piece Color
+            color               = SetPieceColor(setColor);
 
             //Set piece shape
-            shape           = setShape;
+            shape               = setShape;
 
-            // Set Hole
-            hasHole         = SetPieceHole(setHole);
+            // Set Piece Hole
+            hasHole             = SetPieceHole(setHole);
 
-            // Set pieceType 
-            pieceType        = SetPieceType();
+            // Set PieceType 
+            pieceType           = SetPieceType();
         }
 
 
         // --------------------------- Setters ------------------------------ //
 
         /// <summary>
-        ///  Setter for Piece Size
+        /// Setter for Piece Size.
+        /// Function receives a PieceSize enumemrator and acording to the enum 
+        /// value state, the switch case equalizes 
+        ///  
         /// </summary>
-        /// <param name="newSize"></param>
-        /// <returns></returns>
+        /// <param name="newSize">Enum: Size of Piece</param>
+        /// <returns>returns the string that symbolizes the size state</returns>
         private string SetPieceSize(PieceSize newSize)
         {
-
+            // Suport string to be returned
             string rSize = ""; 
    
+            // decide what string to equalize to, based on the enum value
             switch(newSize)
             {
                 case PieceSize.small:
                 {
+                    // piece is now of type small
                     rSize = "s";
                     break;
                 }
                 case PieceSize.big:
                 {
+                    // piece is now of type BIG
                     rSize = "B";
                     break;
                 }
             }
-        
+
+
+            // return string size s or B
             return rSize;
         }
 
         /// <summary>
-        /// 
+        ///  Functions sets the color of the piece instance
         /// </summary>
         /// <param name="newColor">Enum passing color type</param>
         /// <returns>Returns string value of color</returns>
@@ -126,25 +135,30 @@ namespace ProjectGaloDaVelha.Pieces
         
 
         /// <summary>
-        /// 
+        /// Setter for Piece Hole.
+        /// Function receives a PieceHole enumerator and acording to the value
+        /// returns a bool value that states if it has a hole or not.
         /// </summary>
         /// <param name="hole">Enum </param>
         /// <returns>returns bool stating hole condition</returns>
         private bool SetPieceHole(PieceHole hole)
         {
-
+            // Supoort variable
+            // 
             bool rHasHole = false;
 
             switch (hole)
             {
                 case PieceHole.none:
                 {
+                    // 
                     rHasHole = false;
                     break;
                 }
                 
                 case PieceHole.hole:
                 {
+                    // 
                     rHasHole = true;
                     break;
                 }
@@ -212,9 +226,9 @@ namespace ProjectGaloDaVelha.Pieces
         }
 
         /// <summary>
-        /// 
+        /// Getter for Piece Color
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returns string value of Piece Color type</returns>
         public string GetPieceColor()
         {
             // returns string of color
@@ -222,9 +236,9 @@ namespace ProjectGaloDaVelha.Pieces
         }
         
         /// <summary>
-        /// 
+        /// Getter for Piece Shape
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returns enum of Piece Shape</returns>
         public PieceShape GetPieceShape()
         {
             // returns string of shape
@@ -232,9 +246,9 @@ namespace ProjectGaloDaVelha.Pieces
         }
         
         /// <summary>
-        /// 
+        /// Getter for Piece Hole
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returns bool value of hasHole</returns>
         public bool GetPieceHole()
         {
             // returns boolean of hole
@@ -242,9 +256,9 @@ namespace ProjectGaloDaVelha.Pieces
         }
 
         /// <summary>
-        /// 
+        ///  Getter for Piece Type
         /// </summary>
-        /// <returns></returns>
+        /// <returns>returns string type of piece</returns>
         public string GetPieceType()
         {
             // returns string of pieceType
