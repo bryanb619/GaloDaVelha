@@ -73,35 +73,31 @@ graph TD
   A([Main]) --> B[/"Start"/];
   B         --> C[RunGame];
 
-  B     --> EXIT{Exit}
-  EXIT  --> Z([EndGame])
+  C         --> EXIT{Input = Exit?}
+  EXIT      --> Z([EndGame])
 
-  C     --> D{CheckFoDraw};
-  C     --> E[UpdateBoard];
-  C     --> F{DecidePlayerTurn};
+  C         --> D{CheckFoDraw};
+  C         --> E[UpdateBoard];
+  C         --> F{DecidePlayerTurn};
 
-  D     --> Z([EndGame])
+  D         --> Z([EndGame])
 
-  F     --> G[SetPieceOnBoard];
-  G     --> H[VerifiedGameStatus];
+  F         --> G[SetPieceOnBoard];
+  G         --> H[VerifiedGameStatus];
 
-  H     --> I{WinOnLateral};
-  H     --> K{WinOnDiagonal};
-  H     --> L{WinOnVertical}
+  H         --> I{WinOnLateral};
+  H         --> K{WinOnDiagonal};
+  H         --> L{WinOnVertical}
 
-  I     --> Z([EndGame])
-  K     --> Z([EndGame])
-  L     --> Z([EndGame])
+  I         --> Z([EndGame])
+  K         --> Z([EndGame])
+  L         --> Z([EndGame])
 
-  Z     -->E([UpdateBoard])
+  Z         <-->E[UpdateBoard]
 
 
 
 ```
-  x --> y([EndGame])
-
-  E --> F(["EndGame(GameStatus,string)"])
-
 ## Referências 
 
 ### IAs generativas
