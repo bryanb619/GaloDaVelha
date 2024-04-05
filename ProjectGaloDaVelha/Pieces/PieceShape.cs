@@ -6,7 +6,7 @@ namespace ProjectGaloDaVelha.Pieces
     public enum PieceShape
     {
         /// <summary>
-        /// Piece of cicle shape
+        /// Piece of circle shape
         /// </summary>
         circle,
         
