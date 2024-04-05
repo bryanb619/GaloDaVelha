@@ -310,6 +310,8 @@ namespace ProjectGaloDaVelha.GameData
             //user_piece = piece number given by the user but in int value
             int user_piece;
 
+
+
             
             //Change color to red
             Console.WriteLine("\u001b[31m[Legenda: B = Grande" 
@@ -318,6 +320,10 @@ namespace ProjectGaloDaVelha.GameData
             // ---------  WAITING HERE FOR NOW ---------
             Console.Write("\u001b[0m"); // Change color to white
 
+
+
+
+            // ------------------------ Input ------------------------------- //
 
             Console.WriteLine
             ($"\u001b[36m==[ {player} ]==\u001b[0m");
@@ -328,35 +334,44 @@ namespace ProjectGaloDaVelha.GameData
             user_place = Console.ReadLine().ToUpper();
 
 
+            // indentify if input is = EXIT
             if (user_place == "ESC")
             {
 
+                // EXIT game with exit status
                 EndGame(GameStatus.exit);
 
-                
             }
 
             //If input is higher than 1 caracter and its not "ESC"
             while (user_place != "ESC" && user_place.Length > 1)
             {
+                // ask for a valid input
                 if (user_place == "ESC")
                 {
+                    // EXIT game with exit status
                     EndGame(GameStatus.exit);
                 }
                 
+                // Ask for a valid input
                 Console.Write("A letra tem mais do que 1 caracter, " 
                 +"insira a letra novamente: ");
+
+                // store input
                 user_place = Console.ReadLine().ToUpper();
 
             }
 
-
+            // Request piece number
             Console.Write("Qual é o numero da peça que deseja: ");
+            // store value of input
             user_piece_string = Console.ReadLine();
           
 
+            //If input is = EXIT
             if (user_piece_string == "ESC")
             {
+                // EXIT game with exit status
                 EndGame(GameStatus.exit);
             }
 
@@ -364,17 +379,21 @@ namespace ProjectGaloDaVelha.GameData
             //If input number is not a valid number
             while (!int.TryParse(user_piece_string, out user_piece))
             {
+                // Ask for a valid input number
                 Console.Write("Por favor, insira um número válido: ");
                 user_piece_string = Console.ReadLine();
 
+                // If input is = EXIT
                 if (user_piece_string == "ESC")
                 {
+                    // EXIT game with exit status
                     EndGame(GameStatus.exit);
 
                 }
 
             }
             
+            // store value of input for piece
             user_piece = int.Parse(user_piece_string);
 
             
@@ -462,7 +481,7 @@ namespace ProjectGaloDaVelha.GameData
                 //If new user_place is ESC, exit the game
                 if (user_place == "ESC")
                 {
-
+                    // EXIT game with exit status  
                     EndGame(GameStatus.exit);        
                 }
 
@@ -492,6 +511,7 @@ namespace ProjectGaloDaVelha.GameData
             for (int i = 0; i < piecesVerified.GetLength(0); i++)
             {
 
+                // Support Variables
                 // Sequence count numbers (Vertical,Horizontal and Diagnoal)
                 int counter_ColorHorizontal = 1;
                 int counter_ShapeHorizontal = 1;
@@ -544,7 +564,7 @@ namespace ProjectGaloDaVelha.GameData
                         if (piecesVerified[i, j].GetPieceShape() == 
                         piecesVerified[i, j - 1].GetPieceShape())
                         {
-                            
+                            // increment horizontal shape counter
                             counter_ShapeHorizontal++;
                         }
                         else
@@ -581,7 +601,7 @@ namespace ProjectGaloDaVelha.GameData
                         //and the message was not printed yet:
                         if ((counter_ColorHorizontal == 4 ||
                          counter_ShapeHorizontal == 4 || 
-                         counter_HoleHorizontal == 4 || 
+                        counter_HoleHorizontal == 4 || 
                          counter_SizeHorizontal == 4) 
                          && !mensagemExibida)
 
