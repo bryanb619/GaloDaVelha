@@ -11,7 +11,15 @@ namespace ProjectGaloDaVelha.GameData
 {
     /// <summary>
     /// Galo Da Velha Game class
-    ///  
+    /// Overall this class is where most of the logic of the game is running
+    /// Gets the references of gameStatus class, players turn, 
+    /// boardgame layout update,piecesArray and piecesVerified arrays updates. 
+    /// 
+    /// piecesArray = Pieces available to choose for the player
+    /// 
+    /// piecesVerified = Pieces placed and choose by the players 
+    /// inside of the boardgame layout
+    /// 
     /// </summary>
     public class Game
     {
