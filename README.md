@@ -74,19 +74,19 @@ Há um total de 16 instâncias ou peças.
 Enumeradores utilizados pela classe _Game_: Estes Enumerados são utilizados para gerir a lógica de _gameplay_ como definir o estado  de jogo e definir qual jogador é o turno.
 
 - GameStatus: Contém os estados em que o jogo pode se encontrar sendo:
-  - draw = Empate por falta de peças
-  - player1Win = Vitória do jogador 1
-  - player2Win  = Vitória do jogador 2
-  - exit = Algum dos jogadores decidiu sair do jogo
-- Player: Contém o estado de jogador, podendo ser jogador 1 ou 2. É utilizado para mostrar o turno e apresentar de qual jogador é a vitória.
-  - player1 
-  - player2
+  - _draw_ = Empate por falta de peças
+  - _player1Win_ = Vitória do jogador 1
+  - _player2Win_  = Vitória do jogador 2
+  - _exit_ = Algum dos jogadores decidiu sair do jogo
+- _Player_: Contém o estado de jogador, podendo ser jogador 1 ou 2. É utilizado para mostrar o turno e apresentar de qual jogador é a vitória.
+  - _player1_ 
+  - _player2_
 
 Enumeradores utilizados pela classe _Piece_: Estes enumeradores são utilizados para definir limites e as características de cada peça como cor, se tem furo ou não, formato e finalmente tamanho
-- PieceColor: 
-- PieceHole:
-- PieceShape:
-- PieceSize: 
+- _PieceColor_: 
+- _PieceHole_:
+- _PieceShape_:
+- _PieceSize_: 
 
 O tabuleiro é construído visualmente usando caracteres como '+' ou '-', com esses caracteres organizados em ciclos for. Em cada espaço vazio do tabuleiro, é feito um print de cada elemento do array de letras. Mais tarde, esses espaços podem ser substituídos pelas peças que o jogador escolher. Após receber os inputs do jogador, e em caso de não haver erro, o método VerifiedGameStatus é executado. Este método verifica se existe uma sequência de cores, tamanhos, formas ou furos na vertical, horizontal e diagonal. Para essa verificação, cada par de elementos do array 'piecesVerified' é percorrido. Se os elementos não forem vazios, é verificada a existência de uma sequência. Se uma sequência for encontrada e a variável 'mensagemExibida' for false, ela é alterada para true para evitar a repetição da mensagem de vitória. Então, o jogador vencedor e como ele venceu são exibidos.
 
@@ -171,7 +171,7 @@ O único docente com quem foi entrado em contacto para discutir questões relaci
 
 #### _Youtube_
 * [Planeamente Geral de classes, enumeradores](https://www.youtube.com/watch?v=NUNlVjt82m8&t=738s)
-* [FUTURO VER BOARD CLASS](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
+* [_Board class_](https://www.youtube.com/watch?v=Z1Zi41eiNGs&t=80s)
 * [_Stream Reader_ exemplo](https://www.youtube.com/watch?v=tApBDuVwCrc)
 ---
 
