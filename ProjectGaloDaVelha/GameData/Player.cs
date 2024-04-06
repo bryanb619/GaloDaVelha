@@ -9,13 +9,13 @@ namespace ProjectGaloDaVelha.GameData
         /// Represents player 1
         /// Acts as global reference to player 1 
         /// </summary>
-        Player1,
+        player1,
 
         /// <summary>
         /// Represents player 2
         /// Acts as global reference to player 2 
         /// </summary>
-        Player2
+        player2
     }
 
 }
