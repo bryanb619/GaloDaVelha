@@ -6,12 +6,12 @@ namespace ProjectGaloDaVelha.Pieces
     public enum PieceSize
     {
         /// <summary>
-        /// 
+        ///  reference to big size piece
         /// </summary>
         big,
 
         /// <summary>
-        /// 
+        /// reference to small size piece
         /// </summary>
         small
     }
