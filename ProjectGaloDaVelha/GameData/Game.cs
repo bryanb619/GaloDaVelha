@@ -1,4 +1,4 @@
-using System; 
+using System;
 using System.Linq;                                  // user for Set List ops
 using System.IO;                                    // Used for reading files
 using System.Collections.Generic;                   // Used for List
@@ -11,7 +11,7 @@ namespace ProjectGaloDaVelha.GameData
 {
     /// <summary>
     /// Galo Da Velha Game class
-    /// 
+    ///  
     /// </summary>
     public class Game
     {
@@ -28,27 +28,27 @@ namespace ProjectGaloDaVelha.GameData
         private static Board board = new Board();
 
         // Array of Pieces
-        private static Piece[] piecesArray = 
+        private static Piece[] piecesArray =
         {
             // ----------------------- Yellow pieces ------------------------ //
 
             // Instances of Yellow pieces
             // 7 pieces in total 
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.yellow, PieceShape.square, PieceHole.none),
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.yellow, PieceShape.circle, PieceHole.none),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.yellow, PieceShape.square, PieceHole.none),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.yellow, PieceShape.circle, PieceHole.none),
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.yellow, PieceShape.square, PieceHole.hole),
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.yellow, PieceShape.circle, PieceHole.hole),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.yellow, PieceShape.square, PieceHole.hole),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.yellow, PieceShape.circle, PieceHole.hole),
 
 
@@ -56,21 +56,21 @@ namespace ProjectGaloDaVelha.GameData
 
             // Instances of Yellow pieces
             // 7 pieces in total 
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.green, PieceShape.square, PieceHole.none),
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.green, PieceShape.circle, PieceHole.none),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.green, PieceShape.square, PieceHole.none),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.green, PieceShape.circle, PieceHole.none),
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.green, PieceShape.square, PieceHole.hole),
-            new Piece(PieceSize.big, 
+            new Piece(PieceSize.big,
             PieceColor.green, PieceShape.circle, PieceHole.hole),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.green, PieceShape.square, PieceHole.hole),
-            new Piece(PieceSize.small, 
+            new Piece(PieceSize.small,
             PieceColor.green, PieceShape.circle, PieceHole.hole)
         };
 
@@ -79,7 +79,7 @@ namespace ProjectGaloDaVelha.GameData
         private static Piece[,] piecesVerified = new Piece[4, 4];
         // ------------------- END OF VARIABLES ----------------------------- //
 
-        
+
         /// <summary>
         /// Method starts Game Operations.
         /// Sets games status to playing so the the game can be played and 
@@ -117,7 +117,7 @@ namespace ProjectGaloDaVelha.GameData
             // Loop the the game while game status is playing
             while (gameStatus == GameStatus.playing)
             {
-                
+
                 // Check for draw
                 CheckForDraw();
 
@@ -150,13 +150,13 @@ namespace ProjectGaloDaVelha.GameData
             // Error Handling
             // try to read & output file content
             try
-            {   
+            {
 
                 // Enter before text
-                Console.WriteLine(); 
-                
+                Console.WriteLine();
+
                 // use stream reader to read text
-                using (StreamReader sr = new StreamReader(fileDirectory.GetDir() 
+                using (StreamReader sr = new StreamReader(fileDirectory.GetDir()
                 + welcomeText))
                 {
                     // line to be printed
@@ -169,7 +169,7 @@ namespace ProjectGaloDaVelha.GameData
                         Console.WriteLine(line);
                     }
 
-                   
+
                 }
 
                 // whait for any input
@@ -224,7 +224,7 @@ namespace ProjectGaloDaVelha.GameData
             Console.WriteLine("");
 
 
-            
+
             //Shows available pieces
             Console.WriteLine("[---Peças disponiveis---]");
 
@@ -236,13 +236,13 @@ namespace ProjectGaloDaVelha.GameData
                     if (index < piecesArray.Length)
                     {
                         //Adjust the width of the collun 
-                        Console.Write 
+                        Console.Write
                         ($"{piecesArray[index].GetPieceType()}[{index}]".PadRight(15));
                     }
 
                 }
                 //New line afther each line of elements
-                Console.WriteLine(); 
+                Console.WriteLine();
             }
 
         }
@@ -254,7 +254,7 @@ namespace ProjectGaloDaVelha.GameData
         /// </summary>
         private void DecidePlayerTurn()
         {
-            
+
             turn++;
             // determine player turn
 
@@ -262,13 +262,13 @@ namespace ProjectGaloDaVelha.GameData
             if (turn % 2 != 0)
             {
                 // Player 1 is now playing
-                player = Player.Player1;
+                player = Player.player1;
             }
 
             // Player 2 turn -> 2, 4, 6
             else
             {   // Player 2 is now playing
-                player = Player.Player2;
+                player = Player.player2;
             }
 
             // proceed to set pieces on board
@@ -276,7 +276,7 @@ namespace ProjectGaloDaVelha.GameData
         }
 
 
-        
+
         /// <summary>
         /// If the number of pieces available array is 0, call a get method that 
         /// that sets game to draw status and terminates the game
@@ -333,10 +333,10 @@ namespace ProjectGaloDaVelha.GameData
 
 
 
-            
+
             //Change color to red
-            Console.WriteLine("\u001b[31m[Legenda: B = Grande" 
-            +"|| s = Pequeno] || Sair do jogo = ESC]\n");
+            Console.WriteLine("\u001b[31m[Legenda: B = Grande"
+            + "|| s = Pequeno] || Sair do jogo = ESC]\n");
 
             // ---------  WAITING HERE FOR NOW ---------
             Console.Write("\u001b[0m"); // Change color to white
@@ -356,7 +356,7 @@ namespace ProjectGaloDaVelha.GameData
             user_place = Console.ReadLine().ToUpper();
 
 
-            // indentify if input is = EXIT
+            // indentify if input is = ESC
             if (user_place == "ESC")
             {
 
@@ -374,10 +374,10 @@ namespace ProjectGaloDaVelha.GameData
                     // EXIT game with exit status
                     EndGame(GameStatus.exit);
                 }
-                
+
                 // Ask for a valid input
-                Console.Write("A letra tem mais do que 1 caracter, " 
-                +"insira a letra novamente: ");
+                Console.Write("A letra tem mais do que 1 caracter, "
+                + "insira a letra novamente: ");
 
                 // store input
                 user_place = Console.ReadLine().ToUpper();
@@ -388,16 +388,16 @@ namespace ProjectGaloDaVelha.GameData
             Console.Write("Qual é o numero da peça que deseja: ");
             // store value of input
             user_piece_string = Console.ReadLine();
-          
 
-            //If input is = EXIT
+
+            //If input is = ESC
             if (user_piece_string == "ESC")
             {
                 // EXIT game with exit status
                 EndGame(GameStatus.exit);
             }
 
-            
+
             //If input number is not a valid number
             while (!int.TryParse(user_piece_string, out user_piece))
             {
@@ -405,7 +405,7 @@ namespace ProjectGaloDaVelha.GameData
                 Console.Write("Por favor, insira um número válido: ");
                 user_piece_string = Console.ReadLine();
 
-                // If input is = EXIT
+                // If input is = ESC
                 if (user_piece_string == "ESC")
                 {
                     // EXIT game with exit status
@@ -414,24 +414,24 @@ namespace ProjectGaloDaVelha.GameData
                 }
 
             }
-            
+
             // store value of input for piece
             user_piece = int.Parse(user_piece_string);
 
-            
+
             //If input number is higher/less then available numbers 
             while (user_piece > piecesArray.Length || user_piece < 0)
             {
                 // request a valid input again
-                Console.Write("O número atribuido à peça não existe," 
-                +"insira o número novamente: ");
+                Console.Write("O número atribuido à peça não existe,"
+                + "insira o número novamente: ");
 
                 // store input
                 user_piece = int.Parse(Console.ReadLine());
 
             }
 
-         
+
             // While the code doenst know that the letter given by the player exists:  
             while (letter_dont_exist)
             {
@@ -444,14 +444,14 @@ namespace ProjectGaloDaVelha.GameData
                         if (board.GetBoard()[i, j] == user_place)
                         {
 
-                             // if number of the piece is lower than length of piecesArray
-                            if(user_piece < piecesArray.Length 
+                            // if number of the piece is lower than length of piecesArray
+                            if (user_piece < piecesArray.Length
                             && user_piece >= 0)
                             {
-                                
+
                                 // string = piecesArray[user_piece].GetPieceType();
                                 //Visual representation of the pieces array (string)
-                                board.GetBoard()[i, j] = 
+                                board.GetBoard()[i, j] =
                                 piecesArray[user_piece].GetPieceType();
 
                                 // logic representacion of the array (class Pieces)
@@ -459,7 +459,7 @@ namespace ProjectGaloDaVelha.GameData
 
                                 //Able to print the pieces array (string)
                                 //Convert array to list 
-                                List<string> pieceTypeList = 
+                                List<string> pieceTypeList =
                                 piecesArray.Select
                                 (piece => piece.GetPieceType()).ToList();
 
@@ -468,12 +468,12 @@ namespace ProjectGaloDaVelha.GameData
 
                                 //Convert list to array again
                                 visualPieces = pieceTypeList.ToArray();
-                                
+
                                 //Change array values (class Pieces)
                                 //Convert array to list 
                                 List<Piece> pecas_list_code =
                                 new List<Piece>(piecesArray);
-                                
+
                                 //Remove element from the list
                                 pecas_list_code.RemoveAt(user_piece);
 
@@ -483,6 +483,7 @@ namespace ProjectGaloDaVelha.GameData
                                 // now we know that the letter exists
                                 letter_dont_exist = false;
 
+                                // break out of loop
                                 break;
                             }
 
@@ -506,7 +507,7 @@ namespace ProjectGaloDaVelha.GameData
                 if (user_place == "ESC")
                 {
                     // EXIT game with exit status  
-                    EndGame(GameStatus.exit);        
+                    EndGame(GameStatus.exit);
                 }
 
             }
@@ -528,7 +529,7 @@ namespace ProjectGaloDaVelha.GameData
         private void VerfifiedGameStatus()
         {
             /// If Win status wanst printable yet, its false
-            bool mensagemExibida = false; 
+            bool mensagemExibida = false;
 
 
             // Check lines sequence horizontal, vertical and diagnoal
@@ -539,48 +540,48 @@ namespace ProjectGaloDaVelha.GameData
                 // Sequence count numbers (Vertical,Horizontal and Diagnoal)
 
                 // Horizontal
-                int counterColorHorizontal      = 1;
-                int counterShapeHorizontal      = 1;
-                int counterHoleHorizontal       = 1;
-                int counterSizeHorizontal       = 1;
+                int counterColorHorizontal = 1;
+                int counterShapeHorizontal = 1;
+                int counterHoleHorizontal = 1;
+                int counterSizeHorizontal = 1;
 
                 // Vertical
-                int counterColorVertical        = 1;
-                int counterShapeVertical        = 1;
-                int counterHoleVertical         = 1;
-                int counterSizeVertical         = 1;
+                int counterColorVertical = 1;
+                int counterShapeVertical = 1;
+                int counterHoleVertical = 1;
+                int counterSizeVertical = 1;
 
                 // LEFT Diagonal
-                int counterColorDiag_L          = 1;
-                int counterShapeDiag_L          = 1;
-                int counterHoleDiag_L           = 1;
-                int counterSizeDiag_L           = 1;
+                int counterColorDiag_L = 1;
+                int counterShapeDiag_L = 1;
+                int counterHoleDiag_L = 1;
+                int counterSizeDiag_L = 1;
 
                 // RIGHT Diagonal
-                int counterColorDiag_R_         = 1;
-                int counterShapeDiag_R          = 1;
-                int counterHoleDiag_R           = 1;
-                int counterSizeDiag_R           = 1;
+                int counterColorDiag_R_ = 1;
+                int counterShapeDiag_R = 1;
+                int counterHoleDiag_R = 1;
+                int counterSizeDiag_R = 1;
 
 
                 // K and N are speciall chars to verified diagonal sequences
                 int j, k, n;
-                
 
-                // ------------------ Verifying code ------------------------ //
+
+                // ------------------ Verifying Pieces ---------------------- //
 
                 // Cicle for that runs every sequence possible 
                 //inside of the PiecesVerified Array
-                for (j = 1, k = 1, n = 3; j < 
-                piecesVerified.GetLength(1); j++, k++, n--) 
+                for (j = 1, k = 1, n = 3; j <
+                piecesVerified.GetLength(1); j++, k++, n--)
                 {
                     // Horizontal Verification
-                     //If 1 and 2 elements are not empty
-                    if (piecesVerified[i, j] != null && 
+                    //If 1 and 2 elements are not empty
+                    if (piecesVerified[i, j] != null &&
                     piecesVerified[i, j - 1] != null)
                     {
                         //If element 1 and 2 as the same color:
-                        if (piecesVerified[i, j].GetPieceColor() == 
+                        if (piecesVerified[i, j].GetPieceColor() ==
                         piecesVerified[i, j - 1].GetPieceColor())
                         {
                             //Incress count for same Color in Horizontal
@@ -594,7 +595,7 @@ namespace ProjectGaloDaVelha.GameData
                         }
 
                         //If element 1 and 2 as the same shape:
-                        if (piecesVerified[i, j].GetPieceShape() == 
+                        if (piecesVerified[i, j].GetPieceShape() ==
                         piecesVerified[i, j - 1].GetPieceShape())
                         {
                             // increment horizontal shape counter
@@ -607,7 +608,7 @@ namespace ProjectGaloDaVelha.GameData
                         }
 
                         //If element 1 and 2 as the same hole:
-                        if (piecesVerified[i, j].GetPieceHole() == 
+                        if (piecesVerified[i, j].GetPieceHole() ==
                         piecesVerified[i, j - 1].GetPieceHole())
                         {
                             counterHoleHorizontal++;
@@ -633,38 +634,38 @@ namespace ProjectGaloDaVelha.GameData
                         //If any of the counter Horizontal sequences equals 4 
                         //and the message was not printed yet:
                         if ((counterColorHorizontal == 4 ||
-                        counterShapeHorizontal == 4 || 
-                        counterHoleHorizontal == 4 || 
-                         counterSizeHorizontal == 4) 
+                        counterShapeHorizontal == 4 ||
+                        counterHoleHorizontal == 4 ||
+                         counterSizeHorizontal == 4)
                          && !mensagemExibida)
 
                         {
                             //Mensage will be printed
                             mensagemExibida = true;
                             Console.WriteLine
-                            ($"***********************************\n"); 
-                       
+                            ($"***********************************\n");
+
                             switch (player)
                             {
                                 //If its player 1 turn, then player 1 wins
-                                case Player.Player1:
-                                {
-                                    // End game with player1 win status
-                                    // send adicional message (Horizontal win)
-                                    EndGame(GameStatus.player1Win,
-                                    "na horizontal!");
-                                    break;
-                                }
+                                case Player.player1:
+                                    {
+                                        // End game with player1 win status
+                                        // send adicional message (Horizontal win)
+                                        EndGame(GameStatus.player1Win,
+                                        "na horizontal!");
+                                        break;
+                                    }
 
                                 //If its player 2 turn, then player 2 wins
-                                case Player.Player2:
-                                {
-                                    // End game with player2 win status
-                                    // send adicional message (Horizontal win)
-                                    EndGame(GameStatus.player2Win,
-                                    "na horizontal!");
-                                    break;
-                                }
+                                case Player.player2:
+                                    {
+                                        // End game with player2 win status
+                                        // send adicional message (Horizontal win)
+                                        EndGame(GameStatus.player2Win,
+                                        "na horizontal!");
+                                        break;
+                                    }
                             }
                         }
                     }
@@ -672,7 +673,7 @@ namespace ProjectGaloDaVelha.GameData
                     // Vertical Verification
                     //If 1 and 2 elements are not empty
                     if (piecesVerified[j, i] != null &&
-                    piecesVerified[j - 1, i] != null) 
+                    piecesVerified[j - 1, i] != null)
                     {
                         //If element 1 and 2 as the same color:
                         if (piecesVerified[j, i].GetPieceColor() ==
@@ -726,35 +727,35 @@ namespace ProjectGaloDaVelha.GameData
                         //If any of the counter Vertical sequences equals 4 
                         //and the message was not printed yet:
                         if ((counterColorVertical == 4 || counterShapeVertical
-                        == 4 || counterHoleVertical == 4 || counterSizeVertical 
+                        == 4 || counterHoleVertical == 4 || counterSizeVertical
                         == 4) && !mensagemExibida)
                         {
                             //Mensage will be printed
                             mensagemExibida = true;
                             Console.WriteLine
-                            ($"***********************************\n"); 
+                            ($"***********************************\n");
 
                             switch (player)
                             {
                                 //If its player 1 turn, then player 1 wins
-                                case Player.Player1:
-                                {
-                                    // End game with player1 win status
-                                    // send adicional message (Vertical win)
-                                    EndGame(GameStatus.player1Win,
-                                    "na vertical!");
-                                    break;
-                                }
+                                case Player.player1:
+                                    {
+                                        // End game with player1 win status
+                                        // send adicional message (Vertical win)
+                                        EndGame(GameStatus.player1Win,
+                                        "na vertical!");
+                                        break;
+                                    }
 
                                 //If its player 2 turn, then player 2 wins
-                                case Player.Player2:
-                                {
-                                    // End game with player2 win status
-                                    // send adicional message (Vertical win)
-                                    EndGame(GameStatus.player2Win,
-                                    "na vertical!");
-                                    break;
-                                }
+                                case Player.player2:
+                                    {
+                                        // End game with player2 win status
+                                        // send adicional message (Vertical win)
+                                        EndGame(GameStatus.player2Win,
+                                        "na vertical!");
+                                        break;
+                                    }
                             }
                         }
                     }
@@ -764,8 +765,8 @@ namespace ProjectGaloDaVelha.GameData
 
                     //If 1 and 2 elements are not empty
                     if (i > 0 && j > 0 && piecesVerified[k - 1, j - 1] !=
-                    null && piecesVerified[j, k] != null) 
-                    
+                    null && piecesVerified[j, k] != null)
+
                     {
 
                         //If element 1 and 2 as the same color:
@@ -819,46 +820,46 @@ namespace ProjectGaloDaVelha.GameData
 
                         //If any of the counter Diagonal_Left sequences equals 4 
                         //and the message was not printed yet:
-                        if ((counterColorDiag_L == 4 || counterShapeDiag_L == 
-                        4 ||counterHoleDiag_L == 4 || counterSizeDiag_L == 4) 
+                        if ((counterColorDiag_L == 4 || counterShapeDiag_L ==
+                        4 || counterHoleDiag_L == 4 || counterSizeDiag_L == 4)
                         && !mensagemExibida)
                         {
                             //Mensage will be printed
                             mensagemExibida = true;
 
                             Console.WriteLine
-                            ($"***********************************\n"); 
+                            ($"***********************************\n");
 
 
                             switch (player)
                             {
-                                case Player.Player1:
-                                {
-                                    // End game with player1 win status
-                                    // send adicional message (Diag Left win)
-                                    EndGame(GameStatus.player1Win,
-                                    "na diagonal da esquerda!");
+                                case Player.player1:
+                                    {
+                                        // End game with player1 win status
+                                        // send adicional message (Diag Left win)
+                                        EndGame(GameStatus.player1Win,
+                                        "na diagonal da esquerda!");
 
-                                    break;
-                                }
-                                case Player.Player2:
-                                {
-                                    // End game with player2 win status
-                                    // send adicional message (Diag Left win)   
-                                    EndGame(GameStatus.player2Win,
-                                    "na diagonal da esquerda!");
+                                        break;
+                                    }
+                                case Player.player2:
+                                    {
+                                        // End game with player2 win status
+                                        // send adicional message (Diag Left win)   
+                                        EndGame(GameStatus.player2Win,
+                                        "na diagonal da esquerda!");
 
-                                    break;
-                                }
+                                        break;
+                                    }
                             }
                         }
-                        
+
                     }
 
                     // Verificação DIAGONAL_RIGHT Verification
                     //If 1 and 2 elements are not empty
                     if (i > 0 && j > 0 && piecesVerified[k - 1, n] != null &&
-                    piecesVerified[k, n - 1] != null) 
+                    piecesVerified[k, n - 1] != null)
                     {
 
                         //If element 1 and 2 as the same color:
@@ -899,7 +900,7 @@ namespace ProjectGaloDaVelha.GameData
                         }
 
                         //If element 1 and 2 as the same Size:
-                        if (piecesVerified[k - 1, n].GetPieceSize() == 
+                        if (piecesVerified[k - 1, n].GetPieceSize() ==
                         piecesVerified[k, n - 1].GetPieceSize())
                         {
                             counterSizeDiag_R++;
@@ -913,43 +914,40 @@ namespace ProjectGaloDaVelha.GameData
                         //If any of the counter Vertical sequences equals 4 
                         //and the message was not printed yet:
                         if ((counterColorDiag_R_ == 4 || counterShapeDiag_R == 4
-                        || counterHoleDiag_R == 4 ||counterSizeDiag_R == 4) 
+                        || counterHoleDiag_R == 4 || counterSizeDiag_R == 4)
                         && !mensagemExibida)
                         {
                             //Mensage will be printed
                             mensagemExibida = true;
                             Console.WriteLine
-                            ($"***********************************\n"); 
+                            ($"***********************************\n");
 
 
                             switch (player)
                             {
                                 //If its player 1 turn, then player 1 wins
-                                case Player.Player1:
-                                {
-                                    // End game with player1 win status
-                                    // send adicional message (Diag Right win)
-                                    EndGame(GameStatus.player1Win,
-                                    "na diagonal da direita!");
+                                case Player.player1:
+                                    {
+                                        // End game with player1 win status
+                                        // send adicional message (Diag Right win)
+                                        EndGame(GameStatus.player1Win,
+                                        "na diagonal da direita!");
 
-                                    break;
-                                }
-                                
+                                        break;
+                                    }
+
                                 //If its player 2 turn, then player 2 wins
-                                case Player.Player2:
-                                {
-                                    // End game with player2 win status
-                                    // send adicional message (Diag Right win)
-                                    EndGame(GameStatus.player2Win,
-                                    "na diagonal da direita!");
+                                case Player.player2:
+                                    {
+                                        // End game with player2 win status
+                                        // send adicional message (Diag Right win)
+                                        EndGame(GameStatus.player2Win,
+                                        "na diagonal da direita!");
 
-                                    break;
-                                }
+                                        break;
+                                    }
                             }
-                       
-                            
                         }
-                        
                     }
                 }
             }
@@ -967,8 +965,8 @@ namespace ProjectGaloDaVelha.GameData
         /// messages are combined with interpolation
         /// In any sitituation, the game ends.
         /// </summary>
-        /// <param name="status">Enum game status</param>
-        /// <param name="winCondition">string condition of win</param>
+        /// <param name="status">Enum game status, used in switch, defines final game status</param>
+        /// <param name="winCondition">string condition of win, concatenated with message if a game is won</param>
         private void EndGame(GameStatus status, string winCondition = "")
         {
             // change game status
@@ -1006,10 +1004,11 @@ namespace ProjectGaloDaVelha.GameData
                 case GameStatus.exit:
                     {
                         // Exit message
-                        message= "Jogo terminado!";
+                        message = "Jogo terminado!";
                         break;
                     }
 
+                // break out of switch
                 default: { break; }
 
             }
@@ -1017,10 +1016,10 @@ namespace ProjectGaloDaVelha.GameData
 
             // if win condition is not empty
             // concatenate message with win condition
-            if(winCondition.Length > 1)
+            if (winCondition.Length > 1)
             {
-               // message += winCondition;
-               Console.WriteLine($"{message} {winCondition}");
+                // message += winCondition;
+                Console.WriteLine($"{message} {winCondition}");
 
             }
             else
@@ -1031,17 +1030,18 @@ namespace ProjectGaloDaVelha.GameData
             }
 
             // update board one last time
-            UpdateBoard(); 
+            UpdateBoard();
 
             // print command to play again
             Console.WriteLine
-            ("Utilize o comando: dotnet run --project"
-            +" ProjectGaloDaVelha para jogar novamente!");
-                       
+            ("para jogar novamente! Utilize o comando: "
+             + "dotnet run --project ProjectGaloDaVelha");
+       
+
             // exit game 
             // similar command to return 
-            Environment.Exit(0); 
-            
+            Environment.Exit(0);
+
         }
 
     }
