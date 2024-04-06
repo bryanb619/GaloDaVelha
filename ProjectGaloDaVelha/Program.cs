@@ -18,7 +18,7 @@ namespace ProjectGaloDaVelha
         /// <param name="args">Not used</param>
         private static void Main(string[] args)
         {
-            // create game instance
+            // create a game instance
             Game game = new Game();
             
             // start game method
