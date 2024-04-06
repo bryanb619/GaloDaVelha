@@ -1,10 +1,20 @@
 namespace ProjectGaloDaVelha.Pieces
 {
-    // public enumerator of types of holes a piece can have
-    // They can be either none or hole 
+
+    /// <summary>
+    /// Defines type of holes the piece can have
+    /// can be either none or hole
+    /// </summary>
     public enum PieceHole
     {
+        /// <summary>
+        /// No hole in the piece
+        /// </summary>
         none,
+
+        /// <summary>
+        /// Piece has a hole
+        /// </summary>
         hole
     }
 
