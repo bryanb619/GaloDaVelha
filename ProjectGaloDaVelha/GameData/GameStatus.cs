@@ -25,7 +25,7 @@ namespace ProjectGaloDaVelha.GameData
         /// Game exit condition
         /// Use this to exit the game
         /// </summary>
-        exit, 
+        exit,
 
         /// <summary>
         /// Playing condition
