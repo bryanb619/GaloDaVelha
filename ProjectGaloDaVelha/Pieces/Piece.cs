@@ -12,18 +12,19 @@ namespace ProjectGaloDaVelha.Pieces
     {
         // --------------------------- Attributes --------------------------- //
 
+        // represetns type of piece
         private string              pieceType; 
 
-        // ref to PieceSize enum
+        // represents size of piece
         private string              size;
 
-        // ref to PieceColor enum
+        // represents color of piece
         private string              color;
 
         // ref to PieceShape enum
         private PieceShape          shape;
 
-        // ref to piece hole
+        // represents if piece has hole or not
         private bool                hasHole;
 
 
@@ -107,7 +108,9 @@ namespace ProjectGaloDaVelha.Pieces
         /// <returns>Returns string value of color</returns>
         private string SetPieceColor(PieceColor newColor)
         {
+            // Support variable
 
+            // color to be returned
             string rColor = "";
 
             switch (newColor)
@@ -144,7 +147,8 @@ namespace ProjectGaloDaVelha.Pieces
         private bool SetPieceHole(PieceHole hole)
         {
             // Supoort variable
-            // 
+
+            // bool to be returned
             bool rHasHole = false;
 
             switch (hole)
@@ -169,16 +173,24 @@ namespace ProjectGaloDaVelha.Pieces
             return rHasHole;
         }
 
+
         /// <summary>
         ///  Sets Piece Type
-        ///  Uses all initialized & 
+        ///  Uses all initialized & declared attributes to return piece type
         /// </summary>
+        /// <returns>returns sum of color, piece config and size</returns>
         private string SetPieceType()
         {
             //Support variables
+
+            // string to be returned
             string rPieceType = "";
+
+            // char to add to string
             char pieceConfig = '\0';
 
+
+            // Define shape
             switch(shape)
             {
 
@@ -188,6 +200,7 @@ namespace ProjectGaloDaVelha.Pieces
                     // in case has hole 
                     if(hasHole) {pieceConfig = '\u25cf';}
                     
+                    // in case has no hole
                     else {pieceConfig = '\u25cb';}
 
                     break;
@@ -195,8 +208,10 @@ namespace ProjectGaloDaVelha.Pieces
 
                 case PieceShape.square:
                 {
+                    // in case has hole
                     if(hasHole) {pieceConfig = '\u25a0';}
 
+                    // in case has no hole
                     else{pieceConfig = '\u25a1';}
 
                     break;
@@ -206,6 +221,7 @@ namespace ProjectGaloDaVelha.Pieces
             // set pieceType
             rPieceType = color + pieceConfig + size;    
             
+            // return string of piece type
             return rPieceType;
         }
 
@@ -215,7 +231,6 @@ namespace ProjectGaloDaVelha.Pieces
         /// <summary>
         ///  Getter for Piece Size
         ///  Function returns string of piece size
-        /// 
         ///  Size is set by the SetPieceSize function
         /// </summary>
         /// <returns>returns attribute string size</returns>
