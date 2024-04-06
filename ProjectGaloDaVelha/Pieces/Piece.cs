@@ -95,13 +95,13 @@ namespace ProjectGaloDaVelha.Pieces
                 }
             }
 
-
             // return string size s or B
             return rSize;
         }
 
         /// <summary>
-        ///  Functions sets the color of the piece instance
+        /// Functions sets the color of the piece instance.
+        /// Returns the string value of the color.
         /// </summary>
         /// <param name="newColor">Enum passing color type</param>
         /// <returns>Returns string value of color</returns>
