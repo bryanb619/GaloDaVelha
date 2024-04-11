@@ -42,12 +42,23 @@ classDiagram
 
     }
     class Game{
-        - _color : Color
-        - _radius : float
-        - _timesThrown : int
-        + Sphere(Color color, float radius)
-        + Throw() void
-        + GetTimesThrown() int
+        - gameStatus            : GameStatus
+        - player                : Player
+        - turn                  : int
+        - board                 : Board
+        - piece                 : Piece[]
+        - piecesVerified        : Piece[,]
+
+        + Start()               void
+        - RunGame()             void
+        - CheckForDraw()        void
+        - UpdateBoard()         void
+        - DecidePlayerTurn()    void
+        - Welcome()             void
+        - SetPieceOnBoard()     void
+        - VerfifiedGameStatus() void
+        - EndGame(gameStatus)   void
+
     }
 
     class FileDirectory{
