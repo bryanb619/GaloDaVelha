@@ -90,7 +90,7 @@ Enumeradores utilizados pela classe _Piece_: Estes enumeradores são utilizados 
 
 O tabuleiro é construído visualmente usando caracteres como '+' ou '-', com esses caracteres organizados em ciclos for. Em cada espaço vazio do tabuleiro, é feito um print de cada elemento do array de letras. Mais tarde, esses espaços podem ser substituídos pelas peças que o jogador escolher. Após receber os inputs do jogador, e em caso de não haver erro, o método VerifiedGameStatus é executado. Este método verifica se existe uma sequência de cores, tamanhos, formas ou furos na vertical, horizontal e diagonal. Para essa verificação, cada par de elementos do array 'piecesVerified' é percorrido. Se os elementos não forem vazios, é verificada a existência de uma sequência. Se uma sequência for encontrada e a variável 'mensagemExibida' for false, ela é alterada para true para evitar a repetição da mensagem de vitória. Então, o jogador vencedor e como ele venceu são exibidos.
 
-### Diagrama _UML_
+### Fluxograma
 
 ```mermaid
 graph TD
